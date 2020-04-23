@@ -47,7 +47,7 @@ public class DAOOffreJDBC implements DAOOffre {
             ResultSet rs= ps.executeQuery();
             while(rs.next()) 
             {
-                o=new Offre(rs.getInt("id_joueur"), rs.getInt("id_manager"), rs.getDouble("salairePropose"), rs.getString("equipePropose"), rs.getString("rolePropose"));
+                //o=new Offre(rs.getInt("id_joueur"), rs.getInt("id_manager"), rs.getDouble("salairePropose"), rs.getString("equipePropose"), rs.getString("rolePropose"));
             }
         }catch (Exception e) {e.printStackTrace();}
 
@@ -69,7 +69,7 @@ public class DAOOffreJDBC implements DAOOffre {
         ResultSet rs= ps.executeQuery();
         while(rs.next()) 
         {
-            o=new Offre(rs.getInt("id_joueur"), rs.getInt("id_manager"), rs.getDouble("salairePropose"), rs.getString("equipePropose"), rs.getString("rolePropose"));
+            //o=new Offre(rs.getInt("id_joueur"), rs.getInt("id_manager"), rs.getDouble("salairePropose"), rs.getString("equipePropose"), rs.getString("rolePropose"));
         }
     }catch (Exception e) {e.printStackTrace();}
 

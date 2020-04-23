@@ -252,8 +252,9 @@ public class Application {
 		int salairePropose = saisieInt("Saisissez le salaire que vous voulez proposer à " + pseudo);
 		String equipePropose = cm.getEquipe();
 		String rolePropose = saisieString("Saisissez le rôle que vous voulez proposer");
-
-		Offre o = new Offre (id_joueur, id_manager, salairePropose, equipePropose, rolePropose);
+		
+		Offre o = null;
+		//Offre o = new Offre (id_joueur, id_manager, salairePropose, equipePropose, rolePropose);
 		daoO.insert(o);
 
 		System.out.println("L'offre de recrutement de " + c.getPseudo() + " pour un salaire de " + salairePropose + " a bien été envoyé");
