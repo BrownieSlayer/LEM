@@ -1,5 +1,9 @@
 package application;
 
+import dao.IDAOCompte;
+import dao.IDAOOffre;
+import dao.jpa.DAOCompteJPA;
+import dao.jpa.DAOOffreJPA;
 
 public class ApplicationContext {
 		private static IDAOOffre daoOffre;
@@ -9,7 +13,7 @@ public class ApplicationContext {
 		{
 			if (daoOffre == null)
 			{
-				daoOffre = new DAOOffreJpa();
+				daoOffre = new DAOOffreJPA();
 			}
 			return daoOffre;
 		}
@@ -19,7 +23,7 @@ public class ApplicationContext {
 		{
 			if (daoCompte == null)
 			{
-				daoCompte = new DAOCompteJpa();
+				daoCompte = new DAOCompteJPA();
 			}
 			return daoCompte;
 		}
