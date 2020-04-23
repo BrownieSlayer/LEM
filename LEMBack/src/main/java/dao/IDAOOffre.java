@@ -4,7 +4,7 @@ import java.util.List;
 
 import model.Offre;
 
-public interface DAOOffre extends DAO<Offre,Integer> {
+public interface IDAOOffre extends IDAO<Offre,Integer> {
 	
 	public Offre selectOffreByIds(Integer id_joueur, Integer id_manager);
 	

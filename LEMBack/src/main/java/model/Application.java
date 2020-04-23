@@ -7,11 +7,11 @@ import java.util.LinkedList;
 import java.util.Scanner;
 
 import application.Test_App;
-import dao.DAOCompte;
-import dao.DAOCompteJDBC;
-import dao.DAOCompteJPA;
-import dao.DAOOffre;
-import dao.DAOOffreJDBC;
+import dao.IDAOCompte;
+import dao.IDAOOffre;
+import dao.jdbc.DAOCompteJDBC;
+import dao.jdbc.DAOOffreJDBC;
+import dao.jpa.DAOCompteJPA;
 
 
 public class Application {
@@ -20,8 +20,8 @@ public class Application {
 	private Connection connection=null;
 	private static  Application _instance=null;
 	private LinkedList<Joueur> candidats = new LinkedList();
-	private DAOCompte daoC = new DAOCompteJDBC();
-	private DAOOffre daoO = new DAOOffreJDBC();
+	private IDAOCompte daoC = new DAOCompteJDBC();
+	private IDAOOffre daoO = new DAOOffreJDBC();
 
 
 
@@ -50,7 +50,7 @@ public class Application {
 		this.candidats = candidats;
 	}
 
-	public DAOCompte getDaoC() {
+	public IDAOCompte getDaoC() {
 		return daoC;
 	}
 
@@ -58,7 +58,7 @@ public class Application {
 		this.daoC = daoC;
 	}
 
-	public DAOOffre getDaoO() {
+	public IDAOOffre getDaoO() {
 		return daoO;
 	}
 
@@ -95,7 +95,7 @@ public class Application {
 	{
 		System.out.println("Bienvenue dans l'espace de cr�ation de votre compte d'Esport Manager");
 		String pseudo = saisieString("Saisir votre pseudo");
-		DAOCompte daoC = Application.getInstance().getDaoC();
+		IDAOCompte daoC = Application.getInstance().getDaoC();
 		Compte c = daoC.selectByPseudo(pseudo);
 
 		int choix = 0;
@@ -155,7 +155,7 @@ public class Application {
 	}
 	public static void deleteCompte(String user)
 	{
-		DAOCompte daoC = Application.getInstance().getDaoC();
+		IDAOCompte daoC = Application.getInstance().getDaoC();
 		Compte c = daoC.selectByPseudo(user);
 
 		if(c != null)
@@ -174,7 +174,7 @@ public class Application {
 	public static void afficheCompte()
 	{
 		String pseudo = saisieString("Saisir le pseudo du joueur ou du manager � afficher");
-		DAOCompte daoC = Application.getInstance().getDaoC();
+		IDAOCompte daoC = Application.getInstance().getDaoC();
 		Compte c = daoC.selectByPseudo(pseudo);
 
 		System.out.println(c);
@@ -182,7 +182,7 @@ public class Application {
 
 	public static void afficheCompteUser(String user)
 	{
-		DAOCompte daoC = Application.getInstance().getDaoC();
+		IDAOCompte daoC = Application.getInstance().getDaoC();
 		Compte c = daoC.selectByPseudo(user);
 
 		System.out.println(c);
@@ -201,7 +201,7 @@ public class Application {
 
 	public static void modifSalaireJoueur(String user)
 	{
-		DAOCompte daoC = Application.getInstance().getDaoC();
+		IDAOCompte daoC = Application.getInstance().getDaoC();
 		int newSalmin = saisieInt("Saisir le nouveau salaire d�sir�");
 		Compte c = daoC.selectByPseudo(user);
 
@@ -218,7 +218,7 @@ public class Application {
 
 	public static void modifRoleJoueur(String user)
 	{
-		DAOCompte daoC = Application.getInstance().getDaoC();
+		IDAOCompte daoC = Application.getInstance().getDaoC();
 		String newRole = saisieString("Saisir le nouveau � afficher");
 		Compte c = daoC.selectByPseudo(user);
 		if (c.getTypeCompte().equals("joueur"))
@@ -237,8 +237,8 @@ public class Application {
 	{
 		System.out.println("Bienvenue dans l'espace de cr�ation d'une offre de recrutement");
 
-		DAOOffre daoO = Application.getInstance().getDaoO();
-		DAOCompte daoC = Application.getInstance().getDaoC();
+		IDAOOffre daoO = Application.getInstance().getDaoO();
+		IDAOCompte daoC = Application.getInstance().getDaoC();
 
 		Compte cm = daoC.selectByPseudo(user);
 
@@ -262,8 +262,8 @@ public class Application {
 	{
 		String pseudo = saisieString("Saisir le pseudo du joueur li� � l'offre que vous voulez supprimmer");
 
-		DAOOffre daoO = Application.getInstance().getDaoO();
-		DAOCompte daoC = Application.getInstance().getDaoC();
+		IDAOOffre daoO = Application.getInstance().getDaoO();
+		IDAOCompte daoC = Application.getInstance().getDaoC();
 
 		Compte cm = daoC.selectByPseudo(user);
 		Compte c = daoC.selectByPseudo(pseudo);
@@ -280,8 +280,8 @@ public class Application {
 	{
 		String pseudo = saisieString("Saisir le pseudo du joueur li� � l'offre que vous voulez afficher");
 
-		DAOOffre daoO = Application.getInstance().getDaoO();
-		DAOCompte daoC = Application.getInstance().getDaoC();
+		IDAOOffre daoO = Application.getInstance().getDaoO();
+		IDAOCompte daoC = Application.getInstance().getDaoC();
 
 		Compte cm = daoC.selectByPseudo(user);
 		Compte c = daoC.selectByPseudo(pseudo);

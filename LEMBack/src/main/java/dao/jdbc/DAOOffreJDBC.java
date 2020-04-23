@@ -1,4 +1,4 @@
-package dao;
+package dao.jdbc;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -6,13 +6,14 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
+import dao.IDAOOffre;
 import model.Application;
 import model.Compte;
 import model.Joueur;
 import model.Manager;
 import model.Offre;
 
-public class DAOOffreJDBC implements DAOOffre {
+public class DAOOffreJDBC implements IDAOOffre {
 
     @Override
     public void insert(Offre o) {

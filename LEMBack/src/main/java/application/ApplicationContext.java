@@ -2,7 +2,7 @@ package application;
 
 
 public class ApplicationContext {
-		/*private static IDAOOffre daoOffre;
+		private static IDAOOffre daoOffre;
 		private static IDAOCompte daoCompte;
 		
 		public static IDAOOffre getDaoOffre()
@@ -22,5 +22,5 @@ public class ApplicationContext {
 				daoCompte = new DAOCompteJpa();
 			}
 			return daoCompte;
-		}*/
+		}
 }

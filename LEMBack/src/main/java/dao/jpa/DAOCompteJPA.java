@@ -1,4 +1,4 @@
-package dao;
+package dao.jpa;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -6,13 +6,14 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
+import dao.IDAOCompte;
 import model.Application;
 import model.Compte;
 import model.Joueur;
 import model.Manager;
 import model.Roles;
 
-public class DAOCompteJPA implements DAOCompte {
+public class DAOCompteJPA implements IDAOCompte {
 
 	@Override
 	public void insert(Compte t) {

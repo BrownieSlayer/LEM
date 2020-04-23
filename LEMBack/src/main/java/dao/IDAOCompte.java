@@ -4,7 +4,7 @@ import java.util.List;
 
 import model.Compte;
 
-public interface DAOCompte extends DAO<Compte,Integer> {
+public interface IDAOCompte extends IDAO<Compte,Integer> {
 	
 	public void updateSalmin(Compte c, double newSalmin);
 	

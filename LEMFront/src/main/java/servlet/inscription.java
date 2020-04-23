@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import dao.DAOCompte;
+import dao.IDAOCompte;
 import model.Application;
 import model.Compte;
 import model.Joueur;
@@ -29,7 +29,7 @@ import model.Manager;
 			String action=request.getParameter("action");
 			
 			
-			DAOCompte daoC = Application.getInstance().getDaoC();
+			IDAOCompte daoC = Application.getInstance().getDaoC();
 			Compte c = null;
 			if(action.equals("checkPseudo")) 
 			{
