@@ -1,14 +1,37 @@
 package model;
 
+import javax.persistence.Column;
+import javax.persistence.DiscriminatorColumn;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="offre")
+@Inheritance(strategy=InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name="id")
 public class Offre {
 
 	//Attributs
+	@Id//OBLIGATOIRE
+//	@GeneratedValue(strategy=GenerationType.IDENTITY) //Autoincrement
+	
 	protected static int nb_offre = 0;
+	@Column(name="id")
 	private int id;
+	@Column(name="id_joueur", length=25,nullable=false)
 	private int id_joueur;
+	@Column(name="id_manager", length=25,nullable=false)
 	private int id_manager;
+	@Column(name="salairePropose", length=25,nullable=false)
 	private double salairePropose;
+	@Column(name="equipePropose", length=25,nullable=false)
 	private String equipePropose;
+	@Column(name="rolePropose", length=25,nullable=false)
 	private String rolePropose;
 	
 	//Constructeurs
