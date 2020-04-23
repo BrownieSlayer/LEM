@@ -3,6 +3,7 @@ package dao;
 import java.util.List;
 
 import model.Compte;
+import model.Joueur;
 
 public interface IDAOCompte extends IDAO<Compte,Integer> {
 	
