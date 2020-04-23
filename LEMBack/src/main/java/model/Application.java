@@ -120,7 +120,7 @@ public class Application {
 				double mort = saisieDouble("Saisissez vos statistiques de morts moyennes");
 				double assist = saisieDouble("Saisissez vos statistiques d'assistances moyennes");
 
-				c=new Joueur (login, password, nom, prenom, pseudo, equipe, manager, role, salmin, elimination, mort, assist);
+				c=new Joueur (login, password, nom, prenom, pseudo, equipe, role, salmin, elimination, mort, assist);
 				daoC.insert(c);
 
 				System.out.println("Le compte a �t� cr�� avec succ�s");
@@ -251,17 +251,7 @@ public class Application {
 		int id_manager = cm.getId();
 		int salairePropose = saisieInt("Saisissez le salaire que vous voulez proposer � " + pseudo);
 		String equipePropose = cm.getEquipe();
-<<<<<<< Updated upstream
-		String rolePropose = saisieString("Saisissez le r�le que vous voulez proposer");
-		
-		Offre o = null;
-		//Offre o = new Offre (id_joueur, id_manager, salairePropose, equipePropose, rolePropose);
-=======
-		String rolePropose = saisieString("Saisissez le r�le que vous voulez proposer");
 
-		Offre o = new Offre (id_joueur, id_manager, salairePropose, equipePropose, rolePropose);
->>>>>>> Stashed changes
-		daoO.insert(o);
 
 		System.out.println("L'offre de recrutement de " + c.getPseudo() + " pour un salaire de " + salairePropose + " a bien �t� envoy�");
 	}
