@@ -1,16 +1,50 @@
 package model;
 
+import javax.persistence.Column;
+import javax.persistence.DiscriminatorColumn;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="compte")
+@Inheritance(strategy=InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name= "typecompte")
+
 public class Compte {
 	
 	///Attributs
+	
 	protected static int nb_compte = 0;
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="id")
 	protected int id;
+	
+	@Column(name="login", length=50, nullable=false)
 	protected String login;
+	
+	@Column(name="password", length=50, nullable=false)
 	protected String password;
+	
+	@Column(name="typecompte", length=50, nullable=false)
 	protected String typeCompte;
+	
+	@Column(name="nom", length=50, nullable=false)
 	protected String nom;
+	
+	@Column(name="prenom", length=50, nullable=false)
 	protected String prenom;
+	
+	@Column(name="pseudo", length=50, nullable=false)
 	protected String pseudo;
+	
+	@Column(name="equipe", length=50, nullable=false)
 	protected String equipe;
 	
 	///Constructeurs
