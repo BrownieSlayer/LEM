@@ -12,7 +12,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.UniqueConstraint;
 
 @Entity
-@DiscriminatorValue("Joueur")
+@DiscriminatorValue("Manager")
 public class Manager extends Compte {
 
 	///Attributs

@@ -12,7 +12,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 @Entity
-@DiscriminatorValue("Manager")
+@DiscriminatorValue("Joueur")
 public class Joueur extends Compte{
 
 	///Attributs
@@ -28,7 +28,7 @@ public class Joueur extends Compte{
 	private double assist;
 	@Column(name ="kda")
 	private double kda; 
-	@OneToMany(mappedBy = "id_joueur")
+	@OneToMany(mappedBy = "joueur")
 	List<Offre> offres = new ArrayList();
 	@ManyToOne
 	@JoinColumn(name="id")
