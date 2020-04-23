@@ -3,10 +3,22 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
+import javax.persistence.UniqueConstraint;
+
+@Entity
+@DiscriminatorValue("Joueur")
 public class Manager extends Compte {
 
 	///Attributs
+	@OneToMany(mappedBy = "manager")
 	List<Joueur> joueurManage = new ArrayList();
+	@OneToMany(mappedBy = "manager")
 	List<Offre> offreJoueur = new ArrayList();
 	
 	///Constructeurs
@@ -27,6 +39,12 @@ public class Manager extends Compte {
 		this.typeCompte = "manager";
 	}
 	
+	public Manager() {}
+	
+	public List<Offre> getOffreJoueur() {
+		return offreJoueur;
+	}
+
 	public void setJoueurManage(List<Joueur> joueurManage) {
 		this.joueurManage = joueurManage;
 	}

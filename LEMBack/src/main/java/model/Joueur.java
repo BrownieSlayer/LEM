@@ -1,19 +1,41 @@
 package model;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
+import javax.persistence.Column;
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+
+@Entity
+@DiscriminatorValue("Manager")
 public class Joueur extends Compte{
 
 	///Attributs
+	@Column(name ="role")
 	private String role;
+	@Column(name ="salmin")
 	private double salmin;
+	@Column(name ="elimination")
 	private double elimination;
+	@Column(name ="mort")
 	private double mort;
+	@Column(name ="assist")
 	private double assist;
+	@Column(name ="kda")
 	private double kda; 
+	@OneToMany(mappedBy = "id_joueur")
+	List<Offre> offres = new ArrayList();
+	@ManyToOne
+	@JoinColumn(name="id")
+	private Manager manager;
 	
 	///Constructeurs
-	public Joueur(String login, String password, String nom, String prenom, String pseudo, String equipe, String role,
+	public Joueur(String login, String password, String nom, String prenom, String pseudo, String equipe, Manager manager, String role,
 			double salmin, double elimination, double mort, double assist) {
 		
 		super(login, password, nom, prenom, pseudo, equipe);
@@ -24,8 +46,27 @@ public class Joueur extends Compte{
 		this.assist = assist;
 		this.kda = (elimination+assist)/mort;
 		this.typeCompte = "joueur";
+		this.manager = manager;
 	}
 	
+	public Joueur() {}
+	
+	public List<Offre> getOffres() {
+		return offres;
+	}
+
+	public void setOffres(List<Offre> offres) {
+		this.offres = offres;
+	}
+
+	public Manager getManager() {
+		return manager;
+	}
+
+	public void setManager(Manager manager) {
+		this.manager = manager;
+	}
+
 	///Constructeurs
 	public Joueur(int id, String login, String password, String nom, String prenom, String pseudo, String equipe, String role,
 			double salmin, double elimination, double mort, double assist) {

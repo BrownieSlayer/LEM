@@ -18,9 +18,6 @@ import javax.persistence.Table;
 public class Compte {
 	
 	///Attributs
-	
-	protected static int nb_compte = 0;
-	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="id")
@@ -50,8 +47,6 @@ public class Compte {
 	///Constructeurs
 	public Compte(String login, String password, String nom, String prenom, String pseudo, String equipe) {
 		
-		nb_compte += 1;
-		this.id = nb_compte;
 		this.login = login;
 		this.password = password;
 		this.nom = nom;

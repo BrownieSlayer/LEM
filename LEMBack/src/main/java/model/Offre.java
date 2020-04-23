@@ -8,6 +8,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -18,15 +20,15 @@ public class Offre {
 
 	//Attributs
 	@Id//OBLIGATOIRE
-//	@GeneratedValue(strategy=GenerationType.IDENTITY) //Autoincrement
-	
-	protected static int nb_offre = 0;
+	@GeneratedValue(strategy=GenerationType.IDENTITY) //Autoincrement
 	@Column(name="id")
 	private int id;
-	@Column(name="id_joueur", length=25,nullable=false)
-	private int id_joueur;
-	@Column(name="id_manager", length=25,nullable=false)
-	private int id_manager;
+	@ManyToOne
+	@JoinColumn(name="id_joueur")
+	private Joueur joueur;
+	@ManyToOne
+	@JoinColumn(name="id_manager")
+	private Manager manager;
 	@Column(name="salairePropose", length=25,nullable=false)
 	private double salairePropose;
 	@Column(name="equipePropose", length=25,nullable=false)
@@ -35,18 +37,34 @@ public class Offre {
 	private String rolePropose;
 	
 	//Constructeurs
-	public Offre(int id_joueur, int id_manager, double salairePropose, String equipePropose,
+	public Offre(Joueur joueur, Manager manager, double salairePropose, String equipePropose,
 			String rolePropose) {
 		
-		nb_offre += 1;
-		this.id = nb_offre;
-		this.id_joueur = id_joueur;
-		this.id_manager = id_manager;
+		this.joueur = joueur;
+		this.manager = manager;
 		this.salairePropose = salairePropose;
 		this.equipePropose = equipePropose;
 		this.rolePropose = rolePropose;
 	}
 	
+	public Offre() {}
+	
+	public Joueur getJoueur() {
+		return joueur;
+	}
+
+	public void setJoueur(Joueur joueur) {
+		this.joueur = joueur;
+	}
+
+	public Manager getManager() {
+		return manager;
+	}
+
+	public void setManager(Manager manager) {
+		this.manager = manager;
+	}
+
 	///Getters Setters
 	public int getId() {
 		return id;
@@ -57,19 +75,17 @@ public class Offre {
 	}
 
 	public int getId_joueur() {
-		return id_joueur;
+		return 0;
 	}
 
 	public void setId_joueur(int id_joueur) {
-		this.id_joueur = id_joueur;
 	}
 
 	public int getId_manager() {
-		return id_manager;
+		return 0;
 	}
 
 	public void setId_manager(int id_manager) {
-		this.id_manager = id_manager;
 	}
 
 	public double getSalairePropose() {
@@ -98,7 +114,7 @@ public class Offre {
 
 	@Override
 	public String toString() {
-		return "Offre [id=" + id + ", id_joueur=" + id_joueur + ", id_manager=" + id_manager + ", salairePropose="
+		return "Offre [id=" + id + ", id_joueur=" + 0 + ", id_manager=" + 0 + ", salairePropose="
 				+ salairePropose + ", equipePropose=" + equipePropose + ", rolePropose=" + rolePropose + "]";
 	}
 	
