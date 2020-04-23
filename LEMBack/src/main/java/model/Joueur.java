@@ -31,7 +31,7 @@ public class Joueur extends Compte{
 	@OneToMany(mappedBy = "joueur")
 	List<Offre> offres = new ArrayList();
 	@ManyToOne
-	@JoinColumn(name="id", insertable = false, updatable = false)
+	@JoinColumn(name="id_manager")
 	private Manager manager;
 	
 	///Constructeurs

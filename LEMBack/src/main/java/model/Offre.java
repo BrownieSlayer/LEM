@@ -15,8 +15,6 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="offre")
-@Inheritance(strategy=InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name="id")
 public class Offre {
 
 	//Attributs
@@ -30,7 +28,7 @@ public class Offre {
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="id_manager")
 	private Manager manager;
-	@Column(name="salairePropose", length=25,nullable=false)
+	@Column(name="salairePropose",nullable=false)
 	private double salairePropose;
 	@Column(name="equipePropose", length=25,nullable=false)
 	private String equipePropose;
