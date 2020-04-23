@@ -29,7 +29,7 @@ public class Compte {
 	@Column(name="password", length=50, nullable=false)
 	protected String password;
 	
-	@Column(name="typecompte", length=50, nullable=false)
+	@Column(name="typecompte", length=50, insertable = false, updatable = false)
 	protected String typeCompte;
 	
 	@Column(name="nom", length=50, nullable=false)

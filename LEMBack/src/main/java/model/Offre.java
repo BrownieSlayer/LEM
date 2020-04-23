@@ -3,6 +3,7 @@ package model;
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -23,10 +24,10 @@ public class Offre {
 	@GeneratedValue(strategy=GenerationType.IDENTITY) //Autoincrement
 	@Column(name="id")
 	private int id;
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="id_joueur")
 	private Joueur joueur;
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="id_manager")
 	private Manager manager;
 	@Column(name="salairePropose", length=25,nullable=false)
