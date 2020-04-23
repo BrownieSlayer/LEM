@@ -26,6 +26,7 @@ public class DAOCompteJPA extends DAOJPA implements IDAOCompte {
 	
 		}
 		catch(Exception e) {
+			e.printStackTrace();
 			this.em.getTransaction().commit();
 		}
 			

@@ -41,7 +41,7 @@ public class Compte {
 	@Column(name="pseudo", length=50, nullable=false)
 	protected String pseudo;
 	
-	@Column(name="equipe", length=50, nullable=false)
+	@Column(name="equipe")
 	protected String equipe;
 	
 	///Constructeurs
