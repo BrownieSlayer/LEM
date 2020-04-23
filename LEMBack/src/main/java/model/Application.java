@@ -93,7 +93,7 @@ public class Application {
 	//Compte
 	public static void addCompte()
 	{
-		System.out.println("Bienvenue dans l'espace de création de votre compte d'Esport Manager");
+		System.out.println("Bienvenue dans l'espace de crï¿½ation de votre compte d'Esport Manager");
 		String pseudo = saisieString("Saisir votre pseudo");
 		DAOCompte daoC = Application.getInstance().getDaoC();
 		Compte c = daoC.selectByPseudo(pseudo);
@@ -104,7 +104,7 @@ public class Application {
 		{
 			while (!(choix == 1 || choix == 2))
 			{
-				choix = saisieInt("Voulez-vous créer un compte: \n 1 - joueur \n 2 - manager");
+				choix = saisieInt("Voulez-vous crï¿½er un compte: \n 1 - joueur \n 2 - manager");
 			}
 
 			if (choix == 1)
@@ -114,16 +114,16 @@ public class Application {
 				String nom = saisieString("Saisissez votre nom");
 				String prenom = saisieString("Saisissez votre prenom");
 				String equipe = saisieString("Saisissez votre equipe");
-				String role = saisieString("Saisissez votre rôle");
-				double salmin = saisieDouble("Saisissez votre salaire désiré");
-				double elimination = saisieDouble("Saisissez vos statistiques d'éliminations moyennes");
+				String role = saisieString("Saisissez votre rï¿½le");
+				double salmin = saisieDouble("Saisissez votre salaire dï¿½sirï¿½");
+				double elimination = saisieDouble("Saisissez vos statistiques d'ï¿½liminations moyennes");
 				double mort = saisieDouble("Saisissez vos statistiques de morts moyennes");
 				double assist = saisieDouble("Saisissez vos statistiques d'assistances moyennes");
 
-				c=new Joueur (login, password, nom, prenom, pseudo, equipe, role, salmin, elimination, mort, assist);
+				c=new Joueur (login, password, nom, prenom, pseudo, equipe, manager, role, salmin, elimination, mort, assist);
 				daoC.insert(c);
 
-				System.out.println("Le compte a été créé avec succès");
+				System.out.println("Le compte a ï¿½tï¿½ crï¿½ï¿½ avec succï¿½s");
 
 			}
 			else if (choix == 2)
@@ -137,13 +137,13 @@ public class Application {
 				c=new Manager(login, password, nom, prenom, pseudo, equipe);
 				daoC.insert(c);
 
-				System.out.println("Le compte a été créé avec succès");
+				System.out.println("Le compte a ï¿½tï¿½ crï¿½ï¿½ avec succï¿½s");
 
 			}
 
 			else {
 
-				String reessaie = saisieString("Ce compte existe déjà!\nVoulez-vous rééssayer? (Oui/Non)");
+				String reessaie = saisieString("Ce compte existe dï¿½jï¿½!\nVoulez-vous rï¿½ï¿½ssayer? (Oui/Non)");
 				switch(reessaie) 
 				{
 				case "Oui" : Application.addCompte();break;
@@ -161,7 +161,7 @@ public class Application {
 		if(c != null)
 		{
 			daoC.delete(c.getId());
-			System.out.println("Le compte de "+ c.getPseudo() + " a été supprimmé avec succès");
+			System.out.println("Le compte de "+ c.getPseudo() + " a ï¿½tï¿½ supprimmï¿½ avec succï¿½s");
 		}
 		else
 		{
@@ -173,7 +173,7 @@ public class Application {
 
 	public static void afficheCompte()
 	{
-		String pseudo = saisieString("Saisir le pseudo du joueur ou du manager à afficher");
+		String pseudo = saisieString("Saisir le pseudo du joueur ou du manager ï¿½ afficher");
 		DAOCompte daoC = Application.getInstance().getDaoC();
 		Compte c = daoC.selectByPseudo(pseudo);
 
@@ -202,7 +202,7 @@ public class Application {
 	public static void modifSalaireJoueur(String user)
 	{
 		DAOCompte daoC = Application.getInstance().getDaoC();
-		int newSalmin = saisieInt("Saisir le nouveau salaire désiré");
+		int newSalmin = saisieInt("Saisir le nouveau salaire dï¿½sirï¿½");
 		Compte c = daoC.selectByPseudo(user);
 
 		if (c.getTypeCompte().equals("joueur"))
@@ -219,7 +219,7 @@ public class Application {
 	public static void modifRoleJoueur(String user)
 	{
 		DAOCompte daoC = Application.getInstance().getDaoC();
-		String newRole = saisieString("Saisir le nouveau à afficher");
+		String newRole = saisieString("Saisir le nouveau ï¿½ afficher");
 		Compte c = daoC.selectByPseudo(user);
 		if (c.getTypeCompte().equals("joueur"))
 		{
@@ -227,7 +227,7 @@ public class Application {
 		}
 		else
 		{
-			System.out.println("Ce compte ne peut changer son rôle");
+			System.out.println("Ce compte ne peut changer son rï¿½le");
 		}
 	}
 
@@ -235,7 +235,7 @@ public class Application {
 	//Offre
 	public static void addOffre(String user)
 	{
-		System.out.println("Bienvenue dans l'espace de création d'une offre de recrutement");
+		System.out.println("Bienvenue dans l'espace de crï¿½ation d'une offre de recrutement");
 
 		DAOOffre daoO = Application.getInstance().getDaoO();
 		DAOCompte daoC = Application.getInstance().getDaoC();
@@ -249,22 +249,28 @@ public class Application {
 
 		int id_joueur = c.getId();
 		int id_manager = cm.getId();
-		int salairePropose = saisieInt("Saisissez le salaire que vous voulez proposer à " + pseudo);
+		int salairePropose = saisieInt("Saisissez le salaire que vous voulez proposer ï¿½ " + pseudo);
 		String equipePropose = cm.getEquipe();
-		String rolePropose = saisieString("Saisissez le rôle que vous voulez proposer");
+<<<<<<< Updated upstream
+		String rolePropose = saisieString("Saisissez le rï¿½le que vous voulez proposer");
 		
 		Offre o = null;
 		//Offre o = new Offre (id_joueur, id_manager, salairePropose, equipePropose, rolePropose);
+=======
+		String rolePropose = saisieString("Saisissez le rï¿½le que vous voulez proposer");
+
+		Offre o = new Offre (id_joueur, id_manager, salairePropose, equipePropose, rolePropose);
+>>>>>>> Stashed changes
 		daoO.insert(o);
 
-		System.out.println("L'offre de recrutement de " + c.getPseudo() + " pour un salaire de " + salairePropose + " a bien été envoyé");
+		System.out.println("L'offre de recrutement de " + c.getPseudo() + " pour un salaire de " + salairePropose + " a bien ï¿½tï¿½ envoyï¿½");
 	}
 
 	//public Offre(int id_joueur, int id_manager, double salairePropose, String equipePropose,String rolePropose)
 
 	public static void deleteOffreManager(String user)
 	{
-		String pseudo = saisieString("Saisir le pseudo du joueur lié à l'offre que vous voulez supprimmer");
+		String pseudo = saisieString("Saisir le pseudo du joueur liï¿½ ï¿½ l'offre que vous voulez supprimmer");
 
 		DAOOffre daoO = Application.getInstance().getDaoO();
 		DAOCompte daoC = Application.getInstance().getDaoC();
@@ -282,7 +288,7 @@ public class Application {
 
 	public static void afficheOffreByPseudos(String user)
 	{
-		String pseudo = saisieString("Saisir le pseudo du joueur lié à l'offre que vous voulez afficher");
+		String pseudo = saisieString("Saisir le pseudo du joueur liï¿½ ï¿½ l'offre que vous voulez afficher");
 
 		DAOOffre daoO = Application.getInstance().getDaoO();
 		DAOCompte daoC = Application.getInstance().getDaoC();
