@@ -49,6 +49,19 @@ public class Joueur extends Compte{
 		this.manager = manager;
 	}
 	
+	public Joueur(String login, String password, String nom, String prenom, String pseudo, String equipe, String role,
+			double salmin, double elimination, double mort, double assist) {
+		
+		super(login, password, nom, prenom, pseudo, equipe);
+		this.role = role;
+		this.salmin = salmin;
+		this.elimination = elimination;
+		this.mort = mort;
+		this.assist = assist;
+		this.kda = (elimination+assist)/mort;
+		this.typeCompte = "joueur";
+	}
+	
 	public Joueur() {}
 	
 	public List<Offre> getOffres() {
