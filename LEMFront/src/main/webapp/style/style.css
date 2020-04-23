@@ -1,0 +1,282 @@
+
+/*Joueur*/
+#background
+{
+	background-image:url("../img/LCS3.png");
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	width:100%;
+	height:100%;
+	background-size: 100% 100%;
+	padding: 0;
+}
+
+body
+{
+	margin: 0;
+}
+
+#logoLoL
+{
+	position : absolute; top : 8px; left : 210px;
+	height:140px;
+	width:140px;
+	background-color : #00053b;
+}
+
+#titre1 
+{
+	position : relative;
+	color:#C0C0C0;
+	font-size : 45px;
+	font-weight : 1000;
+	text-align : center;
+}
+
+#titre2
+{
+	position : relative;
+	color:#C0C0C0;
+	font-size : 45px;
+	font-weight : 1000;
+	text-align : center;
+}
+
+#joueur
+{
+	position : relative;
+	color:#C0C0C0;
+	font-size : 40px;
+	font-weight : 700;
+	text-align : center;
+}
+
+#topBandeau
+{
+	background-color : #00053b;
+	padding-bottom:5px;
+	padding-top:5px;
+	border-bottom:solid 1px;
+	border-color: #00a9b5;
+	}
+	
+#topBandeau2
+{
+	background-color : #00053b;
+	padding-bottom:5px;
+	padding-top:5px;
+	}	
+	
+#equipes
+{
+ 	position : relative; top:20px;
+	color:#C0C0C0;
+	font-size : 28px;
+	font-weight : 500;
+	text-align : center;	
+}
+
+#stats
+{
+ 	position : relative; top:20px;
+	color:#C0C0C0;
+	font-size : 28px;
+	font-weight : 500;
+	text-align : center;	
+}
+
+#profil
+{
+ 	position : relative; top:20px;
+	color:#C0C0C0;
+	font-size : 28px;
+	font-weight : 500;
+	text-align : center;	
+}
+
+#botBandeau
+{
+	position : relative; top : 700px;
+	background-color:#111238;
+	height : 10%;
+	background-size:: 100% 10%;
+	
+}
+
+#termsOfUse
+{
+	position : relative; top : 20px;
+	text-align : center;
+	color: white;
+	
+}
+
+#contact
+{
+	position : relative; top : 20px;
+	text-align : center;
+	color: white;
+	
+}
+
+#copyright
+{
+	
+	font-size : 13px;
+	text-align : center;
+	color: white;
+	
+}
+
+#bonjour 
+{
+	text-align : center;
+	color : white;
+	font-size : 35px;
+	font-weight : 500;
+}
+
+#statistiques
+{
+	text-align : center;
+	color : #ffffff;
+	font-size : 30px;
+	font-weight : 350;
+}
+
+#stat
+{
+	text-align : center;
+	color : #ffffff;
+	font-size : 25px;
+	font-weight : 300;
+}
+
+#equipe
+{
+	text-align : center;
+	color : #ffffff;
+	font-size : 27px;
+	font-weight : 330;
+	padding:0;
+}
+
+#role
+{
+	text-align : center;
+	color : #ffffff;
+	font-size : 27px;
+	font-weight : 330;
+}
+
+#salmin
+{
+	text-align : center;
+	color : #ffffff;
+	font-size : 27px;
+	font-weight : 330;
+}
+
+
+
+#modifSalmin,#modifRole
+{
+	background-color :#ffc107;
+	border-color : #ffc107;
+	color : #212529;
+	width:100%;
+	font-size:18px;
+}
+
+.modif
+{
+	width:100%;
+}
+
+/*Inscription*/
+
+#inscriptionForm
+{
+	position : relative;
+	top : 30px;
+}
+
+.espacementForm
+{
+	margin-top:10px;
+}
+
+#inscriptionTitre
+{
+    color:#fbca4c;
+    font-size : 30px;
+    font-weight : 900;
+    text-align : center;
+}
+
+#botBandeauInscription
+{
+    position : relative; top : 100px;
+    background-color:#111238;
+    height : 10%;
+    background-size:: 100% 10%;
+
+}
+
+/*Connect*/
+
+#formConnect{
+	display:none; /*Le formConnect sera caché au lancement de la page*/
+}
+
+#topconnect {
+	background-color: #00053b;
+	color: white;
+	text-align : center;
+	align-middle;
+	width:100%;
+	height:25%;
+	padding: 0;
+	margin: 0;	
+	align-items: center;
+}
+
+#midconnect {
+
+	width:100%;
+	height:60%;
+	padding: 0;
+	margin: 0;
+	align-items: center;
+
+}
+#donnees {
+	position: absolute;
+	top: 50%
+
+}
+
+#botconnect
+{
+
+    background-color:#111238;
+    height : 15%;
+    width:100%;
+    padding: 0;
+	margin: 0;
+
+}
+#logo
+{
+	height : 75%;
+	weidth : 75%;
+}
+
+#gem
+{
+	height : 10%;
+	weidth : 8%;
+	items-align: middle;
+	position : relative;
+	left:45%;
+}
