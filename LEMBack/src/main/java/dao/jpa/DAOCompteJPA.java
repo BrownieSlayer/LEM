@@ -45,14 +45,14 @@ public class DAOCompteJPA extends DAOJPA implements IDAOCompte {
 	@Override
 	public void update(Compte entity) {
 		
-		this.em.getTransaction().begin(); //On démarre la transaction
+		this.em.getTransaction().begin(); //On dï¿½marre la transaction
 
 		try {
 			this.em.merge(entity);
 			this.em.getTransaction().commit(); //On commit la transaction
 		}
 
-		catch (Exception e) { //Y'a un problème ??
+		catch (Exception e) { //Y'a un problï¿½me ??
 			this.em.getTransaction().rollback(); //On annule la transaction
 		}
 
@@ -128,8 +128,14 @@ public class DAOCompteJPA extends DAOJPA implements IDAOCompte {
 
 	@Override
 	public Compte checkConnect(String login, String password) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		
+		
+		return this.em
+				.createQuery("select c from compte c where c.login=?1 && c.password=?2", Compte.class)
+				.setParameter(1, login)
+				.setParameter(2, password)
+				.getSingleResult();
 	}
 
 	@Override
