@@ -63,7 +63,7 @@ public class Test_hibernate {
 		
 		///OFFRE OK
 		//Test insert Offre
-		/*Joueur joueur = (Joueur) daoCompte.selectById(7);
+		/*Joueur joueur = (Joueur) daoCompte.selectById(13);
 		Manager manager = (Manager) daoCompte.selectById(1); 
 		Offre offre = new Offre(joueur, manager, 50000,"G2","Mid");
 		daoOffre.insert(offre);*/
@@ -105,13 +105,16 @@ public class Test_hibernate {
 		
 		//Candidature
 		//Test insert Candidature
-				Joueur joueur = (Joueur) daoCompte.selectById(7);
+				/*Joueur joueur = (Joueur) daoCompte.selectById(7);
 				Manager manager = (Manager) daoCompte.selectById(1); 
 				Candidature candidature = new Candidature(joueur, manager, 50000,"G2","Mid");
-				daoCandidature.insert(candidature);
+				daoCandidature.insert(candidature);*/
 		
-		
-		
+		Manager m = (Manager) daoCompte.selectById(1);
+		for (Offre o : m.getOffreJoueur())
+		{
+			System.out.println(o.getJoueur());
+		}
 		
 		
 		DAOJPA.close();
