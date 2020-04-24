@@ -231,5 +231,17 @@ public class DAOCompteJDBC implements IDAOCompte {
 		
 	}
 
+	@Override
+	public void updateRole(Joueur j, String newRole) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void updateSalmin(Joueur j, double newSalmin) {
+		// TODO Auto-generated method stub
+		
+	}
+
 
 }

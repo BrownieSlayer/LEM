@@ -201,7 +201,7 @@ public class Application {
 
 	public static void modifSalaireJoueur(String user)
 	{
-		IDAOCompte daoC = Application.getInstance().getDaoC();
+		/*IDAOCompte daoC = Application.getInstance().getDaoC();
 		int newSalmin = saisieInt("Saisir le nouveau salaire d�sir�");
 		Compte c = daoC.selectByPseudo(user);
 
@@ -212,13 +212,13 @@ public class Application {
 		else
 		{
 			System.out.println("Ce compte ne peut changer son salaire");
-		}
+		}*/
 
 	}
 
 	public static void modifRoleJoueur(String user)
 	{
-		IDAOCompte daoC = Application.getInstance().getDaoC();
+		/*IDAOCompte daoC = Application.getInstance().getDaoC();
 		String newRole = saisieString("Saisir le nouveau � afficher");
 		Compte c = daoC.selectByPseudo(user);
 		if (c.getTypeCompte().equals("joueur"))
@@ -228,7 +228,7 @@ public class Application {
 		else
 		{
 			System.out.println("Ce compte ne peut changer son r�le");
-		}
+		}*/
 	}
 
 

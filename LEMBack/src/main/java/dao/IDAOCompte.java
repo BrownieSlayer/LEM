@@ -7,9 +7,9 @@ import model.Joueur;
 
 public interface IDAOCompte extends IDAO<Compte,Integer> {
 	
-	public void updateSalmin(Compte c, double newSalmin);
+	public void updateSalmin(Joueur j, double newSalmin);
 	
-	public void updateRole(Compte c, String newRole);
+	public void updateRole(Joueur j, String newRole);
 	
 	public Compte checkConnect(String login,String password);
 	

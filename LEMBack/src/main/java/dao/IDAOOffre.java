@@ -2,6 +2,9 @@ package dao;
 
 import java.util.List;
 
+import model.Compte;
+import model.Joueur;
+import model.Manager;
 import model.Offre;
 
 public interface IDAOOffre extends IDAO<Offre,Integer> {
@@ -11,6 +14,8 @@ public interface IDAOOffre extends IDAO<Offre,Integer> {
 	public List<Offre> selectAll(Integer id);
 	
 	public void delete(Integer id_joueur, Integer id_manager);
+	
+	public  List<Offre> selectOffreByCompte(Integer id);
 	
 }
 

@@ -81,20 +81,14 @@ public class DAOCompteJPA extends DAOJPA implements IDAOCompte {
 		}
 		
 	}
-
+	@Override
 	public void updateSalmin(Joueur joueur, double newSalmin) {
 		
 		this.em.getTransaction().begin();
 
 		try {
-			int id=joueur.getId();
-			
-			this.em
-			.createQuery("UPDATE compte c SET c.salmin = ?1 WHERE c.id = ?2")
-			.setParameter(1,newSalmin)
-			.setParameter(2,id)
-			.executeUpdate();
-			
+			joueur.setSalmin(newSalmin);
+			this.em.merge(joueur);	
 			this.em.getTransaction().commit(); 
 		}
 
@@ -104,24 +98,20 @@ public class DAOCompteJPA extends DAOJPA implements IDAOCompte {
 
 		
 	}
-
+	
+	@Override
 	public void updateRole(Joueur joueur, String newRole) {
-		
+		System.out.println("COUCOU");
 		this.em.getTransaction().begin();
 
 		try {
-			int id=joueur.getId();
-			
-			this.em
-			.createQuery("UPDATE compte c SET c.role = ?1 WHERE c.id = ?2")
-			.setParameter(1,newRole)
-			.setParameter(2,id)
-			.executeUpdate();
-			
+			joueur.setRole(newRole);
+			this.em.merge(joueur);	
 			this.em.getTransaction().commit(); 
 		}
 
 		catch (Exception e) {
+			e.printStackTrace();
 			this.em.getTransaction().rollback(); 
 		}
 		
@@ -129,11 +119,8 @@ public class DAOCompteJPA extends DAOJPA implements IDAOCompte {
 
 	@Override
 	public Compte checkConnect(String login, String password) {
-		
-		
-		
 		return this.em
-				.createQuery("select c from compte c where c.login=?1 && c.password=?2", Compte.class)
+				.createQuery("select c from Compte c where c.login=?1 and c.password=?2", Compte.class)
 				.setParameter(1, login)
 				.setParameter(2, password)
 				.getSingleResult();
@@ -141,25 +128,21 @@ public class DAOCompteJPA extends DAOJPA implements IDAOCompte {
 
 	@Override
 	public Compte selectByPseudo(String pseudo) {
-		return this.em.find(Compte.class, pseudo);
+		return this.em
+				.createQuery("select c from Compte c where c.pseudo = ?1", Compte.class)
+				.setParameter(1, pseudo)
+				.getSingleResult();
 		
 	}
 
 	@Override
 	public Compte selectByLogin(String login) {
-		return this.em.find(Compte.class, login);
+		return this.em
+				.createQuery("select c from Compte c where c.login = ?1", Compte.class)
+				.setParameter(1, login)
+				.getSingleResult();
 	}
 
-	@Override
-	public void updateRole(Compte c, String newRole) {
-		// TODO Auto-generated method stub
-		
-	}
 
-	@Override
-	public void updateSalmin(Compte c, double newSalmin) {
-		// TODO Auto-generated method stub
-		
-	}
 
 }

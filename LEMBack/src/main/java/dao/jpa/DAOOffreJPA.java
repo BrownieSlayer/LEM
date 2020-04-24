@@ -70,12 +70,12 @@ public class DAOOffreJPA extends DAOJPA implements IDAOOffre {
 		return null;
 	}
 	
-	public Offre selectOffreByComptes(Joueur joueur, Manager manager) {	
+	@Override
+	public List<Offre> selectOffreByCompte(Integer id) {	
 		return this.em
-				.createQuery("select o from Offre where o.joueur = ?1 && o.manager = manager", Offre.class)
-				.setParameter(1,joueur)
-				.setParameter(2,manager)
-				.getSingleResult();
+				.createQuery("select o from Offre o where ?1 = o.joueur.id or ?1 = o.manager.id", Offre.class)
+				.setParameter(1,id)
+				.getResultList();
 	}
 
 	@Override

@@ -45,8 +45,7 @@ public class Compte {
 	protected String equipe;
 	
 	///Constructeurs
-	public Compte(String login, String password, String nom, String prenom, String pseudo, String equipe) {
-		
+	public Compte(String login, String password, String nom, String prenom, String pseudo, String equipe) {	
 		this.login = login;
 		this.password = password;
 		this.nom = nom;

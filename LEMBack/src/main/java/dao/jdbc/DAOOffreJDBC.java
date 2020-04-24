@@ -134,4 +134,9 @@ public class DAOOffreJDBC implements IDAOOffre {
 		// TODO Auto-generated method stub
 		
 	}
+	@Override
+	public List<Offre> selectOffreByCompte(Integer id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
