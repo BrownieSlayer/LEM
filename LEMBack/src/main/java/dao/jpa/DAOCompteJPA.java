@@ -101,7 +101,7 @@ public class DAOCompteJPA extends DAOJPA implements IDAOCompte {
 	
 	@Override
 	public void updateRole(Joueur joueur, String newRole) {
-		System.out.println("COUCOU");
+		
 		this.em.getTransaction().begin();
 
 		try {
@@ -143,6 +143,36 @@ public class DAOCompteJPA extends DAOJPA implements IDAOCompte {
 				.getSingleResult();
 	}
 
+
+	public List<Compte> selectByBudget(double budget) {
+		return em
+				.createQuery( "select c from Compte c where c.salmin <= ?1", Compte.class)
+				.setParameter(1, budget)
+				.getResultList();
+	}
+
+	
+	public List<Compte> selectByRole(String role) {
+		return em
+				.createQuery( "select c from Compte c where c.role = ?1", Compte.class)
+				.setParameter(1, role)
+				.getResultList();
+	}
+
+	
+	public List<Compte> selectByKda(int kda) {
+		return em
+				.createQuery( "select c from Compte c where c.kda >= ?1", Compte.class)
+				.setParameter(1, kda)
+				.getResultList();
+	}
+
+	
+	public List<Compte> selectAllWithoutTeam() {
+		return em
+				.createQuery( "select c from Compte c where c.equipe = null", Compte.class)
+				.getResultList();
+	}
 
 
 }
