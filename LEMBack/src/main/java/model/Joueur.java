@@ -29,7 +29,9 @@ public class Joueur extends Compte{
 	@Column(name ="kda")
 	private double kda; 
 	@OneToMany(mappedBy = "joueur")
-	List<Offre> offres = new ArrayList();
+	List<Offre> offres = new ArrayList<>();
+	@OneToMany (mappedBy = "joueur")
+	List<Candidature> candidatures = new ArrayList<>();
 	@ManyToOne
 	@JoinColumn(name="id_manager")
 	private Manager manager;
@@ -143,7 +145,15 @@ public class Joueur extends Compte{
 		this.kda = kda;
 	}
 	
-	///Méthodes
+	public List<Candidature> getCandidatures() {
+		return candidatures;
+	}
+
+	public void setCandidatures(List<Candidature> candidatures) {
+		this.candidatures = candidatures;
+	}
+
+	///Mï¿½thodes
 	public static String saisieString(String msg) 
 	{
 		Scanner sc=new Scanner(System.in);
@@ -165,7 +175,7 @@ public class Joueur extends Compte{
 		{
 			System.out.println("Voulez-vous modifier une de vos informations ?");
 			System.out.println("1 - Modifier son salaire");
-			System.out.println("2 - Modifier son rôle ");
+			System.out.println("2 - Modifier son rï¿½le ");
 			System.out.println("3 - Quitter");
 			int choix = saisieInt("Saisissez votre choix");
 			
@@ -183,7 +193,7 @@ public class Joueur extends Compte{
 		String newRole = "";	
 		do 
 		{
-			newRole = saisieString("Veuillez renseigner un rôle présent dans la liste (Top/Jungler/Mid/ADC/Support)");	
+			newRole = saisieString("Veuillez renseigner un rï¿½le prï¿½sent dans la liste (Top/Jungler/Mid/ADC/Support)");	
 		} while(!(newRole.equals("Top") || newRole.contentEquals("Jungler") || newRole.contentEquals("Mid") || newRole.contentEquals("ADC") || newRole.contentEquals("Support")));
 		this.role = newRole;
 	}
@@ -193,7 +203,7 @@ public class Joueur extends Compte{
 		String newRole = "";	
 		do 
 		{
-			newRole = saisieString("Veuillez renseigner un rôle présent dans la liste (Top/Jungler/Mid/ADC/Support)");	
+			newRole = saisieString("Veuillez renseigner un rï¿½le prï¿½sent dans la liste (Top/Jungler/Mid/ADC/Support)");	
 		} while(!(newRole.equals("Top") || newRole.contentEquals("Jungler") || newRole.contentEquals("Mid") || newRole.contentEquals("ADC") || newRole.contentEquals("Support")));
 		this.role = newRole;
 	}

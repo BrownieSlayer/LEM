@@ -260,20 +260,20 @@ public class Application {
 
 	public static void deleteOffreManager(String user)
 	{
-		String pseudo = saisieString("Saisir le pseudo du joueur li� � l'offre que vous voulez supprimmer");
-
-		IDAOOffre daoO = Application.getInstance().getDaoO();
-		IDAOCompte daoC = Application.getInstance().getDaoC();
-
-		Compte cm = daoC.selectByPseudo(user);
-		Compte c = daoC.selectByPseudo(pseudo);
-
-		if(c != null & cm != null)
-		{
-			int id_manager = cm.getId();
-			int id_joueur = c.getId();
-			daoO.delete(id_joueur,id_manager);
-		}
+//		String pseudo = saisieString("Saisir le pseudo du joueur li� � l'offre que vous voulez supprimmer");
+//
+//		IDAOOffre daoO = Application.getInstance().getDaoO();
+//		IDAOCompte daoC = Application.getInstance().getDaoC();
+//
+//		Compte cm = daoC.selectByPseudo(user);
+//		Compte c = daoC.selectByPseudo(pseudo);
+//
+//		if(c != null & cm != null)
+//		{
+//			int id_manager = cm.getId();
+//			int id_joueur = c.getId();
+//			daoO.delete(id_joueur,id_manager);
+//		}
 	}
 
 	public static void afficheOffreByPseudos(String user)

@@ -139,4 +139,9 @@ public class DAOOffreJDBC implements IDAOOffre {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	@Override
+	public void delete(Joueur joueur, Manager manager) {
+		// TODO Auto-generated method stub
+		
+	}
 }

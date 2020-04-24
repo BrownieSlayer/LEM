@@ -2,9 +2,11 @@ package application;
 
 import java.util.List;
 
+import dao.IDAOCandidature;
 import dao.IDAOCompte;
 import dao.IDAOOffre;
 import dao.jpa.DAOJPA;
+import model.Candidature;
 import model.Compte;
 import model.Joueur;
 import model.Manager;
@@ -14,6 +16,7 @@ public class Test_hibernate {
 	public static void main(String[] args) {
 		IDAOOffre daoOffre = ApplicationContext.getDaoOffre();
 		IDAOCompte daoCompte = ApplicationContext.getDaoCompte();
+		IDAOCandidature daoCandidature = ApplicationContext.getDaoCandidature();
 		
 		//Test insert Compte
 		/*Joueur joueur = new Joueur("Golden","mdp","Dudouit", "Thibault","Golden",null,null,"Mid",10000,5.0,2.0,5.0);
@@ -98,6 +101,18 @@ public class Test_hibernate {
 		
 		//Test delete
 		//daoOffre.delete(1);
+		
+		
+		//Candidature
+		//Test insert Candidature
+				Joueur joueur = (Joueur) daoCompte.selectById(7);
+				Manager manager = (Manager) daoCompte.selectById(1); 
+				Candidature candidature = new Candidature(joueur, manager, 50000,"G2","Mid");
+				daoCandidature.insert(candidature);
+		
+		
+		
+		
 		
 		DAOJPA.close();
 	}

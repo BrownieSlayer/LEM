@@ -5,11 +5,8 @@ import java.util.List;
 
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
-import javax.persistence.UniqueConstraint;
+
 
 @Entity
 @DiscriminatorValue("Manager")
@@ -17,9 +14,12 @@ public class Manager extends Compte {
 
 	///Attributs
 	@OneToMany(mappedBy = "manager")
-	List<Joueur> joueurManage = new ArrayList();
+	List<Joueur> joueurManage = new ArrayList<>();
 	@OneToMany(mappedBy = "manager")
-	List<Offre> offreJoueur = new ArrayList();
+	List<Offre> offreJoueur = new ArrayList<>();
+	@OneToMany(mappedBy="manager")
+	List<Candidature> candidatureJoueur = new ArrayList<>();
+	
 	
 	///Constructeurs
 	
@@ -56,8 +56,15 @@ public class Manager extends Compte {
 	public void setOffreJoueur(List<Offre> propositionJoueur) {
 		this.offreJoueur = propositionJoueur;
 	}
-	
-	///Méthodes
+	public List<Candidature> getCandidatureJoueur() {
+		return candidatureJoueur;
+	}
+
+	public void setCandidatureJoueur(List<Candidature> candidatureJoueur) {
+		this.candidatureJoueur = candidatureJoueur;
+	}
+
+	///Mï¿½thodes
 	public void virerJoueur()
 	{
 		
