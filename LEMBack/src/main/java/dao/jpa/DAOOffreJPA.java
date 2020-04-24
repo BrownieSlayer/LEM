@@ -78,13 +78,6 @@ public class DAOOffreJPA extends DAOJPA implements IDAOOffre {
 				.getResultList();
 	}
 
-	@Override
-	public List<Offre> selectAll(Integer id) {
-		return this.em
-				.createQuery("select o from Offre o", Offre.class)
-				.getResultList();
-	}
-
 	public void delete(Joueur joueur, Manager manager) {
 		try {
 			this.em.getTransaction().begin();
@@ -97,7 +90,6 @@ public class DAOOffreJPA extends DAOJPA implements IDAOOffre {
 		
 	}
 
-	//Laisser vide
 	@Override
 	public void delete(Integer id_joueur, Integer id_manager) {
 		// TODO Auto-generated method stub
