@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import application.ApplicationContext;
 import dao.IDAOCompte;
 import model.Application;
 import model.Compte;
@@ -29,7 +30,7 @@ import model.Manager;
 			String action=request.getParameter("action");
 			
 			
-			IDAOCompte daoC = Application.getInstance().getDaoC();
+			IDAOCompte daoC = ApplicationContext.getDaoCompte();
 			Compte c = null;
 			if(action.equals("checkPseudo")) 
 			{
@@ -62,7 +63,7 @@ import model.Manager;
 				if(c == null)
 				{
 					String typeCompte=request.getParameter("typeCompte");
-					if (typeCompte.equals("manager"))
+					if (typeCompte.equals("Manager"))
 					{
 						String password=request.getParameter("password");
 						String nom=request.getParameter("nom");
@@ -71,7 +72,7 @@ import model.Manager;
 						c=new Manager(login, password, nom, prenom, pseudo, equipe);
 						daoC.insert(c);
 					}
-					else if(typeCompte.equals("joueur"))
+					else if(typeCompte.equals("Joueur"))
 					{
 						String password=request.getParameter("password");
 						String nom=request.getParameter("nom");

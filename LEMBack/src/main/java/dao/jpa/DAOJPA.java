@@ -5,10 +5,22 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 public abstract class DAOJPA {
-	private final static EntityManagerFactory emf = Persistence.createEntityManagerFactory("LEMUnit");
-	protected final EntityManager em = emf.createEntityManager();
+	private static EntityManagerFactory emf;
+	protected EntityManager em;
 	
 	public static void close() {
 		emf.close();
+	}
+	
+	public DAOJPA() {
+		try {			
+			Class.forName("com.mysql.jdbc.Driver");	
+			if (emf == null)
+			{
+				emf = Persistence.createEntityManagerFactory("LEMUnit"); 
+			}
+			em = emf.createEntityManager();
+		}catch(Exception e){}
+		
 	}
 }

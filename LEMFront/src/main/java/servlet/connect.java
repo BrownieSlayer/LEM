@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import application.ApplicationContext;
 import model.*;
 
 @WebServlet("/connect")
@@ -23,7 +24,7 @@ public class connect extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String login = request.getParameter("login");
         String password = request.getParameter("password");
-        Compte c = Application.getInstance().getDaoC().checkConnect(login,password);
+        Compte c = ApplicationContext.getDaoCompte().checkConnect(login,password);
         request.setAttribute("erreur", "");
         
         if (c instanceof Joueur) 

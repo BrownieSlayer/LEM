@@ -54,10 +54,10 @@
 	 		<div class="col-4"></div>
 	 		<div class="btn-group btn-group-toggle col-4 espacementForm" data-toggle="buttons">
 	  			<label class="btn btn-outline-warning active">
-	    			<input required checked onChange="changeType('joueur')" name="typeCompte" type="radio" value="joueur"> Joueur
+	    			<input required checked onChange="changeType('Joueur')" name="typeCompte" type="radio" value="Joueur"> Joueur
 	  			</label>
 	  			<label class="btn btn-outline-warning">
-	   				 <input required onChange="changeType('manager')" name="typeCompte" type="radio" value="manager"> Manager
+	   				 <input required onChange="changeType('Manager')" name="typeCompte" type="radio" value="Manager"> Manager
 	  			</label>
 			</div>
 			<div class="col-4"></div>
@@ -235,7 +235,7 @@ var errorPseudo=false;
 
 function changeType(type)
 {
-    if(type=="joueur")
+    if(type=="Joueur")
     {
     	
     	$("#btnJ").show();
