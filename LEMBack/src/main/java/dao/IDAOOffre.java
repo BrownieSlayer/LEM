@@ -2,7 +2,6 @@ package dao;
 
 import java.util.List;
 
-import model.Compte;
 import model.Joueur;
 import model.Manager;
 import model.Offre;

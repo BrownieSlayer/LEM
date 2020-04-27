@@ -3,7 +3,6 @@ package dao.jdbc;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.util.ArrayList;
 import java.util.List;
 
 import dao.IDAOCompte;
@@ -11,7 +10,6 @@ import model.Application;
 import model.Compte;
 import model.Joueur;
 import model.Manager;
-import model.Roles;
 
 public class DAOCompteJDBC implements IDAOCompte {
 
@@ -242,6 +240,13 @@ public class DAOCompteJDBC implements IDAOCompte {
 		// TODO Auto-generated method stub
 		
 	}
+
+	@Override
+	public List<Compte> selectTeam(Manager m) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 
 
 }

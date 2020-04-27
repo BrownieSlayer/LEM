@@ -4,6 +4,7 @@ import java.util.List;
 
 import model.Compte;
 import model.Joueur;
+import model.Manager;
 
 public interface IDAOCompte extends IDAO<Compte,Integer> {
 	
@@ -16,6 +17,8 @@ public interface IDAOCompte extends IDAO<Compte,Integer> {
 	public Compte selectByPseudo(String pseudo);
 	
 	public Compte selectByLogin(String login);
+	
+	public List<Compte> selectTeam (Manager m);
 	
 }
 

@@ -174,5 +174,13 @@ public class DAOCompteJPA extends DAOJPA implements IDAOCompte {
 				.getResultList();
 	}
 
+	@Override
+	public List<Compte> selectTeam(Manager m) {
+		return em
+				.createQuery( "select c from Compte c where c.typeCompte =Joueur and c.equipe =?1", Compte.class)
+				.setParameter(1,m.getEquipe())
+				.getResultList();
+	}
+
 
 }

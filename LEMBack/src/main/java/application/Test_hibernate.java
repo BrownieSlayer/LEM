@@ -18,6 +18,10 @@ public class Test_hibernate {
 		IDAOCompte daoCompte = ApplicationContext.getDaoCompte();
 		IDAOCandidature daoCandidature = ApplicationContext.getDaoCandidature();
 		
+		
+		
+		
+		//Compte
 		//Test insert Compte
 		/*Joueur joueur = new Joueur("Golden","mdp","Dudouit", "Thibault","Golden",null,null,"Mid",10000,5.0,2.0,5.0);
 		daoCompte.insert(joueur);*/
@@ -33,7 +37,6 @@ public class Test_hibernate {
 		/*Joueur joueur = (Joueur) daoCompte.selectById(5);
 		System.out.println(joueur);*/
 		
-		//
 		
 		//Test update
 		/*Joueur joueur = new Joueur("Golden","mdp","Dudouit", "Thibault","Golden",null,null,"Mid",10000,10,2.0,5.0);
@@ -60,6 +63,15 @@ public class Test_hibernate {
 		//Test CheckConnect
 		/*Compte c  = daoCompte.checkConnect("Caps", "mdp");
 		System.out.println(c.getPseudo());*/
+		
+		//Test Select Team
+		Manager m = (Manager) daoCompte.selectByLogin("Grabbz");
+		List<Compte> team = daoCompte.selectTeam(m);
+		for (Compte c : team)
+		{
+			System.out.println(c.getPseudo());
+		}
+		
 		
 		///OFFRE OK
 		//Test insert Offre
@@ -103,6 +115,8 @@ public class Test_hibernate {
 		//daoOffre.delete(1);
 		
 		
+		
+		
 		//Candidature
 		//Test insert Candidature
 				/*Joueur joueur = (Joueur) daoCompte.selectById(7);
@@ -110,11 +124,11 @@ public class Test_hibernate {
 				Candidature candidature = new Candidature(joueur, manager, 50000,"G2","Mid");
 				daoCandidature.insert(candidature);*/
 		
-		Manager m = (Manager) daoCompte.selectById(1);
+		/*Manager m = (Manager) daoCompte.selectById(1);
 		for (Offre o : m.getOffreJoueur())
 		{
 			System.out.println(o.getJoueur());
-		}
+		}*/
 		
 		
 		DAOJPA.close();
