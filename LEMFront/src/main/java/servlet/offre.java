@@ -1,12 +1,15 @@
 package servlet;
 
-	import java.util.List;
+	import java.util.Arrays;
+import java.util.List;
 	import java.io.IOException;
 	import javax.servlet.ServletException;
 	import javax.servlet.annotation.WebServlet;
 	import javax.servlet.http.HttpServlet;
 	import javax.servlet.http.HttpServletRequest;
 	import javax.servlet.http.HttpServletResponse;
+
+import org.hibernate.Hibernate;
 
 import application.ApplicationContext;
 import model.*;
@@ -15,12 +18,27 @@ import model.*;
 	public class offre extends HttpServlet {
 
 	    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	    	String option = request.getParameter("option");
 	    	
+	    	Compte c = ApplicationContext.getDaoCompte().checkConnect("Kodo","mdp");
+	    	
+	    	//dao qui va chercher toutes les équipes
+	    	Hibernate.initialize(((Joueur) c).getOffres());
+	    	List<Offre> offres = ((Joueur) c).getOffres();
+            request.setAttribute("offres", offres);
+	    	
+            //Forcer a nettoyer le cache de EntityManager
+            ApplicationContext.getDaoCompte().detach(c);
+            
+	    	//Faut donner cette liste à la vue JSP
+	    	this.getServletContext().getRequestDispatcher("/WEB-INF/offre.jsp").forward(request, response);
 	    }
 
 	    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	               
 	    	String option = request.getParameter("option");
+	    	
+	    	System.out.println(option);
 	    	
 	    	if(option.equals("insert"))
 	    	{
@@ -48,9 +66,31 @@ import model.*;
 	    	}
 	    	else if(option.equals("delete"))
 	    	{
-		        int idOffre = Integer.parseInt(request.getParameter("id"));
+		        int idOffre = Integer.parseInt(request.getParameter("id_offre"));
 	    		ApplicationContext.getDaoOffre().delete(idOffre);
 	    	}
+	    	else if (option.equals("accepter"))
+	    	{
+	    		int idOffre = Integer.parseInt(request.getParameter("id_offre"));
+	    		int idJoueur = Integer.parseInt(request.getParameter("id_joueur"));
+	    		int idManager = Integer.parseInt(request.getParameter("id_manager"));
+	    		Manager manager = (Manager) ApplicationContext.getDaoCompte().selectById(idManager);
+	    		String equipe = request.getParameter("equipe");
+	    		String role= request.getParameter("role");
+	    		System.out.println(idJoueur);
+	    		System.out.println(idManager);
+	    		System.out.println(equipe);
+	    		System.out.println(role);
+	    		Joueur joueur = new Joueur();
+	    		joueur.setId(idJoueur);
+	    		joueur.setEquipe(equipe);
+	    		joueur.setRole(role);
+	    		joueur.setManager(manager);
+	    		ApplicationContext.getDaoCompte().update(joueur);
+	    		ApplicationContext.getDaoOffre().delete(idOffre);
+	    	}
+	    	
+	    	doGet(request, response);
 	    }
 
 	}

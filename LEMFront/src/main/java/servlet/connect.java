@@ -1,5 +1,6 @@
 package servlet;
 
+import java.util.Arrays;
 import java.util.List;
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -29,6 +30,7 @@ public class connect extends HttpServlet {
         
         if (c instanceof Joueur) 
         {
+        	request.getSession().setAttribute("id", c.getId());
             request.getSession().setAttribute("login", login);
             request.getSession().setAttribute("nom", c.getNom());
             request.getSession().setAttribute("prenom", c.getPrenom());
@@ -41,6 +43,9 @@ public class connect extends HttpServlet {
             request.getSession().setAttribute("salmin", ((Joueur) c).getSalmin());
             request.getSession().setAttribute("equipe", c.getEquipe());
             request.getSession().setAttribute("isConnect", "Y");
+            
+            
+            
             this.getServletContext().getRequestDispatcher("/WEB-INF/joueur.jsp").forward(request, response);
         }
         else if (c instanceof Manager) 
