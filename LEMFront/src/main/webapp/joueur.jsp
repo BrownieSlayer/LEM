@@ -42,10 +42,10 @@
 	   				
 		
 			<div class="btn-group btn-group-toggle col-3" data-toggle="buttons">
-	  			<label class="btn btn-outline active boutonsTop ">
+	  			<label class="btn btn-outline active boutonTop ">
 	    			<input required checked onChange="changeType('Profil')" name="typeCompte" type="radio" value="Profil"> Profil
 	  			</label>
-	  			<label class="btn btn-outline boutonsTop">
+	  			<label class="btn btn-outline boutonTop">
 	  				 <input required onChange="changeType('Offre')" name="typeCompte" type="radio" value="Offre"> Offre
 	  			</label>
 			</div>

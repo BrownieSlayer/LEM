@@ -13,7 +13,13 @@
 
 <body id = "background">
 
+<div class="container-fluid">
+
+<div id="ligne"></div>
+
 <img id="logoLoL" src="./img/LogoLoLGrey.png"/>
+
+
 
 <div id="topBandeau" class="row">
 
@@ -25,7 +31,7 @@
             <div class="col-2"></div>
 
         </div>
-
+		
         <div id="topBandeau2" class="row">
 
             <div class="col-2"></div>
@@ -38,25 +44,25 @@
             <div class="col-2"></div>
 </div>
 
-<div id = "inscriptionForm" class = container-fluid> 
+<div id = "inscriptionForm"> 
     <form id="form1" action="inscription" method="POST">
  		<input type="hidden" name="action" value="inscription">
  		
  		<!-- INSCRIPTION -->
  		<div class = "row">
- 			<div class="col-4"></div>
- 			<div id = "inscriptionTitre" class="col-4">INSCRIPTION</div>
- 			<div class="col-4"></div>
+ 			<div class="col-5"></div>
+ 			<div id = "inscriptionTitre" class="col-2">INSCRIPTION</div>
+ 			<div class="col-5"></div>
  		</div>
  		
  		 <!-- Boutons manager et Joueur -->
  		 <div class = "row">
 	 		<div class="col-4"></div>
 	 		<div class="btn-group btn-group-toggle col-4 espacementForm" data-toggle="buttons">
-	  			<label class="btn btn-outline-warning active">
+	  			<label class="btn btn-outline-warning active boutonJaune2">
 	    			<input required checked onChange="changeType('Joueur')" name="typeCompte" type="radio" value="Joueur"> Joueur
 	  			</label>
-	  			<label class="btn btn-outline-warning">
+	  			<label class="btn btn-outline-warning boutonJaune2">
 	   				 <input required onChange="changeType('Manager')" name="typeCompte" type="radio" value="Manager"> Manager
 	  			</label>
 			</div>
@@ -140,7 +146,7 @@
    		<!-- Submit Manager -->
         <div class="row">
         	<div class="col-5"></div>
-        	<div class="col-2"><input style="display:none;" type="submit" id="btnM" class="btn btn-warning col 2 espacementForm" value ="Valider"></div>
+        	<div class="col-2"><input style="display:none;" type="submit" id="btnM" class="btn btn-warning col 2 espacementForm boutonValider" value ="Valider"></div>
         	<div class="col-5"></div>
         </div>
         
@@ -217,13 +223,14 @@
 
         <div class = "row">
        		<div class="col-5"></div>
-         	<input type="submit" id="btnJ" class="btn btn-warning col 2 espacementForm" value ="Valider">
+         	<input type="submit" id="btnJ" class="btn btn-warning col 2 espacementForm boutonValider" value ="Valider">
          	<div class="col-5"></div>
         </div>
       </form>
  </div>
  
  <div id = botBandeauInscription> </div>
+ </div>
 </body>
 <script>
 

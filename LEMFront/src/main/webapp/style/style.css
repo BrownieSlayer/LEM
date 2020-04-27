@@ -26,6 +26,38 @@ body
   
 }
 
+#bienvenue
+{
+	position : relative;
+	background: -webkit-linear-gradient(right, #fcfcfc, #999999, #fcfcfc);
+  	-webkit-background-clip: text;
+  	-webkit-text-fill-color: transparent;
+	font-size : 45px;
+	font-weight : 1000;
+	text-align : center;
+	
+}
+
+.boutonJaune
+{
+	position : relative;
+	background: -webkit-linear-gradient(right, #c79f00, #fdd017 50%, #ffe373);
+	font-size : 23px;
+	font-weight : 700;
+	text-align : center;
+}
+
+.boutonJaune:hover
+{
+	position : relative;
+ 	background : -webkit-linear-gradient(right, #ffe373, #fdd017 50%, #c79f00);
+	font-size : 23px;
+	font-weight : 700;
+	text-align : center;
+	
+}
+
+
 #titre1 
 {
 	position : relative;
@@ -86,20 +118,22 @@ body
 	padding-top:5px;
 	}	
 	
-.boutonsTop
+.boutonTop
 {
 	
  	position : relative;
  	border-left: solid 1.3px #00a9b5;
  	border-right: solid 1.3px #00a9b5;
  	background-color : #00053b;
-	color:#C0C0C0;
+	background: -webkit-linear-gradient(right, #ffffff, #999999, #ffffff);
+  	-webkit-background-clip: text;
+  	-webkit-text-fill-color: transparent;
 	font-size : 28px;
 	font-weight : 500;
 	text-align : center;	
 }
 
-.boutonsTop:hover
+.boutonTop:hover
 {
 	position : relative;
  	border-left: solid 1.3px #00a9b5;
@@ -244,10 +278,32 @@ body
 
 #inscriptionTitre
 {
-    color:#fbca4c;
+	position : relative; bottom : 5px;
+    background: -webkit-linear-gradient(right, #ffdb47, #d9ae00, #ffdb47);
+  	-webkit-background-clip: text;
+  	-webkit-text-fill-color: transparent;
     font-size : 30px;
     font-weight : 900;
     text-align : center;
+}
+
+.boutonJaune2
+{
+	position : relative;
+	border: solid 2px; 
+	border: -webkit-linear-gradient(right, #c79f00, #fdd017 50%, #ffe373);
+	font-size : 20px;
+	font-weight : 650;
+	text-align : center;
+}
+
+.boutonValider
+{
+	position : relative;
+	background: -webkit-linear-gradient(right, #c79f00, #fdd017 50%, #ffe373);
+	font-size : 20px;
+	font-weight : 650;
+	text-align : center;
 }
 
 #botBandeauInscription

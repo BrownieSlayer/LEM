@@ -25,9 +25,9 @@
 		<img  id="logo" src="img/LogoLoLGrey.png" class = "img-fluid" />
 		</div>
 		
-		
-		<div class="col-6">
-		<h1>Bienvenue sur <br/>LOL Esport Manager</h1>
+		<div class="col-1"></div>
+		<div class="col-4">
+		<div id="bienvenue">Bienvenue sur <br>LOL Esport Manager</div>
 		</div>
 		
 		<div class="col-3"></div>
@@ -42,7 +42,7 @@
 			
 			<div  class="col-4"> <!-- ; align-self-center mx-auto; style="vertical-align: middle" -->
 				
-					<button id="btnLogin" type="button" class="btn btn-warning btn-lg btn-block">Login</button>
+					<button id="btnLogin" type="button" class="btn btn-warning btn-lg btn-block boutonJaune">Login</button>
 					<br />
 					<!-- Disparait quand on click dessus (methode dans le script) -->
 				
@@ -51,7 +51,7 @@
 
 					<input type="text" name="login" placeholder="Identifiant" class="form-control" /><br />
 					<input type="password" name="password" placeholder="Mot de Passe" class="form-control"><br />
-					<input	type="submit" placeholder="Valider"	class="btn btn-warning btn-lg btn-block" value="Connexion">	
+					<input	type="submit" placeholder="Valider"	class="btn btn-warning btn-lg btn-block boutonJaune" value="Connexion">	
 					<!-- Apparait lorsque l'on clique (methode dans le script) -->
 
 				</form>
@@ -61,7 +61,7 @@
 				
 				<form method="GET" action="inscription">
 					<!-- Envoie sur la page d'inscription -->
-					<button type="submit" class="btn btn-warning btn-lg btn-block" value="Inscription">Inscription</button>
+					<button type="submit" class="btn btn-warning btn-lg btn-block boutonJaune" value="Inscription">Inscription</button>
 					<br />
 				</form>
 				<div id = "error" class="text-danger" >${erreur}</div>
