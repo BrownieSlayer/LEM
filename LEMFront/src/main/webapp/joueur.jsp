@@ -13,7 +13,9 @@
 <body id="background">
 
 	<div class="container-fluid">
-
+		
+		<div id="ligne"></div>
+		
 		<img id="logoLoL" src="./img/LogoLoLGrey.png" />
 
 		<div id="topBandeau" class="row">
@@ -26,7 +28,9 @@
 			<div class="col-2"></div>
 
 		</div>
-
+		
+		
+		
 		<div id="topBandeau2" class="row">
 
 			<div class="col-2"></div>
@@ -34,13 +38,15 @@
 			<div class="col-2"></div>
 			<div class="col-1"></div>
 			
+			
+	   				
 		
 			<div class="btn-group btn-group-toggle col-3" data-toggle="buttons">
 	  			<label class="btn btn-outline active boutonsTop ">
-	    			<input required checked onChange="changeType('Profil')" name="typeCompte" type="radio" value="Joueur"> Profil
+	    			<input required checked onChange="changeType('Profil')" name="typeCompte" type="radio" value="Profil"> Profil
 	  			</label>
 	  			<label class="btn btn-outline boutonsTop">
-	   				 <input required onChange="changeType('Offre')" name="typeCompte" type="radio" value="Manager"> Offre
+	  				 <input required onChange="changeType('Offre')" name="typeCompte" type="radio" value="Offre"> Offre
 	  			</label>
 			</div>
 			
@@ -52,8 +58,8 @@
 			${nom} !</div>
 		<br> <br> <br>
 
-
-		<div class="container-fluid">
+		
+		<div class="container-fluid champProfil">
 			<div class="row">
 				<div class="col-2"></div>
 				<div class="col-2">
@@ -125,7 +131,7 @@
 				Thibault,Kodo,Florian</div>
 
 		</div>
-
+	
 	</div>
 
 </body>
@@ -154,30 +160,30 @@ function changeType(type)
     if(type=="Profil")
     {
 
-        for(var i=0;i<cj.length;i++)
+        for(var i=0;i<co.length;i++)
         {
             co[i].style.display="none";
            
         }
 
-        for(var i=0;i<divcj.length;i++)
+        for(var i=0;i<cp.length;i++)
         {
-            cp[i].style.visibility="block";
+            cp[i].style.display="block";
         
         }
  
     }
     else
     {
-         for(var i=0;i<cj.length;i++)
+         for(var i=0;i<cp.length;i++)
          {
-             cp[i].style.visibility="none";
+             cp[i].style.display="none";
             
          }
 
-         for(var i=0;i<divcj.length;i++)
+         for(var i=0;i<co.length;i++)
          {
-             co[i].style.visibility="block";
+             co[i].style.display="block";
           
          }
     }

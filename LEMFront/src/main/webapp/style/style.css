@@ -21,13 +21,17 @@ body
 	position : absolute; top : 8px; left : 210px;
 	height:140px;
 	width:140px;
-	background-color : #00053b;
+	background: -webkit-linear-gradient(right, #fcfcfc, #999999, #fcfcfc);
+  	-webkit-background-clip: text;
+  
 }
 
 #titre1 
 {
 	position : relative;
-	color:#C0C0C0;
+	background: -webkit-linear-gradient(right, #fcfcfc, #999999, #fcfcfc);
+  	-webkit-background-clip: text;
+  	-webkit-text-fill-color: transparent;
 	font-size : 45px;
 	font-weight : 1000;
 	text-align : center;
@@ -36,7 +40,9 @@ body
 #titre2
 {
 	position : relative;
-	color:#C0C0C0;
+	background: -webkit-linear-gradient(right, #fcfcfc, #999999, #fcfcfc);
+  	-webkit-background-clip: text;
+  	-webkit-text-fill-color: transparent;
 	font-size : 45px;
 	font-weight : 1000;
 	text-align : center;
@@ -45,7 +51,9 @@ body
 #joueur
 {
 	position : relative;
-	color:#C0C0C0;
+	background: -webkit-linear-gradient(right, #ffffff, #999999, #ffffff);
+  	-webkit-background-clip: text;
+  	-webkit-text-fill-color: transparent;
 	font-size : 40px;
 	font-weight : 700;
 	text-align : center;
@@ -56,10 +64,21 @@ body
 	background-color : #00053b;
 	padding-bottom:5px;
 	padding-top:5px;
-	border-bottom:solid 1px;
-	border-color: #00a9b5;
+	
+	
 	}
 	
+#ligne
+{
+	position : relative; top : 80px;
+	background: linear-gradient(to right, #00a9b5, #00053b 10%, #00053b 15%, #00a9b5);
+	height : 2px;
+	
+	
+	
+}	
+
+
 #topBandeau2
 {
 	background-color : #00053b;
