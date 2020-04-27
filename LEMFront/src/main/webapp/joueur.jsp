@@ -33,9 +33,17 @@
 			<div id="titre2" class="col-2">MANAGER</div>
 			<div class="col-2"></div>
 			<div class="col-1"></div>
-			<div id="equipes" class="col-1">Equipes</div>
-			<div id="stats" class="col-1">Statistiques</div>
-			<div id="profil" class="col-1">Profil</div>
+			
+		
+			<div class="btn-group btn-group-toggle col-3" data-toggle="buttons">
+	  			<label class="btn btn-outline active boutonsTop ">
+	    			<input required checked onChange="changeType('Profil')" name="typeCompte" type="radio" value="Joueur"> Profil
+	  			</label>
+	  			<label class="btn btn-outline boutonsTop">
+	   				 <input required onChange="changeType('Offre')" name="typeCompte" type="radio" value="Manager"> Offre
+	  			</label>
+			</div>
+			
 			<div class="col-2"></div>
 		</div>
 		<br>
@@ -138,6 +146,43 @@ function hideForm(){
 $("btnValiderRole").click(function(){
 	alert("YES");
 })	
+
+var cp=document.getElementsByClassName("champProfil");
+var co=document.getElementsByClassName("champOffre");
+function changeType(type)
+{
+    if(type=="Profil")
+    {
+
+        for(var i=0;i<cj.length;i++)
+        {
+            co[i].style.visibility="hidden";
+           
+        }
+
+        for(var i=0;i<divcj.length;i++)
+        {
+            cp[i].style.visibility="visible";
+        
+        }
+ 
+    }
+    else
+    {
+         for(var i=0;i<cj.length;i++)
+         {
+             cp[i].style.visibility="hidden";
+            
+         }
+
+         for(var i=0;i<divcj.length;i++)
+         {
+             co[i].style.visibility="visible";
+          
+         }
+    }
+
+}
 
 </script>
 </html>
