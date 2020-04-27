@@ -71,7 +71,8 @@ body
 {
 	
  	position : relative;
- 	border-color: #00053b;
+ 	border-left: solid 1.3px #00a9b5;
+ 	border-right: solid 1.3px #00a9b5;
  	background-color : #00053b;
 	color:#C0C0C0;
 	font-size : 28px;
@@ -82,7 +83,8 @@ body
 .boutonsTop:hover
 {
 	position : relative;
- 	border-color: #00053b;
+ 	border-left: solid 1.3px #00a9b5;
+ 	border-right: solid 1.3px #00a9b5;
  	background-color : #00053b;
 	font-size : 28px;
 	font-weight : 500;
