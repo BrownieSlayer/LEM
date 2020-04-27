@@ -156,13 +156,13 @@ function changeType(type)
 
         for(var i=0;i<cj.length;i++)
         {
-            co[i].style.visibility="hidden";
+            co[i].style.display="none";
            
         }
 
         for(var i=0;i<divcj.length;i++)
         {
-            cp[i].style.visibility="visible";
+            cp[i].style.visibility="block";
         
         }
  
@@ -171,13 +171,13 @@ function changeType(type)
     {
          for(var i=0;i<cj.length;i++)
          {
-             cp[i].style.visibility="hidden";
+             cp[i].style.visibility="none";
             
          }
 
          for(var i=0;i<divcj.length;i++)
          {
-             co[i].style.visibility="visible";
+             co[i].style.visibility="block";
           
          }
     }
