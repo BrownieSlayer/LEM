@@ -23,4 +23,8 @@ public abstract class DAOJPA {
 		}catch(Exception e){}
 		
 	}
+	
+	public void detach(Object entity) {
+		this.em.detach(entity);
+	}
 }

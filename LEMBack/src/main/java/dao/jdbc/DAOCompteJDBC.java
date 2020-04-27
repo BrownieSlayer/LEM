@@ -254,6 +254,12 @@ public class DAOCompteJDBC implements IDAOCompte {
 		
 	}
 
+	@Override
+	public void detach(Object entity) {
+		// TODO Auto-generated method stub
+		
+	}
+
 
 
 }

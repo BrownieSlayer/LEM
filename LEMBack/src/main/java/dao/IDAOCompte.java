@@ -22,5 +22,7 @@ public interface IDAOCompte extends IDAO<Compte,Integer> {
 	
 	public void updatedescription(Compte c, String description);
 	
+	public void detach(Object entity);
+	
 }
 
