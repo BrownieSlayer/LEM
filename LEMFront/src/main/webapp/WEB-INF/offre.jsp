@@ -40,10 +40,10 @@
 </table>
 
 <h1>Candidater</h1>
-<form action = "candidature" method="POST">
-	<input type="hidden" name="option" value="insert" />	
+<form action = "offre" method="POST">
+	<input type="hidden" name="option" value="candidater" />	
 	Manager <input type="text" name="pseudo_manager"/>
-	Role souhaité <input type="text" name="role" />
+	Role souhaité <input type="text" name="role_demande" />
 	Salaire souhaité <input type="text" name="salaire_demande" />
 	<input type="submit" value="Envoyer" />
 	

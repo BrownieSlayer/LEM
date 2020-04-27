@@ -89,6 +89,37 @@ import model.*;
 	    		ApplicationContext.getDaoCompte().update(joueur);
 	    		ApplicationContext.getDaoOffre().delete(idOffre);
 	    	}
+	    	else if (option.equals("candidater"))
+	    	{
+	    		System.out.println("candidature");
+	    		//int idJoueur = Integer.parseInt(request.getParameter("id_joueur"));
+	    		int idJoueur = 7;
+	    		String pseudoManager = request.getParameter("pseudo_manager");
+	    		
+	    		Manager manager = (Manager) ApplicationContext.getDaoCompte().selectByPseudo(pseudoManager);
+	    			System.out.println(manager.getPseudo());
+	    		if (manager != null)
+	    		{
+	    		Joueur joueur = (Joueur) ApplicationContext.getDaoCompte().selectById(idJoueur);
+	    			System.out.println(joueur);
+	    		String roleDemande = request.getParameter("role_demande");
+	    			System.out.println(roleDemande);
+	    		String equipeDemande = manager.getEquipe();
+	    			System.out.println(equipeDemande);
+	    		Double salaireDemande = Double.parseDouble(request.getParameter("salaire_demande"));
+	    			System.out.println(salaireDemande);
+	    		Candidature candidature = new Candidature();
+	    			System.out.println(candidature);
+	    		candidature.setJoueur(joueur);
+	    		candidature.setManager(manager);
+	    		candidature.setSalaireDemande(salaireDemande);
+	    		candidature.setEquipeDemande(equipeDemande);
+	    		candidature.setRoleDemande(roleDemande);
+	    		ApplicationContext.getDaoCandidature().insert(candidature);
+	    		request.getSession().setAttribute("candReussi", 1);
+	    		}
+	    		request.getSession().setAttribute("candReussi", 0);
+	    	}
 	    	
 	    	doGet(request, response);
 	    }
