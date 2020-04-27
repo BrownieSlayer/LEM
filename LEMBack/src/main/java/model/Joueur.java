@@ -69,6 +69,8 @@ public class Joueur extends Compte{
 		this.manager = manager;
 		this.description=description;
 	}
+	
+	
 	//Constructeur sans description
 	public Joueur(String login, String password, String nom, String prenom, String pseudo, String equipe, Manager manager, String role,
 			double salmin, double elimination, double mort, double assist) {

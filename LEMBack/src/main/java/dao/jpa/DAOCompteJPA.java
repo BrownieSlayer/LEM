@@ -18,23 +18,23 @@ public class DAOCompteJPA extends DAOJPA implements IDAOCompte {
 	@Override
 
 	public void insert(Compte entity) {
-		
+
 		this.em.getTransaction().begin();
 		try {
 			this.em.persist(entity);
 			this.em.getTransaction().commit();
-	
+
 		}
 		catch(Exception e) {
 			e.printStackTrace();
 			this.em.getTransaction().commit();
 		}
-			
+
 	}
 
 	@Override
 	public Compte selectById(Integer id) {
-		
+
 		return this.em.find(Compte.class, id);
 	}
 
@@ -45,7 +45,7 @@ public class DAOCompteJPA extends DAOJPA implements IDAOCompte {
 
 	@Override
 	public void update(Compte entity) {
-		
+
 		this.em.getTransaction().begin(); //On d�marre la transaction
 
 		try {
@@ -57,33 +57,33 @@ public class DAOCompteJPA extends DAOJPA implements IDAOCompte {
 			this.em.getTransaction().rollback(); //On annule la transaction
 		}
 
-		
+
 	}
 
 	@Override
 	public void delete(Integer id) {
-		
+
 		try {
 			this.em.getTransaction().begin();
-		
-		Compte compteToRemove = new Compte();
-		compteToRemove.setId(id);
-		
-		this.em.remove(this.em.merge(compteToRemove));
-		
-		this.em.getTransaction().commit();
-		
+
+			Compte compteToRemove = new Compte();
+			compteToRemove.setId(id);
+
+			this.em.remove(this.em.merge(compteToRemove));
+
+			this.em.getTransaction().commit();
+
 		}
-		
+
 		catch (Exception e) {
-			
+
 			this.em.getTransaction().rollback();
 		}
-		
+
 	}
 	@Override
 	public void updateSalmin(Joueur joueur, double newSalmin) {
-		
+
 		this.em.getTransaction().begin();
 
 		try {
@@ -96,12 +96,12 @@ public class DAOCompteJPA extends DAOJPA implements IDAOCompte {
 			this.em.getTransaction().rollback(); 
 		}
 
-		
+
 	}
-	
+
 	@Override
 	public void updateRole(Joueur joueur, String newRole) {
-		
+
 		this.em.getTransaction().begin();
 
 		try {
@@ -114,7 +114,7 @@ public class DAOCompteJPA extends DAOJPA implements IDAOCompte {
 			e.printStackTrace();
 			this.em.getTransaction().rollback(); 
 		}
-		
+
 	}
 
 	@Override
@@ -132,7 +132,7 @@ public class DAOCompteJPA extends DAOJPA implements IDAOCompte {
 				.createQuery("select c from Compte c where c.pseudo = ?1", Compte.class)
 				.setParameter(1, pseudo)
 				.getSingleResult();
-		
+
 	}
 
 	@Override
@@ -151,7 +151,7 @@ public class DAOCompteJPA extends DAOJPA implements IDAOCompte {
 				.getResultList();
 	}
 
-	
+
 	public List<Compte> selectByRole(String role) {
 		return em
 				.createQuery( "select c from Compte c where c.role = ?1", Compte.class)
@@ -159,7 +159,7 @@ public class DAOCompteJPA extends DAOJPA implements IDAOCompte {
 				.getResultList();
 	}
 
-	
+
 	public List<Compte> selectByKda(int kda) {
 		return em
 				.createQuery( "select c from Compte c where c.kda >= ?1", Compte.class)
@@ -167,7 +167,7 @@ public class DAOCompteJPA extends DAOJPA implements IDAOCompte {
 				.getResultList();
 	}
 
-	
+
 	public List<Compte> selectAllWithoutTeam() {
 		return em
 				.createQuery( "select c from Compte c where c.equipe = null", Compte.class)
@@ -196,6 +196,20 @@ public class DAOCompteJPA extends DAOJPA implements IDAOCompte {
 			e.printStackTrace();
 			this.em.getTransaction().rollback(); 
 		}
+
+	}
+
+	@Override
+	public Manager linkManagerTeam(String team) {
+		try {
+		return  em
+					.createQuery("select m from Manager m where m.equipe=?1", Manager.class)
+					.setParameter(1, team)
+					.getSingleResult();
+		
+		}
+		catch(Exception e) {return null;}
+
 		
 	}
 

@@ -260,6 +260,14 @@ public class DAOCompteJDBC implements IDAOCompte {
 		
 	}
 
+	@Override
+	public Manager linkManagerTeam(String team) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+
 
 
 }

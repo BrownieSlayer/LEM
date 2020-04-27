@@ -18,9 +18,6 @@ public class Test_hibernate {
 		IDAOCompte daoCompte = ApplicationContext.getDaoCompte();
 		IDAOCandidature daoCandidature = ApplicationContext.getDaoCandidature();
 		
-		
-		
-		
 		//Compte
 		//Test insert Compte
 		/*Joueur joueur = new Joueur("Golden","mdp","Dudouit", "Thibault","Golden",null,null,"Mid",10000,5.0,2.0,5.0);
