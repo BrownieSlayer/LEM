@@ -42,10 +42,10 @@
 	   				
 		
 			<div class="btn-group btn-group-toggle col-3" data-toggle="buttons">
-	  			<label class="btn btn-outline active boutonTop ">
+	  			<label class="btn btn-outline active boutonSilver ">
 	    			<input required checked onChange="changeType('Profil')" name="typeCompte" type="radio" value="Profil"> Profil
 	  			</label>
-	  			<label class="btn btn-outline boutonTop">
+	  			<label class="btn btn-outline boutonSilver">
 	  				 <input required onChange="changeType('Offre')" name="typeCompte" type="radio" value="Offre"> Offre
 	  			</label>
 			</div>
@@ -79,12 +79,12 @@
 					<br> Rôle actuel : ${role}<br>
 					<br>
 					<form id="formModifRole" action="joueur" method="POST">
-					<button id = "btnModifRole" type="button" class = "btn btn-warning"> Modifier rôle</button>
+					<button id = "btnModifRole" type="button" class = "btn btn-warning btn-block boutonJauneJoueur" onClick="hideForm1()"> Modifier rôle</button>
 					
 					<br>
 					<!-- Boutons Rôles -->
  
-			 		<div id = "champModifRole"  class="btn-group btn-group-toggle " data-toggle="buttons">
+			 		<div  class="btn-group btn-group-toggle champModifRole" data-toggle="buttons">
 			  			<label class="btn btn-light active">
 			    			<input required checked name="role" type="radio" value="Top"/>  Top
 			  			</label>
@@ -100,19 +100,31 @@
 			  			<label class="btn btn-light">
 			   				  <input required name="role" type="radio" value="Support"/> Support
 			  			</label>
+			  			
+			  			
 					</div>
-					
 					<br>
-					
-					<input type="button" id="btnValiderRole" class="btn btn-warning col 2 espacementForm" value ="Valider">
-					
+					<div  class="btn-group btn-group-toggle champModifRole" data-toggle="buttons">
+					<input type="button" class="btn btn-warning col 2 espacementForm btn-block boutonJauneJoueur" value ="Valider">
+					</div>
+					<br>
 					</form>
-					<br>
+					
+					
 					<br>
 					<br> Salaire minimum exigé actuel : ${salmin}<br>
 					<br>
 					<form id="formModifRole" action="joueur" method="POST">
-					<button type="button" class = "btn btn-warning"> Modifier salaire</button>
+					<button id = "btnModifSal" type="button" class = "btn btn-warning btn-block boutonJauneJoueur" onClick="hideForm2()"> Modifier salaire</button>
+					<br>
+					<div class="input-group-prepend champModifSal">
+	  					<span class="input-group-text">Salaire minimal souhaité</span>
+	  				<input type="text" class="form-control" name= "salmin">
+	  				<span class="input-group-prepend"></span><span class="input-group-text">€</span>
+	    			</div>
+	    			<div  class="btn-group btn-group-toggle champModifSal" data-toggle="buttons">
+					<input type="button" class="btn btn-warning col 2 espacementForm btn-block boutonJauneJoueur" value ="Valider">
+					</div>
 					</form>
 				</div>
 				<div class="col-2"></div>
@@ -139,19 +151,43 @@
 <script>
 
 var btnModifRole = document.getElementById("btnModifRole");
-var champModifRole = document.getElementById("champModifRole");
-btnModifRole.onclick=hideForm;
+var champModifRole = document.getElementsByClassName("champModifRole");
+var btnModifSal = document.getElementById("btnModifSal")
+var champModifSal = document.getElementsByClassName("champModifSal");
 
-champModifRole.style.visibility="hidden";
+/* btnModifRole.onclick=hideForm1;
+btnModifSal.onclick=hideForm2; */
 
-function hideForm(){
-	champModifRole.style.visibility="visible";
+for(var i=0;i<champModifRole.length;i++)
+	{
+	champModifRole[i].style.visibility="hidden";
+	}
+
+
+function hideForm1(){
+	for(var i=0;i<champModifRole.length;i++)
+	{
+	champModifRole[i].style.visibility="visible";
 	}
 	
-	
+}
 $("btnValiderRole").click(function(){
 	alert("YES");
 })	
+
+for(var i=0;i<champModifSal.length;i++)
+	{
+	champModifSal[i].style.visibility="hidden";
+	}
+
+function hideForm2(){
+	
+	for(var i=0;i<champModifSal.length;i++)
+	{
+	champModifSal[i].style.visibility="visible";
+	}
+	
+}
 
 var cp=document.getElementsByClassName("champProfil");
 var co=document.getElementsByClassName("champOffre");

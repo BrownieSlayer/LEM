@@ -26,36 +26,6 @@ body
   
 }
 
-#bienvenue
-{
-	position : relative;
-	background: -webkit-linear-gradient(right, #fcfcfc, #999999, #fcfcfc);
-  	-webkit-background-clip: text;
-  	-webkit-text-fill-color: transparent;
-	font-size : 45px;
-	font-weight : 1000;
-	text-align : center;
-	
-}
-
-.boutonJaune
-{
-	position : relative;
-	background: -webkit-linear-gradient(right, #c79f00, #fdd017 50%, #ffe373);
-	font-size : 23px;
-	font-weight : 700;
-	text-align : center;
-}
-
-.boutonJaune:hover
-{
-	position : relative;
- 	background : -webkit-linear-gradient(right, #ffe373, #fdd017 50%, #c79f00);
-	font-size : 23px;
-	font-weight : 700;
-	text-align : center;
-	
-}
 
 
 #titre1 
@@ -106,8 +76,6 @@ body
 	background: linear-gradient(to right, #00a9b5, #00053b 10%, #00053b 15%, #00a9b5);
 	height : 2px;
 	
-	
-	
 }	
 
 
@@ -118,12 +86,12 @@ body
 	padding-top:5px;
 	}	
 	
-.boutonTop
+.boutonSilver
 {
 	
  	position : relative;
- 	border-left: solid 1.3px #00a9b5;
- 	border-right: solid 1.3px #00a9b5;
+ 	border-left: solid 1px #00a9b5;
+ 	border-right: solid 1px #00a9b5;
  	background-color : #00053b;
 	background: -webkit-linear-gradient(right, #ffffff, #999999, #ffffff);
   	-webkit-background-clip: text;
@@ -133,16 +101,42 @@ body
 	text-align : center;	
 }
 
-.boutonTop:hover
+.boutonSilver:hover
 {
 	position : relative;
  	border-left: solid 1.3px #00a9b5;
  	border-right: solid 1.3px #00a9b5;
- 	background-color : #00053b;
+ 	background: -webkit-linear-gradient(right, #ffffff, #d1d1d1, #ffffff);
+  	-webkit-background-clip: text;
+  	-webkit-text-fill-color: transparent;
 	font-size : 28px;
 	font-weight : 500;
 	text-align : center;
 	color:#fcfcfc;
+	
+}
+
+.boutonJauneJoueur
+{
+	position : relative;
+	background: -webkit-linear-gradient(right, #c79f00, #fdd017 50%, #ffe373);
+	font-size : 17px;
+	font-weight : 600;
+	text-align : center;
+}
+
+.boutonJauneJoueur:hover
+{
+	position : relative;
+ 	background : -webkit-linear-gradient(right, #ffe373, #fdd017 50%, #c79f00);
+	font-size : 17px;
+	font-weight : 600;
+	text-align : center;
+	
+}
+
+.champModifRole
+{
 	
 }
 
@@ -316,6 +310,38 @@ body
 }
 
 /*Connect*/
+
+#bienvenue
+{
+	position : relative;
+	background: -webkit-linear-gradient(right, #fcfcfc, #999999, #fcfcfc);
+  	-webkit-background-clip: text;
+  	-webkit-text-fill-color: transparent;
+	font-size : 45px;
+	font-weight : 1000;
+	text-align : center;
+	
+}
+
+.boutonJaune
+{
+	position : relative;
+	background: -webkit-linear-gradient(right, #c79f00, #fdd017 50%, #ffe373);
+	font-size : 23px;
+	font-weight : 700;
+	text-align : center;
+}
+
+.boutonJaune:hover
+{
+	position : relative;
+ 	background : -webkit-linear-gradient(right, #ffe373, #fdd017 50%, #c79f00);
+	font-size : 23px;
+	font-weight : 700;
+	text-align : center;
+	
+}
+
 
 #formConnect{
 	display:none; /*Le formConnect sera caché au lancement de la page*/
