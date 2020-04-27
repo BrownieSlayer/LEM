@@ -20,5 +20,7 @@ public interface IDAOCompte extends IDAO<Compte,Integer> {
 	
 	public List<Compte> selectTeam (Manager m);
 	
+	public void updatedescription(Compte c, String description);
+	
 }
 

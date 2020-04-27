@@ -19,7 +19,7 @@ public class Application {
 	///Attributs
 	private Connection connection=null;
 	private static  Application _instance=null;
-	private LinkedList<Joueur> candidats = new LinkedList();
+	private LinkedList<Joueur> candidats = new LinkedList<>();
 	private IDAOCompte daoC = new DAOCompteJDBC();
 	private IDAOOffre daoO = new DAOOffreJDBC();
 
@@ -120,6 +120,7 @@ public class Application {
 				double mort = saisieDouble("Saisissez vos statistiques de morts moyennes");
 				double assist = saisieDouble("Saisissez vos statistiques d'assistances moyennes");
 
+
 				c=new Joueur (login, password, nom, prenom, pseudo, equipe, role, salmin, elimination, mort, assist);
 				daoC.insert(c);
 
@@ -205,7 +206,7 @@ public class Application {
 		int newSalmin = saisieInt("Saisir le nouveau salaire d�sir�");
 		Compte c = daoC.selectByPseudo(user);
 
-		if (c.getTypeCompte().equals("joueur"))
+		if (c.getTypeCompte().equals("Joueur"))
 		{
 			daoC.updateSalmin(c,newSalmin);
 		}

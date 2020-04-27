@@ -23,23 +23,28 @@ public class Manager extends Compte {
 	
 	///Constructeurs
 	
-	///Getters Setters
-	public List<Joueur> getJoueurManage() {
-		return joueurManage;
+	//Constructeur avec Id et description
+	public Manager(int id, String login, String password, String nom, String prenom, String pseudo, String equipe, String description) {
+		super(login, password, nom, prenom, pseudo, equipe, description);
+		this.id = id;
+		this.typeCompte = "manager";
 	}
-
+	
+	//Constructeur sans description
 	public Manager(String login, String password, String nom, String prenom, String pseudo, String equipe) {
 		super(login, password, nom, prenom, pseudo, equipe);
 		this.typeCompte = "manager";
 	}
 
-	public Manager(int id, String login, String password, String nom, String prenom, String pseudo, String equipe) {
-		super(login, password, nom, prenom, pseudo, equipe);
-		this.id = id;
-		this.typeCompte = "manager";
-	}
-	
+	//Constructeur vide
 	public Manager() {}
+
+	
+	//Getters Setters
+	public List<Joueur> getJoueurManage() {
+		return joueurManage;
+	}
+
 	
 	public List<Offre> getOffreJoueur() {
 		return offreJoueur;

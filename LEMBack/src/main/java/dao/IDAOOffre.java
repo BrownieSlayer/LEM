@@ -13,6 +13,7 @@ public interface IDAOOffre extends IDAO<Offre,Integer> {
 	public void delete(Joueur joueur, Manager manager);
 	
 	public  List<Offre> selectOffreByCompte(Integer id);
+
 	
 }
 

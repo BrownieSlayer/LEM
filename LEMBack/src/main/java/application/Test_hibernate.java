@@ -65,12 +65,17 @@ public class Test_hibernate {
 		System.out.println(c.getPseudo());*/
 		
 		//Test Select Team
-		Manager m = (Manager) daoCompte.selectByLogin("Grabbz");
+		/*Manager m = (Manager) daoCompte.selectByLogin("Grabbz");
 		List<Compte> team = daoCompte.selectTeam(m);
 		for (Compte c : team)
 		{
 			System.out.println(c.getPseudo());
-		}
+		}*/
+		
+		//Test UpdateDescription
+		/*Compte c = daoCompte.selectByLogin("Golden");
+		daoCompte.updatedescription(c, "Je suis un crack");
+		*/
 		
 		
 		///OFFRE OK

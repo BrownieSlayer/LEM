@@ -144,4 +144,5 @@ public class DAOOffreJDBC implements IDAOOffre {
 		// TODO Auto-generated method stub
 		
 	}
+
 }

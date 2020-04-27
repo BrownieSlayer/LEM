@@ -182,5 +182,24 @@ public class DAOCompteJPA extends DAOJPA implements IDAOCompte {
 				.getResultList();
 	}
 
+	@Override
+	public void updatedescription(Compte c, String description) {
+		this.em.getTransaction().begin();
+
+		try {
+			c.setDescription(description);
+			this.em.merge(c);	
+			this.em.getTransaction().commit(); 
+		}
+
+		catch (Exception e) {
+			e.printStackTrace();
+			this.em.getTransaction().rollback(); 
+		}
+		
+	}
+
+
+
 
 }

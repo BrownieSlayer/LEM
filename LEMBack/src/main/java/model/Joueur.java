@@ -37,6 +37,39 @@ public class Joueur extends Compte{
 	private Manager manager;
 	
 	///Constructeurs
+
+	//Constructeur avec Id
+	public Joueur(int id, String login, String password, String nom, String prenom, String pseudo, String equipe,Manager manager, String role,
+			double salmin, double elimination, double mort, double assist, String description) {
+		super(login, password, nom, prenom, pseudo, equipe, description);
+		this.id = id;
+		this.role = role;
+		this.salmin = salmin;
+		this.elimination = elimination;
+		this.mort = mort;
+		this.assist = assist;
+		this.kda = (elimination+assist)/mort;
+		this.typeCompte = "joueur";
+		this.manager = manager;
+		this.description=description;
+	}
+	
+	//Constructeur complet
+	public Joueur(String login, String password, String nom, String prenom, String pseudo, String equipe, Manager manager, String role,
+			double salmin, double elimination, double mort, double assist,String description) {
+		
+		super(login, password, nom, prenom, pseudo, equipe, description);
+		this.role = role;
+		this.salmin = salmin;
+		this.elimination = elimination;
+		this.mort = mort;
+		this.assist = assist;
+		this.kda = (elimination+assist)/mort;
+		this.typeCompte = "joueur";
+		this.manager = manager;
+		this.description=description;
+	}
+	//Constructeur sans description
 	public Joueur(String login, String password, String nom, String prenom, String pseudo, String equipe, Manager manager, String role,
 			double salmin, double elimination, double mort, double assist) {
 		
@@ -50,7 +83,8 @@ public class Joueur extends Compte{
 		this.typeCompte = "joueur";
 		this.manager = manager;
 	}
-	
+
+	//Construteur sans desciption ni manager
 	public Joueur(String login, String password, String nom, String prenom, String pseudo, String equipe, String role,
 			double salmin, double elimination, double mort, double assist) {
 		
@@ -64,37 +98,9 @@ public class Joueur extends Compte{
 		this.typeCompte = "joueur";
 	}
 	
+	//Constructeur vide
 	public Joueur() {}
-	
-	public List<Offre> getOffres() {
-		return offres;
-	}
 
-	public void setOffres(List<Offre> offres) {
-		this.offres = offres;
-	}
-
-	public Manager getManager() {
-		return manager;
-	}
-
-	public void setManager(Manager manager) {
-		this.manager = manager;
-	}
-
-	///Constructeurs
-	public Joueur(int id, String login, String password, String nom, String prenom, String pseudo, String equipe, String role,
-			double salmin, double elimination, double mort, double assist) {
-		super(login, password, nom, prenom, pseudo, equipe);
-		this.id = id;
-		this.role = role;
-		this.salmin = salmin;
-		this.elimination = elimination;
-		this.mort = mort;
-		this.assist = assist;
-		this.kda = (elimination+assist)/mort;
-		this.typeCompte = "joueur";
-	}
 
 	///Getters Setters
 	public String getRole() {
@@ -150,8 +156,26 @@ public class Joueur extends Compte{
 	}
 
 	public void setCandidatures(List<Candidature> candidatures) {
-		this.candidatures = candidatures;
+		this.candidatures = candidatures;	
 	}
+	
+	public List<Offre> getOffres() {
+		return offres;
+	}
+
+	public void setOffres(List<Offre> offres) {
+		this.offres = offres;
+	}
+
+	public Manager getManager() {
+		return manager;
+	}
+
+	public void setManager(Manager manager) {
+		this.manager = manager;
+	}
+	
+	
 
 	///M�thodes
 	public static String saisieString(String msg) 

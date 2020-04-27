@@ -71,11 +71,11 @@ public class DAOCompteJDBC implements IDAOCompte {
             {
             	 if(rs.getString("typeCompte").equals("joueur")) 
 	             {
-	                    c=new Joueur (rs.getInt("id"), rs.getString("login"), rs.getString("password"), rs.getString("nom"), rs.getString("prenom"), rs.getString("pseudo"), rs.getString("equipe"), rs.getString("role"), rs.getDouble("salmin"), rs.getDouble("elimination"), rs.getDouble("mort"), rs.getDouble("assist"));
+	                    c=new Joueur (rs.getInt("id"), rs.getString("login"), rs.getString("password"), rs.getString("nom"), rs.getString("prenom"), rs.getString("pseudo"), rs.getString("equipe"), null, rs.getString("role"), rs.getDouble("salmin"), rs.getDouble("elimination"), rs.getDouble("mort"), rs.getDouble("assist"), rs.getString("description"));
 	             }
 	             else if(rs.getString("typeCompte").equals("manager")) 
 	             {
-	                    c=new Manager(rs.getInt("id"), rs.getString("login"), rs.getString("password"), rs.getString("nom"), rs.getString("prenom"), rs.getString("pseudo"), rs.getString("equipe"));
+	                    c=new Manager(rs.getInt("id"), rs.getString("login"), rs.getString("password"), rs.getString("nom"), rs.getString("prenom"), rs.getString("pseudo"), rs.getString("equipe"), rs.getString("description"));
 	             }
             }
         }catch (Exception e) {e.printStackTrace();}
@@ -152,11 +152,12 @@ public class DAOCompteJDBC implements IDAOCompte {
 			{
 				 if(rs.getString("typeCompte").equals("joueur")) 
 	             {
-	                    c=new Joueur (rs.getInt("id"), rs.getString("login"), rs.getString("password"), rs.getString("nom"), rs.getString("prenom"), rs.getString("pseudo"), rs.getString("equipe"), rs.getString("role"), rs.getDouble("salmin"), rs.getDouble("elimination"), rs.getDouble("mort"), rs.getDouble("assist"));
+	                    c=new Joueur (rs.getInt("id"), rs.getString("login"), rs.getString("password"), rs.getString("nom"), rs.getString("prenom"), rs.getString("pseudo"), rs.getString("equipe"), null, rs.getString("role"), rs.getDouble("salmin"), rs.getDouble("elimination"), rs.getDouble("mort"), rs.getDouble("assist"), rs.getString("description"));
+	                    
 	             }
 	             else if(rs.getString("typeCompte").equals("manager")) 
 	             {
-	                    c=new Manager(rs.getInt("id"), rs.getString("login"), rs.getString("password"), rs.getString("nom"), rs.getString("prenom"), rs.getString("pseudo"), rs.getString("equipe"));
+	                    c=new Manager(rs.getInt("id"), rs.getString("login"), rs.getString("password"), rs.getString("nom"), rs.getString("prenom"), rs.getString("pseudo"), rs.getString("equipe"), rs.getString("description"));
 	             }
 
 			}
@@ -181,11 +182,11 @@ public class DAOCompteJDBC implements IDAOCompte {
             {
             	 if(rs.getString("typeCompte").equals("joueur")) 
 	             {
-	                 c=new Joueur(rs.getInt("id"), rs.getString("login"), rs.getString("password"), rs.getString("nom"), rs.getString("prenom"), rs.getString("pseudo"), rs.getString("equipe"), rs.getString("role"), rs.getDouble("salmin"), rs.getDouble("elimination"), rs.getDouble("mort"), rs.getDouble("assist"));
+	                 c=new Joueur(rs.getInt("id"), rs.getString("login"), rs.getString("password"), rs.getString("nom"), rs.getString("prenom"), rs.getString("pseudo"), rs.getString("equipe"), null, rs.getString("role"), rs.getDouble("salmin"), rs.getDouble("elimination"), rs.getDouble("mort"), rs.getDouble("assist"), rs.getString("description"));
 	             }
 	             else if(rs.getString("typeCompte").equals("manager")) 
 	             {
-	                 c=new Manager(rs.getInt("id"), rs.getString("login"), rs.getString("password"), rs.getString("nom"), rs.getString("prenom"), rs.getString("pseudo"), rs.getString("equipe"));
+	                 c=new Manager(rs.getInt("id"), rs.getString("login"), rs.getString("password"), rs.getString("nom"), rs.getString("prenom"), rs.getString("pseudo"), rs.getString("equipe"), rs.getString("description"));
 	             }
             }
         }catch (Exception e) {e.printStackTrace();}
@@ -210,11 +211,11 @@ public class DAOCompteJDBC implements IDAOCompte {
             {
                  if(rs.getString("typeCompte").equals("joueur")) 
                  {
-                     c=new Joueur(rs.getInt("id"), rs.getString("login"), rs.getString("password"), rs.getString("nom"), rs.getString("prenom"), rs.getString("pseudo"), rs.getString("equipe"), rs.getString("role"), rs.getDouble("salmin"), rs.getDouble("elimination"), rs.getDouble("mort"), rs.getDouble("assist"));
+                     c=new Joueur(rs.getInt("id"), rs.getString("login"), rs.getString("password"), rs.getString("nom"), rs.getString("prenom"), rs.getString("pseudo"), rs.getString("equipe"), null, rs.getString("role"), rs.getDouble("salmin"), rs.getDouble("elimination"), rs.getDouble("mort"), rs.getDouble("assist"), rs.getString("description"));
                  }
                  else if(rs.getString("typeCompte").equals("manager")) 
                  {
-                     c=new Manager(rs.getInt("id"), rs.getString("login"), rs.getString("password"), rs.getString("nom"), rs.getString("prenom"), rs.getString("pseudo"), rs.getString("equipe"));
+                     c=new Manager(rs.getInt("id"), rs.getString("login"), rs.getString("password"), rs.getString("nom"), rs.getString("prenom"), rs.getString("pseudo"), rs.getString("equipe"), rs.getString("description"));
                  }
             }
         }catch (Exception e) {e.printStackTrace();}
@@ -245,6 +246,12 @@ public class DAOCompteJDBC implements IDAOCompte {
 	public List<Compte> selectTeam(Manager m) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public void updatedescription(Compte c, String description) {
+		// TODO Auto-generated method stub
+		
 	}
 
 
