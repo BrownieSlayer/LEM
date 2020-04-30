@@ -79,35 +79,35 @@
 					<br> Rôle actuel : ${role}<br>
 					<br>
 					<form id="formModifRole" action="joueur" method="POST">
-					<button id = "btnModifRole" type="button" class = "btn btn-warning btn-block boutonJauneJoueur" onClick="hideForm1()"> Modifier rôle</button>
-					
-					<br>
-					<!-- Boutons Rôles -->
+						<button id = "btnModifRole" type="button" class = "btn btn-warning btn-block boutonJauneJoueur" onClick="hideForm1()"> Modifier rôle</button>
+						<input type="hidden" name="id_page" value="${ id }" />
+						<br>
+						<!-- Boutons Rôles -->
  
-			 		<div  class="btn-group btn-group-toggle champModifRole" data-toggle="buttons">
-			  			<label class="btn btn-light active">
-			    			<input required checked name="role" type="radio" value="Top"/>  Top
-			  			</label>
-			  			<label class="btn btn-light">
-			   				 <input required name="role" type="radio" value="Jungler"/> Jungler
-			  			</label>
-			  			<label class="btn btn-light">
-			   				 <input required name="role" type="radio" value="Mid"/> Mid
-			  			</label>
-			  			<label class="btn btn-light">
-			   				 <input required name="role" type="radio" value="ADC"/> ADC
-			  			</label>
-			  			<label class="btn btn-light">
-			   				  <input required name="role" type="radio" value="Support"/> Support
-			  			</label>
-			  			
-			  			
-					</div>
-					<br>
-					<div  class="btn-group btn-group-toggle champModifRole" data-toggle="buttons">
-					<input type="button" class="btn btn-warning col 2 espacementForm btn-block boutonJauneJoueur" value ="Valider">
-					</div>
-					<br>
+				 		<div  class="btn-group btn-group-toggle champModifRole" data-toggle="buttons">
+				  			<label class="btn btn-light active">
+				    			<input required checked name="role" type="radio" value="Top"/>  Top
+				  			</label>
+				  			<label class="btn btn-light">
+				   				 <input required name="role" type="radio" value="Jungler"/> Jungler
+				  			</label>
+				  			<label class="btn btn-light">
+				   				 <input required name="role" type="radio" value="Mid"/> Mid
+				  			</label>
+				  			<label class="btn btn-light">
+				   				 <input required name="role" type="radio" value="ADC"/> ADC
+				  			</label>
+				  			<label class="btn btn-light">
+				   				  <input required name="role" type="radio" value="Support"/> Support
+				  			</label>
+				  			
+				  			
+						</div>
+						<br>
+						<div  class="btn-group btn-group-toggle champModifRole" data-toggle="buttons">
+						<input type="button" class="btn btn-warning col 2 espacementForm btn-block boutonJauneJoueur" value ="Valider">
+						</div>
+						<br>
 					</form>
 					
 					
@@ -115,23 +115,77 @@
 					<br> Salaire minimum exigé actuel : ${salmin}<br>
 					<br>
 					<form id="formModifRole" action="joueur" method="POST">
-					<button id = "btnModifSal" type="button" class = "btn btn-warning btn-block boutonJauneJoueur" onClick="hideForm2()"> Modifier salaire</button>
-					<br>
-					<div class="input-group-prepend champModifSal">
-	  					<span class="input-group-text">Salaire minimal souhaité</span>
-	  				<input type="text" class="form-control" name= "salmin">
-	  				<span class="input-group-prepend"></span><span class="input-group-text">€</span>
-	    			</div>
-	    			<div  class="btn-group btn-group-toggle champModifSal" data-toggle="buttons">
-					<input type="button" class="btn btn-warning col 2 espacementForm btn-block boutonJauneJoueur" value ="Valider">
-					</div>
+						<input type="hidden" name="id_page" value="${ id }" />
+						<button id = "btnModifSal" type="button" class = "btn btn-warning btn-block boutonJauneJoueur" onClick="hideForm2()"> Modifier salaire</button>
+						<br>
+						<div class="input-group-prepend champModifSal">
+		  					<span class="input-group-text">Salaire minimal souhaité</span>
+		  					<input type="text" class="form-control" name= "salmin">
+		  					<span class="input-group-prepend"></span><span class="input-group-text">€</span>
+		    			</div>
+		    			<div  class="btn-group btn-group-toggle champModifSal" data-toggle="buttons">
+							<input type="button" class="btn btn-warning col 2 espacementForm btn-block boutonJauneJoueur" value ="Valider">
+						</div>
 					</form>
 				</div>
 				<div class="col-2"></div>
 			</div>
 
 		</div>
-
+		
+		<div class="container-fluid champOffre">
+			<h1>Liste offres</h1>
+			<table class= "table table-dark" >
+					<tr>
+							<th>ID</th>
+							<th>Contact</th>
+							<th>Equipe</th>
+							<th>Salaire</thd>
+							<th>Role</th>
+							<th></th>
+							<th></th>
+					</tr>
+					<c:forEach items="${ offres }" var="offre">
+						<tr>
+							<th>${ offre.id }</th>
+							<td>${ offre.manager.pseudo }</td>
+							<td>${ offre.equipePropose }</td>
+							<td>${ offre.salairePropose }</td>
+							<td>${ offre.rolePropose }</td>
+							<td>
+								<form action = "joueur" method="POST">
+									<input type="hidden" name="id_page" value="${ id }" />
+									<input type="hidden" name="option" value="accepter" />
+									<input type="hidden" name="id_offre" value="${ offre.id }" />
+									<input type="hidden" name="equipe" value="${ offre.equipePropose }" />
+									<input type="hidden" name="id_joueur" value="${ offre.joueur.id }" />
+									<input type="hidden" name="id_manager" value="${ offre.manager.id }" />
+									<input type="hidden" name="role" value="${ offre.rolePropose }" />
+									<input type="submit" value="Accepter" />
+								</form>
+							</td>	
+							<td>
+								<form action = "offre" method="POST">
+									<input type="hidden" name="option" value="delete" />
+									<input type="hidden" name="id_offre" value="${ offre.id }" />
+									<input type="submit" value="Refuser" />
+								</form>
+							</td>	
+						</tr>
+					</c:forEach>
+			</table>
+			
+			<h1>Candidater</h1>
+			<form action = "joueur" method="POST">
+				<input type="hidden" name="id_page" value="${ id }" />
+				<input type="hidden" name="option" value="candidater" />	
+				Manager <input type="text" name="pseudo_manager"/>
+				Role souhaité <input type="text" name="role_demande" />
+				Salaire souhaité <input type="text" name="salaire_demande" />
+				<input type="submit" value="Envoyer" />
+				
+			</form>
+		</div>
 		<div id="botBandeau" class="row">
 			<div class="col-2"></div>
 			<div id="termsOfUse" class="col-3">Terms of use</div>
@@ -191,39 +245,43 @@ function hideForm2(){
 
 var cp=document.getElementsByClassName("champProfil");
 var co=document.getElementsByClassName("champOffre");
-function changeType(type)
+
+for(var i=0;i<co.length;i++)
 {
-    if(type=="Profil")
-    {
+co[i].style.display="none";
+}
 
-        for(var i=0;i<co.length;i++)
-        {
-            co[i].style.display="none";
-           
-        }
-
-        for(var i=0;i<cp.length;i++)
-        {
-            cp[i].style.display="block";
-        
-        }
- 
-    }
-    else
-    {
-         for(var i=0;i<cp.length;i++)
-         {
-             cp[i].style.display="none";
-            
-         }
-
-         for(var i=0;i<co.length;i++)
-         {
-             co[i].style.display="block";
-          
-         }
-    }
-
+function changeType(type)
+{ 
+		if(type=="Profil")
+	    {
+	        for(var i=0;i<co.length;i++)
+	        {
+	            co[i].style.display="none";
+	           
+	        }
+	
+	        for(var i=0;i<cp.length;i++)
+	        {
+	            cp[i].style.display="block";
+	        
+	        }
+	 
+	    }
+	    else
+	    {
+	         for(var i=0;i<cp.length;i++)
+	         {
+	             cp[i].style.display="none";
+	            
+	         }
+	
+	         for(var i=0;i<co.length;i++)
+	         {
+	             co[i].style.display="block";
+	          
+	         }
+	    }
 }
 
 </script>

@@ -32,6 +32,7 @@ public class connect extends springServlet {
         {
         	request.getSession().setAttribute("id", c.getId());
             request.getSession().setAttribute("login", login);
+            request.getSession().setAttribute("password", c.getPassword());
             request.getSession().setAttribute("nom", c.getNom());
             request.getSession().setAttribute("prenom", c.getPrenom());
             request.getSession().setAttribute("pseudo", c.getPseudo());
@@ -43,13 +44,15 @@ public class connect extends springServlet {
             request.getSession().setAttribute("salmin", ((Joueur) c).getSalmin());
             request.getSession().setAttribute("equipe", c.getEquipe());
             request.getSession().setAttribute("isConnect", "Y");
-            
-            
-            
+	    	
+	    	List<Offre> offres = daoOffre.selectOffresById(c.getId());   	
+            request.setAttribute("offres", offres);
+                     
             this.getServletContext().getRequestDispatcher("/WEB-INF/joueur.jsp").forward(request, response);
         }
         else if (c instanceof Manager) 
         {
+        	request.getSession().setAttribute("id", c.getId());
             request.getSession().setAttribute("login", login);
             request.getSession().setAttribute("isConnect", "Y");
             request.getSession().setAttribute("nom", c.getNom());

@@ -32,6 +32,7 @@ import model.*;
 
 	    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	               
+	    	//Offre
 	    	String option = request.getParameter("option");
 	    	
 	    	System.out.println(option);
