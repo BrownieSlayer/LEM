@@ -54,17 +54,19 @@ import model.Offre;
 	        {
 	       		Double salmin = Double.parseDouble(request.getParameter("salmin"));
 	       		Joueur j = new Joueur();
+	       		j.setId(idPage);
 	       		j.setSalmin(salmin);
 	       		daoCompte.save(j);
 	        }
 	        else if (option.equals("updateRole"))
 	        {
-	        	String role = request.getParameter("String");
+	        	String role = request.getParameter("role");
 	       		Joueur j = new Joueur();
+	       		j.setId(idPage);
 	       		j.setRole(role);
+	       		System.out.println(j);
 	       		daoCompte.save(j);
 	        }
-	    	
 	    	//Offre
 	    	if(option.equals("insert"))
 	    	{
@@ -76,7 +78,7 @@ import model.Offre;
 	    		Joueur j = (Joueur) daoCompte.selectById(idManager);
 	    		String equipePropose = m.getEquipe();
 	    		Offre o = new Offre(j,m,salairePropose,rolePropose,equipePropose);
-	    		ApplicationContext.getDaoOffre().insert(o);
+	    		daoOffre.save(o);
 	    	}
 	    	else if (option.equals("update"))
 	    	{
@@ -88,12 +90,12 @@ import model.Offre;
 		        o.setId(idOffre);
 		        o.setSalairePropose(salairePropose);
 		        o.setRolePropose(rolePropose);
-		        ApplicationContext.getDaoOffre().save(o);
+		        daoOffre.save(o);
 	    	}
 	    	else if(option.equals("delete"))
 	    	{
 		        int idOffre = Integer.parseInt(request.getParameter("id_offre"));
-	    		ApplicationContext.getDaoOffre().deleteById(idOffre);
+	    		daoOffre.deleteById(idOffre);
 	    	}
 	    	else if (option.equals("accepter"))
 	    	{
@@ -113,7 +115,7 @@ import model.Offre;
 	    		joueur.setRole(role);
 	    		joueur.setManager(manager);
 	    		daoCompte.save(joueur);
-	    		ApplicationContext.getDaoOffre().deleteById(idOffre);
+	    		daoOffre.deleteById(idOffre);
 	    	}
 	    	else if (option.equals("candidater"))
 	    	{

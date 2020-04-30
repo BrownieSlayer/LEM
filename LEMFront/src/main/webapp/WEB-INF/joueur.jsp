@@ -78,13 +78,13 @@
 					Equipe actuelle : ${equipe}<br> <br>
 					<br> Rôle actuel : ${role}<br>
 					<br>
-					<form id="formModifRole" action="joueur" method="POST">
+					<form action="joueur" method="POST">
 						<button id = "btnModifRole" type="button" class = "btn btn-warning btn-block boutonJauneJoueur" onClick="hideForm1()"> Modifier rôle</button>
 						<br>
 						<!-- Boutons Rôles -->
  
 				 		<div  class="btn-group btn-group-toggle champModifRole" data-toggle="buttons">
-				  			<input type="hidden" name="id_page" value="${ id }" />
+				  			<input type="hidden" name="id_page" value="${id}" />
 							<input type="hidden" name="option" value="updateRole" />
 				  			<label class="btn btn-light active">
 				    			<input required checked name="role" type="radio" value="Top"/>  Top
@@ -100,9 +100,7 @@
 				  			</label>
 				  			<label class="btn btn-light">
 				   				  <input required name="role" type="radio" value="Support"/> Support
-				  			</label>
-				  			
-				  			
+				  			</label>		
 						</div>
 						<br>
 						<div  class="btn-group btn-group-toggle champModifRole" data-toggle="buttons">
@@ -115,7 +113,7 @@
 					<br>
 					<br> Salaire minimum exigé actuel : ${salmin}<br>
 					<br>
-					<form id="formModifRole" action="joueur" method="POST">
+					<form action="joueur" method="POST">
 						<button id = "btnModifSal" type="button" class = "btn btn-warning btn-block boutonJauneJoueur" onClick="hideForm2()"> Modifier salaire</button>
 						<br>
 						<div class="input-group-prepend champModifSal">
