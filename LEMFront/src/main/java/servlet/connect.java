@@ -59,6 +59,8 @@ public class connect extends springServlet {
             request.getSession().setAttribute("prenom", c.getPrenom());
             request.getSession().setAttribute("pseudo", c.getPseudo());
             request.getSession().setAttribute("equipe", c.getEquipe());
+            List<Offre> offres = daoOffre.selectOffresById(c.getId());   	
+            request.setAttribute("offres", offres);
             this.getServletContext().getRequestDispatcher("/WEB-INF/manager.jsp").forward(request, response);
         }
         else {
