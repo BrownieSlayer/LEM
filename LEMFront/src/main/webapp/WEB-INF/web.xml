@@ -2,15 +2,28 @@
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" version="3.0">
 
 <!-- Page par défaut -->
-<welcome-file-list>
-    <welcome-file>connect</welcome-file>
-</welcome-file-list>
+	<welcome-file-list>
+		<welcome-file>connect</welcome-file>
+	</welcome-file-list>
 
-<jsp-config>
-    <jsp-property-group>
-      <url-pattern>*.jsp</url-pattern>
-      <include-prelude>/WEB-INF/taglib.jsp</include-prelude>
-    </jsp-property-group>
- </jsp-config>
+	<jsp-config>
+		<jsp-property-group>
+			<url-pattern>*.jsp</url-pattern>
+			<include-prelude>/WEB-INF/taglib.jsp</include-prelude>
+		</jsp-property-group>
+	</jsp-config>
+
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+
+	<context-param>
+		<param-name>contextClass</param-name>
+		<param-value>org.springframework.web.context.support.AnnotationConfigWebApplicationContext</param-value>
+	</context-param>
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>config.AppConfig</param-value>
+	</context-param>
 
 </web-app>

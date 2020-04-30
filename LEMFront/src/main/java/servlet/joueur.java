@@ -11,7 +11,7 @@ package servlet;
 	import model.*;
 
 	@WebServlet("/joueur")
-	public class joueur extends HttpServlet {
+	public class joueur extends springServlet {
 
 	    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	    	

@@ -15,7 +15,7 @@ import model.Joueur;
 import model.Manager;
 
 @WebServlet("/inscription")
-public class inscription extends HttpServlet {   
+public class inscription extends springServlet {   
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -29,7 +29,7 @@ public class inscription extends HttpServlet {
 		String action=request.getParameter("action");
 
 
-		IDAOCompte daoC = ApplicationContext.getDaoCompte();
+		IDAOCompte daoC = daoCompte;
 		Compte c = null;
 		if(action.equals("checkPseudo")) //Vérifie que le pseudo n'est pas déjà pris
 		{
@@ -69,7 +69,7 @@ public class inscription extends HttpServlet {
 					String prenom=request.getParameter("prenom");
 					String equipe=request.getParameter("equipe");
 					c=new Manager(login, password, nom, prenom, pseudo, equipe);
-					daoC.insert(c);
+					daoC.save(c);
 				}
 				else if(typeCompte.equals("Joueur"))
 				{
@@ -87,7 +87,7 @@ public class inscription extends HttpServlet {
 										
 					
 					c=new Joueur(login, password, nom, prenom, pseudo, equipe, manager, role, salmin, elimination, mort, assist);
-					daoC.insert(c);
+					daoC.save(c);
 				}
 				this.getServletContext().getRequestDispatcher("/WEB-INF/connect.jsp").forward(request, response);
 			}

@@ -15,20 +15,16 @@ import application.ApplicationContext;
 import model.*;
 
 	@WebServlet("/offre")
-	public class offre extends HttpServlet {
+	public class offre extends springServlet {
 
 	    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	    	String option = request.getParameter("option");
 	    	
-	    	Compte c = ApplicationContext.getDaoCompte().checkConnect("Kodo","mdp");
-	    	
+	    	Compte c = daoCompte.checkConnect("Kodo","mdp");
+	    	int idCompte = c.getId();
 	    	//dao qui va chercher toutes les équipes
-	    	Hibernate.initialize(((Joueur) c).getOffres());
-	    	List<Offre> offres = ((Joueur) c).getOffres();
+	    	List<Offre> offres = daoOffre.selectOffresById(idCompte);
             request.setAttribute("offres", offres);
-	    	
-            //Forcer a nettoyer le cache de EntityManager
-            ApplicationContext.getDaoCompte().detach(c);
             
 	    	//Faut donner cette liste à la vue JSP
 	    	this.getServletContext().getRequestDispatcher("/WEB-INF/offre.jsp").forward(request, response);
@@ -46,8 +42,8 @@ import model.*;
 	    		int idManager = Integer.parseInt(request.getParameter("id_manager"));
 	    		String rolePropose = request.getParameter("role");
 	    		Double salairePropose = Double.parseDouble(request.getParameter("salmin"));
-	    		Manager m = (Manager) ApplicationContext.getDaoCompte().selectById(idManager);
-	    		Joueur j = (Joueur) ApplicationContext.getDaoCompte().selectById(idManager);
+	    		Manager m = (Manager) daoCompte.selectById(idManager);
+	    		Joueur j = (Joueur) daoCompte.selectById(idManager);
 	    		String equipePropose = m.getEquipe();
 	    		Offre o = new Offre(j,m,salairePropose,rolePropose,equipePropose);
 	    		ApplicationContext.getDaoOffre().insert(o);
@@ -62,19 +58,19 @@ import model.*;
 		        o.setId(idOffre);
 		        o.setSalairePropose(salairePropose);
 		        o.setRolePropose(rolePropose);
-		        ApplicationContext.getDaoOffre().update(o);
+		        ApplicationContext.getDaoOffre().save(o);
 	    	}
 	    	else if(option.equals("delete"))
 	    	{
 		        int idOffre = Integer.parseInt(request.getParameter("id_offre"));
-	    		ApplicationContext.getDaoOffre().delete(idOffre);
+	    		ApplicationContext.getDaoOffre().deleteById(idOffre);
 	    	}
 	    	else if (option.equals("accepter"))
 	    	{
 	    		int idOffre = Integer.parseInt(request.getParameter("id_offre"));
 	    		int idJoueur = Integer.parseInt(request.getParameter("id_joueur"));
 	    		int idManager = Integer.parseInt(request.getParameter("id_manager"));
-	    		Manager manager = (Manager) ApplicationContext.getDaoCompte().selectById(idManager);
+	    		Manager manager = (Manager) daoCompte.selectById(idManager);
 	    		String equipe = request.getParameter("equipe");
 	    		String role= request.getParameter("role");
 	    		System.out.println(idJoueur);
@@ -86,8 +82,8 @@ import model.*;
 	    		joueur.setEquipe(equipe);
 	    		joueur.setRole(role);
 	    		joueur.setManager(manager);
-	    		ApplicationContext.getDaoCompte().update(joueur);
-	    		ApplicationContext.getDaoOffre().delete(idOffre);
+	    		daoCompte.save(joueur);
+	    		ApplicationContext.getDaoOffre().deleteById(idOffre);
 	    	}
 	    	else if (option.equals("candidater"))
 	    	{
@@ -96,11 +92,11 @@ import model.*;
 	    		int idJoueur = 7;
 	    		String pseudoManager = request.getParameter("pseudo_manager");
 	    		
-	    		Manager manager = (Manager) ApplicationContext.getDaoCompte().selectByPseudo(pseudoManager);
+	    		Manager manager = (Manager) daoCompte.selectByPseudo(pseudoManager);
 	    			System.out.println(manager.getPseudo());
 	    		if (manager != null)
 	    		{
-	    		Joueur joueur = (Joueur) ApplicationContext.getDaoCompte().selectById(idJoueur);
+	    		Joueur joueur = (Joueur) daoCompte.selectById(idJoueur);
 	    			System.out.println(joueur);
 	    		String roleDemande = request.getParameter("role_demande");
 	    			System.out.println(roleDemande);

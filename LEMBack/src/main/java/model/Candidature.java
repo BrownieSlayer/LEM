@@ -18,10 +18,10 @@ public class Candidature {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="id")
 	private int id;
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne()
 	@JoinColumn(name="id_joueur")
 	private Joueur joueur;
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne()
 	@JoinColumn(name="id_manager")
 	private Manager manager;
 	@Column(name="salaireDemande",nullable=false)

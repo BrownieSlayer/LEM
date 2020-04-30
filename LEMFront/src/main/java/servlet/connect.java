@@ -13,7 +13,7 @@ import application.ApplicationContext;
 import model.*;
 
 @WebServlet("/connect")
-public class connect extends HttpServlet {
+public class connect extends springServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     	
@@ -25,7 +25,7 @@ public class connect extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String login = request.getParameter("login");
         String password = request.getParameter("password");
-        Compte c = ApplicationContext.getDaoCompte().checkConnect(login,password);
+        Compte c = daoCompte.checkConnect(login,password);
         request.setAttribute("erreur", "");
         
         if (c instanceof Joueur) 
