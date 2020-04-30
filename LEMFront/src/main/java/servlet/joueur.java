@@ -69,10 +69,12 @@ import model.Offre;
 	        	double kills = Double.parseDouble(request.getParameter("elimination"));
 	        	double morts = Double.parseDouble(request.getParameter("mort"));
 	        	double assist = Double.parseDouble(request.getParameter("assist"));
+	        	double kda = (kills+assist)/morts;
 	        	Joueur j = (Joueur) daoCompte.findById(idPage).get();
 	        	j.setElimination(kills);
 	        	j.setMort(morts);
 	        	j.setAssist(assist);
+	        	j.setKda(kda);
 	       		daoCompte.save(j);
 	        }
 	       	
