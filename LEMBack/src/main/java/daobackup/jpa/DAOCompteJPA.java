@@ -1,4 +1,4 @@
-package dao.jpa;
+package daobackup.jpa;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -6,13 +6,19 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-import dao.IDAOCompte;
-import model.Application;
+import javax.transaction.Transactional;
+
+import org.springframework.stereotype.Repository;
+
+import daobackup.IDAOCompte;
+//import model.Application;
 import model.Compte;
 import model.Joueur;
 import model.Manager;
 import model.Roles;
 
+@Repository
+@Transactional
 public class DAOCompteJPA extends DAOJPA implements IDAOCompte {
 
 	@Override
@@ -33,18 +39,18 @@ public class DAOCompteJPA extends DAOJPA implements IDAOCompte {
 	}
 
 	@Override
-	public Compte selectById(Integer id) {
+	public Compte findById(Integer id) {
 
 		return this.em.find(Compte.class, id);
 	}
 
 	@Override
-	public List<Compte> selectAll() {
+	public List<Compte> findAll() {
 		return em.createQuery( "select c from Compte c", Compte.class).getResultList();
 	}
 
 	@Override
-	public void update(Compte entity) {
+	public void save(Compte entity) {
 
 		this.em.getTransaction().begin(); //On d�marre la transaction
 
@@ -61,7 +67,7 @@ public class DAOCompteJPA extends DAOJPA implements IDAOCompte {
 	}
 
 	@Override
-	public void delete(Integer id) {
+	public void deleteById(Integer id) {
 
 		try {
 			this.em.getTransaction().begin();
@@ -211,6 +217,10 @@ public class DAOCompteJPA extends DAOJPA implements IDAOCompte {
 		catch(Exception e) {return null;}
 
 		
+	}
+
+	@Override
+	public void detach(Object entity) {		
 	}
 
 

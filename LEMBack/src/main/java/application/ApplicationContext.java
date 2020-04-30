@@ -1,11 +1,11 @@
 package application;
 
-import dao.IDAOCandidature;
-import dao.IDAOCompte;
-import dao.IDAOOffre;
-import dao.jpa.DAOCandidatureJPA;
-import dao.jpa.DAOCompteJPA;
-import dao.jpa.DAOOffreJPA;
+import daobackup.IDAOCandidature;
+import daobackup.IDAOCompte;
+import daobackup.IDAOOffre;
+import daobackup.jpa.DAOCandidatureJPA;
+import daobackup.jpa.DAOCompteJPA;
+import daobackup.jpa.DAOOffreJPA;
 
 public class ApplicationContext {
 		private static IDAOOffre daoOffre;

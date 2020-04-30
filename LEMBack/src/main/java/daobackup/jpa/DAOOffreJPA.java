@@ -1,17 +1,28 @@
-package dao.jpa;
+package daobackup.jpa;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
 import java.util.List;
 
-import dao.IDAOCandidature;
-import model.Candidature;
+import javax.transaction.Transactional;
+
+import org.springframework.stereotype.Repository;
+
+import daobackup.IDAOOffre;
+//import model.Application;
+import model.Compte;
 import model.Joueur;
 import model.Manager;
 import model.Offre;
 
-public class DAOCandidatureJPA extends DAOJPA implements IDAOCandidature {
+@Repository
+@Transactional
+public class DAOOffreJPA extends DAOJPA implements IDAOOffre {
 
 	@Override
-	public void insert(Candidature t) {
+	public void insert(Offre t) {
 		this.em.getTransaction().begin();
 		try {
 		this.em.persist(t);
@@ -20,26 +31,25 @@ public class DAOCandidatureJPA extends DAOJPA implements IDAOCandidature {
 		catch(Exception e) {
 			this.em.getTransaction().rollback();
 		}	
-		
 	}
 
 	@Override
-	public Candidature selectById(Integer id) {
+	public Offre findById(Integer id) {
 		return this.em
-				.createQuery("select c from Candidature c where c.id = ?1", Candidature.class)
+				.createQuery("select o from Offre o where o.id = ?1", Offre.class)
 				.setParameter(1,id)
 				.getSingleResult();
 	}
 
 	@Override
-	public List<Candidature> selectAll() {
+	public List<Offre> findAll() {
 		return this.em
-				.createQuery("select c from Candidature c", Candidature.class)
+				.createQuery("select o from Offre o", Offre.class)
 				.getResultList();
 	}
 
 	@Override
-	public void update(Candidature t) {
+	public void save(Offre t) {
 		this.em.getTransaction().begin();
 		try {
 		this.em.merge(t);
@@ -48,11 +58,10 @@ public class DAOCandidatureJPA extends DAOJPA implements IDAOCandidature {
 		catch(Exception e) {
 			this.em.getTransaction().rollback();
 		}
-		
 	}
 
 	@Override
-	public void delete(Integer id) {
+	public void deleteById(Integer id) {
 		try {
 			this.em.getTransaction().begin();
 			Offre offreToRemove = new Offre();	
@@ -60,22 +69,20 @@ public class DAOCandidatureJPA extends DAOJPA implements IDAOCandidature {
 			this.em.remove(this.em.merge(offreToRemove));
 			this.em.getTransaction().commit();
 			}catch(Exception e) {this.em.getTransaction().rollback();}
-		
 	}
 
-	@Override
-	public Candidature selectCandidatureByIds(Integer id_joueur, Integer id_manager) {
-		// TODO Auto-generated method stub
+	@Override //Laisser vide
+	public Offre selectOffreByIds(Integer id_joueur, Integer id_manager) {
 		return null;
 	}
+	
 	@Override
-	public List<Candidature> selectCandidatureByCompte(Integer id) {
+	public List<Offre> selectOffreByCompte(Integer id) {	
 		return this.em
-				.createQuery("select c from Candidature c where ?1 = c.joueur.id or ?1 = c.manager.id", Candidature.class)
+				.createQuery("select o from Offre o where ?1 = o.joueur.id or ?1 = o.manager.id", Offre.class)
 				.setParameter(1,id)
 				.getResultList();
 	}
-	
 	@Override
 	public void delete(Joueur joueur, Manager manager) {
 		try {
@@ -88,8 +95,6 @@ public class DAOCandidatureJPA extends DAOJPA implements IDAOCandidature {
 			}catch(Exception e) {this.em.getTransaction().rollback();}
 		
 	}
-
-
 
 
 

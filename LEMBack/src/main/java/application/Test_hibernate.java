@@ -2,10 +2,10 @@ package application;
 
 import java.util.List;
 
-import dao.IDAOCandidature;
-import dao.IDAOCompte;
-import dao.IDAOOffre;
-import dao.jpa.DAOJPA;
+import daobackup.IDAOCandidature;
+import daobackup.IDAOCompte;
+import daobackup.IDAOOffre;
+import daobackup.jpa.DAOJPA;
 import model.Candidature;
 import model.Compte;
 import model.Joueur;
@@ -132,7 +132,5 @@ public class Test_hibernate {
 			System.out.println(o.getJoueur());
 		}*/
 		
-		
-		DAOJPA.close();
 	}
 }
