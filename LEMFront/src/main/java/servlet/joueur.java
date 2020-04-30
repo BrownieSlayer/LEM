@@ -49,20 +49,21 @@ import model.Offre;
 	    	int idPage = Integer.parseInt(request.getParameter("id_page"));
 	    	System.out.println(option);
 	    	
-	    	//Profil
-	        /*String role = request.getParameter("role");
-	        Double salmin =Double.parseDouble(request.getParameter("salmin"));
-	    	String pseudo = request.getParameter("pseudo");
-	        Compte c = Application.getInstance().getDaoC().selectByPseudo(pseudo);
-	        
-	        if (actionRole)
+	    	//Profil	        
+	       	if(option.equals("updateSalmin"))
 	        {
-	        Application.getInstance().getDaoC().updateRole(c, role);
+	       		Double salmin = Double.parseDouble(request.getParameter("salmin"));
+	       		Compte c = new Compte();
+	       		((Joueur)c).setSalmin(salmin);
+	       		daoCompte.save(c);
 	        }
-	        else if (actionSalmin)
+	        else if (option.equals("updateRole"))
 	        {
-	        Application.getInstance().getDaoC().updateSalmin(c, salmin);
-	        }*/
+	        	String role = request.getParameter("String");
+	       		Compte c = new Compte();
+	       		((Joueur)c).setRole(role);
+	       		daoCompte.save(c);
+	        }
 	    	
 	    	//Offre
 	    	if(option.equals("insert"))

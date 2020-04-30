@@ -81,6 +81,7 @@
 					<form id="formModifRole" action="joueur" method="POST">
 						<button id = "btnModifRole" type="button" class = "btn btn-warning btn-block boutonJauneJoueur" onClick="hideForm1()"> Modifier rôle</button>
 						<input type="hidden" name="id_page" value="${ id }" />
+						<input type="hidden" name="option" value="updateRole" />
 						<br>
 						<!-- Boutons Rôles -->
  
@@ -116,6 +117,7 @@
 					<br>
 					<form id="formModifRole" action="joueur" method="POST">
 						<input type="hidden" name="id_page" value="${ id }" />
+						<input type="hidden" name="option" value="updateSalmin" />
 						<button id = "btnModifSal" type="button" class = "btn btn-warning btn-block boutonJauneJoueur" onClick="hideForm2()"> Modifier salaire</button>
 						<br>
 						<div class="input-group-prepend champModifSal">
