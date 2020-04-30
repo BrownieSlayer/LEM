@@ -64,6 +64,17 @@ import model.Offre;
 	        	j.setRole(role);
 	       		daoCompte.save(j);
 	        }
+	        else if (option.equals("updateStats"))
+	        {
+	        	double kills = Double.parseDouble(request.getParameter("elimination"));
+	        	double morts = Double.parseDouble(request.getParameter("mort"));
+	        	double assist = Double.parseDouble(request.getParameter("assist"));
+	        	Joueur j = (Joueur) daoCompte.findById(idPage).get();
+	        	j.setElimination(kills);
+	        	j.setMort(morts);
+	        	j.setAssist(assist);
+	       		daoCompte.save(j);
+	        }
 	       	
 	    	//Offre
 	    	if(option.equals("insert"))
