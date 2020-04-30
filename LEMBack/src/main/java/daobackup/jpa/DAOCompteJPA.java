@@ -29,7 +29,6 @@ public class DAOCompteJPA extends DAOJPA implements IDAOCompte {
 		try {
 			this.em.persist(entity);
 			this.em.getTransaction().commit();
-
 		}
 		catch(Exception e) {
 			e.printStackTrace();
@@ -62,8 +61,6 @@ public class DAOCompteJPA extends DAOJPA implements IDAOCompte {
 		catch (Exception e) { //Y'a un probl�me ??
 			this.em.getTransaction().rollback(); //On annule la transaction
 		}
-
-
 	}
 
 	@Override
@@ -82,11 +79,10 @@ public class DAOCompteJPA extends DAOJPA implements IDAOCompte {
 		}
 
 		catch (Exception e) {
-
 			this.em.getTransaction().rollback();
 		}
-
 	}
+	
 	@Override
 	public void updateSalmin(Joueur joueur, double newSalmin) {
 
@@ -101,8 +97,6 @@ public class DAOCompteJPA extends DAOJPA implements IDAOCompte {
 		catch (Exception e) {
 			this.em.getTransaction().rollback(); 
 		}
-
-
 	}
 
 	@Override
@@ -120,7 +114,6 @@ public class DAOCompteJPA extends DAOJPA implements IDAOCompte {
 			e.printStackTrace();
 			this.em.getTransaction().rollback(); 
 		}
-
 	}
 
 	@Override
@@ -215,8 +208,6 @@ public class DAOCompteJPA extends DAOJPA implements IDAOCompte {
 		
 		}
 		catch(Exception e) {return null;}
-
-		
 	}
 
 	@Override
