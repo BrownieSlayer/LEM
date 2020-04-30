@@ -15,8 +15,8 @@ import model.Joueur;
 import model.Manager;
 import model.Offre;
 
-	@WebServlet("/joueur")
-	public class joueur extends springServlet {
+	@WebServlet("/manager")
+	public class manager extends springServlet {
 
 	    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	    		
@@ -28,14 +28,7 @@ import model.Offre;
             request.getSession().setAttribute("nom", comptePage.getNom());
             request.getSession().setAttribute("prenom", comptePage.getPrenom());
             request.getSession().setAttribute("pseudo", comptePage.getPseudo());
-            request.getSession().setAttribute("elimination", ((Joueur) comptePage).getElimination());
-            request.getSession().setAttribute("mort", ((Joueur) comptePage).getMort());
-            request.getSession().setAttribute("assist", ((Joueur) comptePage).getAssist());
-            request.getSession().setAttribute("kda", ((Joueur) comptePage).getKda());
-            request.getSession().setAttribute("role", ((Joueur) comptePage).getRole());
-            request.getSession().setAttribute("salmin", ((Joueur) comptePage).getSalmin());
             request.getSession().setAttribute("equipe", comptePage.getEquipe());
-            request.getSession().setAttribute("isConnect", "Y");
             List<Offre> offres = daoOffre.selectOffresById(idPage);   	
             request.setAttribute("offres", offres);    	
 	    	
@@ -53,18 +46,20 @@ import model.Offre;
 	       	if(option.equals("updateSalmin"))
 	        {
 	       		Double salmin = Double.parseDouble(request.getParameter("salmin"));
-	       		Joueur j = (Joueur) daoCompte.findById(idPage).get();
-	        	j.setSalmin(salmin);
+	       		Joueur j = new Joueur();
+	       		j.setId(idPage);
+	       		j.setSalmin(salmin);
 	       		daoCompte.save(j);
 	        }
 	        else if (option.equals("updateRole"))
 	        {
 	        	String role = request.getParameter("role");
-	        	Joueur j = (Joueur) daoCompte.findById(idPage).get();
-	        	j.setRole(role);
+	       		Joueur j = new Joueur();
+	       		j.setId(idPage);
+	       		j.setRole(role);
+	       		System.out.println(j);
 	       		daoCompte.save(j);
 	        }
-	       	
 	    	//Offre
 	    	if(option.equals("insert"))
 	    	{
@@ -82,8 +77,10 @@ import model.Offre;
 	    	{
 		    	String rolePropose = request.getParameter("role");
 		        Double salairePropose = Double.parseDouble(request.getParameter("salmin"));
-		        int idOffre = Integer.parseInt(request.getParameter("id"));    
-		        Offre o = daoOffre.findById(idOffre).get();
+		        int idOffre = Integer.parseInt(request.getParameter("id"));
+		        
+		        Offre o = new Offre();
+		        o.setId(idOffre);
 		        o.setSalairePropose(salairePropose);
 		        o.setRolePropose(rolePropose);
 		        daoOffre.save(o);
@@ -105,11 +102,12 @@ import model.Offre;
 	    		System.out.println(idManager);
 	    		System.out.println(equipe);
 	    		System.out.println(role);
-	    		Joueur j = (Joueur) daoCompte.findById(idPage).get();
-	    		j.setEquipe(equipe);
-	    		j.setRole(role);
-	    		j.setManager(manager);
-	    		daoCompte.save(j);
+	    		Joueur joueur = new Joueur();
+	    		joueur.setId(idJoueur);
+	    		joueur.setEquipe(equipe);
+	    		joueur.setRole(role);
+	    		joueur.setManager(manager);
+	    		daoCompte.save(joueur);
 	    		daoOffre.deleteById(idOffre);
 	    	}
 	    	else if (option.equals("candidater"))
