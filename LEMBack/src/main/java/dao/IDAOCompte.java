@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
 import model.Compte;
+import model.Joueur;
 import model.Manager;
 
 public interface IDAOCompte extends JpaRepository<Compte, Integer>{
@@ -40,9 +41,13 @@ public interface IDAOCompte extends JpaRepository<Compte, Integer>{
 	@Query("select c from Compte c where c.typeCompte =Joueur and c.equipe =?1")
 	public List<Compte> selectTeam();
 	
-	//Permet de renseigner le manager en donnant le nom de l'équipe lors de l'inscription
+	//Permet de renseigner le manager en donnant le nom de l'équipe lors de l'inscription (pour les joueurs)
 	@Query("select m from Manager m where m.equipe=?1")
 	public Manager linkManagerTeam(String team);
+	
+	//Permet de renseigner sur les joueurs l'id du manager qui vient de s'inscrire et de le rendre nul lorsqu'il se desinscrit
+	@Query("select j from Joueur j where j.equipe=?1")
+	public List<Joueur> ajoutManager(String equipe);
 	
 	
 	

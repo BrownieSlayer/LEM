@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -70,6 +71,14 @@ public class inscription extends springServlet {
 					String equipe=request.getParameter("equipe");
 					c=new Manager(login, password, nom, prenom, pseudo, equipe);
 					daoC.save(c);
+					
+					//Ajoute le manager sur tous les joueur de son equipe deja inscrit dans la base
+					List<Joueur> saTeam = daoCompte.ajoutManager(equipe);
+					for (Joueur j : saTeam ) {
+						j.setManager((Manager) c);
+						daoCompte.save(j);
+					}
+					
 				}
 				else if(typeCompte.equals("Joueur"))
 				{
@@ -78,7 +87,7 @@ public class inscription extends springServlet {
 					String nom=request.getParameter("nom");
 					String prenom=request.getParameter("prenom");
 					String equipe=request.getParameter("equipe");
-					Manager manager = ApplicationContext.getDaoCompte().linkManagerTeam(equipe);
+					Manager manager = daoCompte.linkManagerTeam(equipe);
 					String role=request.getParameter("role");
 					Double salmin=Double.parseDouble(request.getParameter("salmin"));
 					Double elimination=Double.parseDouble(request.getParameter("elimination"));
