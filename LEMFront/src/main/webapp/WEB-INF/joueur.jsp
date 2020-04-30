@@ -80,12 +80,12 @@
 					<br>
 					<form id="formModifRole" action="joueur" method="POST">
 						<button id = "btnModifRole" type="button" class = "btn btn-warning btn-block boutonJauneJoueur" onClick="hideForm1()"> Modifier rôle</button>
-						<input type="hidden" name="id_page" value="${ id }" />
-						<input type="hidden" name="option" value="updateRole" />
 						<br>
 						<!-- Boutons Rôles -->
  
 				 		<div  class="btn-group btn-group-toggle champModifRole" data-toggle="buttons">
+				  			<input type="hidden" name="id_page" value="${ id }" />
+							<input type="hidden" name="option" value="updateRole" />
 				  			<label class="btn btn-light active">
 				    			<input required checked name="role" type="radio" value="Top"/>  Top
 				  			</label>
@@ -106,7 +106,7 @@
 						</div>
 						<br>
 						<div  class="btn-group btn-group-toggle champModifRole" data-toggle="buttons">
-						<input type="button" class="btn btn-warning col 2 espacementForm btn-block boutonJauneJoueur" value ="Valider">
+						<input type="submit" class="btn btn-warning col 2 espacementForm btn-block boutonJauneJoueur" value ="Valider">
 						</div>
 						<br>
 					</form>
@@ -116,17 +116,17 @@
 					<br> Salaire minimum exigé actuel : ${salmin}<br>
 					<br>
 					<form id="formModifRole" action="joueur" method="POST">
-						<input type="hidden" name="id_page" value="${ id }" />
-						<input type="hidden" name="option" value="updateSalmin" />
 						<button id = "btnModifSal" type="button" class = "btn btn-warning btn-block boutonJauneJoueur" onClick="hideForm2()"> Modifier salaire</button>
 						<br>
 						<div class="input-group-prepend champModifSal">
+						<input type="hidden" name="id_page" value="${ id }" />
+							<input type="hidden" name="option" value="updateSalmin" />
 		  					<span class="input-group-text">Salaire minimal souhaité</span>
 		  					<input type="text" class="form-control" name= "salmin">
 		  					<span class="input-group-prepend"></span><span class="input-group-text">€</span>
 		    			</div>
 		    			<div  class="btn-group btn-group-toggle champModifSal" data-toggle="buttons">
-							<input type="button" class="btn btn-warning col 2 espacementForm btn-block boutonJauneJoueur" value ="Valider">
+							<input type="submit" class="btn btn-warning col 2 espacementForm btn-block boutonJauneJoueur" value ="Valider">
 						</div>
 					</form>
 				</div>

@@ -53,16 +53,16 @@ import model.Offre;
 	       	if(option.equals("updateSalmin"))
 	        {
 	       		Double salmin = Double.parseDouble(request.getParameter("salmin"));
-	       		Compte c = new Compte();
-	       		((Joueur)c).setSalmin(salmin);
-	       		daoCompte.save(c);
+	       		Joueur j = new Joueur();
+	       		j.setSalmin(salmin);
+	       		daoCompte.save(j);
 	        }
 	        else if (option.equals("updateRole"))
 	        {
 	        	String role = request.getParameter("String");
-	       		Compte c = new Compte();
-	       		((Joueur)c).setRole(role);
-	       		daoCompte.save(c);
+	       		Joueur j = new Joueur();
+	       		j.setRole(role);
+	       		daoCompte.save(j);
 	        }
 	    	
 	    	//Offre
