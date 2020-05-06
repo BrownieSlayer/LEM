@@ -1,4 +1,4 @@
-package Controller;
+package controller;
 
 import javax.servlet.http.HttpSession;
 
@@ -30,6 +30,7 @@ public class JoueurController {
 		Compte compte=((Compte)session.getAttribute("compte"));
 		model.addAttribute("offres", this.daoOffre.selectOffresById(compte.getId()));
 		model.addAttribute("candidatures", this.daoCandidature.selectCandidaturesById(compte.getId()));
+		System.out.println("coucou2");
 		return "joueur";
 	}
 	

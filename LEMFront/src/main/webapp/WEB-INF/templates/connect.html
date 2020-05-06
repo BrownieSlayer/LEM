@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 
 
-<html th:replace="~{ layout.html :: layout('Connexion', ~{ ::body }) }">
+<html th:replace="~{ layout.html :: layout(  ~{ ::title }, ~{ ::body }) }">
 
 
 <head>
 <meta charset="UTF-8">
 
-<title>LEM Connexion</title>
+<title>ConnexionToto</title>
 </head>
 
 <body>
@@ -18,7 +18,7 @@
 		<div class="row" id="topconnect">
 		
 		<div class="col-3">
-		<img  id="logo" src="img/LogoLoLGrey.png" class = "img-fluid" />
+		<img  id="logo" src="assets/img/LogoLoLGrey.png" class = "img-fluid" />
 		</div>
 		
 		<div class="col-1"></div>
@@ -43,7 +43,7 @@
 					<!-- Disparait quand on click dessus (methode dans le script) -->
 				
 
-				<form th:if="${ session.compte == null }" id="formConnect" method="POST" action="connect"> <!-- le formulaire de connection -->
+				<form id="formConnect" method="POST" action="connect"> <!-- le formulaire de connection -->
 
 					<input type="text" name="login" placeholder="Identifiant" class="form-control" /><br />
 					<input type="password" name="password" placeholder="Mot de Passe" class="form-control"><br />
@@ -51,13 +51,9 @@
 					<!-- Apparait lorsque l'on clique (methode dans le script) -->
 
 				</form>
-					
-					<!-- Met une alerte si on réussit a se connecter -->
-					<div th:if="${ session.compte != null }" class="alert alert-success">
-						Vous êtes déjà connecté, [[ ${ session.compte.login }]].
-					</div>
 				
-				<img  id="gem" src="./img/gemRed.png" />
+				
+				<img  id="gem" src="assets/img/gemRed.png" />
 				<br/><br/>
 				
 				<form method="GET" action="inscription">
@@ -65,7 +61,7 @@
 					<button type="submit" class="btn btn-warning btn-lg btn-block boutonJaune" value="Inscription">Inscription</button>
 					<br />
 				</form>
-				<div id = "error" class="text-danger" >${erreur}</div>
+				<div id = "error" class="text-danger"  >[[${erreur}]]</div>
 
 
 			</div>
@@ -91,19 +87,16 @@
 	</div>
 </div>
 
-</body>
-
-
-
-
-
 <script>
 
 var formConnect=document.getElementById("formConnect");
 var btnLogin = document.getElementById("btnLogin");
+
+alert(btnLogin);
 btnLogin.onclick=hideForm;
 
 function hideForm(){	
+	alert("click");
 	formConnect.style.display="block";
 	//permet de faire apparaitre le formConnect
 	btnLogin.style.display="none";
@@ -111,4 +104,11 @@ function hideForm(){
 }
 
 </script>
+
+</body>
+
+
+
+
+
 </html>

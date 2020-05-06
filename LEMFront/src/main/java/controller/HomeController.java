@@ -1,4 +1,4 @@
-package Controller;
+package controller;
 
 import javax.servlet.http.HttpSession;
 
@@ -28,6 +28,7 @@ public class HomeController {
 	
 	@GetMapping({ "/", "/connect" })
 	public String connect(Model model) {
+		System.out.println("coucou");
 		return "connect";
 	}
 	
