@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import application.ApplicationContext;
 import model.*;
 
-@WebServlet("/connect")
+//@WebServlet("/connect")
 public class connect extends springServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

@@ -15,7 +15,7 @@ import model.Compte;
 import model.Joueur;
 import model.Manager;
 
-@WebServlet("/inscription")
+//@WebServlet("/inscription")
 public class inscription extends springServlet {   
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
