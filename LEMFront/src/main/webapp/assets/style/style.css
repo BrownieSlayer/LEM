@@ -161,11 +161,14 @@ body
 
 #botBandeau
 {
+<<<<<<< Updated upstream
 	position : relative; top : 100px;
+=======
+	position : relative; top : 500px;
+>>>>>>> Stashed changes
 	background-color:#111238;
 	height : 10%;
 	background-size:: 100% 10%;
-	
 }
 
 #termsOfUse
@@ -398,4 +401,24 @@ body
 	items-align: middle;
 	position : relative;
 	left:45%;
+}
+
+.profilePictureArea
+{
+  background-color : gold, opacity 0.5;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.profilePicture
+{
+	width:500px;
+	height: 375 px;
+}
+
+.accountPseudo
+{
+	text-align : center;
+	color : gold;
+	font-size : 35px;
+	font-weight : 500;
 }

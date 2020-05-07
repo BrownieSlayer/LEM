@@ -52,13 +52,12 @@
 			
 			<div class="col-2"></div>
 		</div>
-		<br>
-
-		<div id="bonjour" class="col-12">Bonjour [[ ${compte.prenom} ]] " [[ ${compte.pseudo} ]]" [[ ${compte.nom} ]] !</div>
-		<br>
 		
 		<div class="container-fluid champProfil">
-			Ceci est mon Profil
+			<div class = "profilePictureArea col-3">
+				<div class = "accountPseudo">[[ ${ compte.pseudo } ]]</div>
+				<img th:if="${compte.pseudo == 'Grabbz'}" class = "profilePicture" src="assets/img/G2_GrabbZ.png" style = "width:100%" />			
+			</div>
 		</div>
 		
 		<!-- Offre -->
