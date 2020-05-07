@@ -34,11 +34,11 @@ public interface IDAOCompte extends JpaRepository<Compte, Integer>{
 	public Compte selectByKda(int kda);
 	
 	//Selectionne tous les joueurs sans equipe
-	@Query("select c from Compte c where c.equipe = null")
+	@Query("select j from Joueur j where j.equipe = null")
 	public List<Compte> selectAllWithoutTeam();
 	
 	//Donne tous les joueurs d'une meme equipe (pour le manager)
-	@Query("select c from Compte c where c.typeCompte =Joueur and c.equipe =?1")
+	@Query("select j from Joueur j where j.equipe =?1")
 	public List<Compte> selectTeam();
 	
 	//Permet de renseigner le manager en donnant le nom de l'équipe lors de l'inscription (pour les joueurs)
@@ -49,8 +49,17 @@ public interface IDAOCompte extends JpaRepository<Compte, Integer>{
 	@Query("select j from Joueur j where j.equipe=?1")
 	public List<Joueur> ajoutManager(String equipe);
 	
+	//Selectionne tous les joueurs
+	@Query("select j from Joueur j")
+	public List<Joueur> selectAllJoueurs();
 	
+	//Selectionne tous les joueurs
+	@Query("select j from Joueur j where j.role = ?1")
+	public List<Joueur> selectJoueursByRole(String role);
 	
+	//Selectionne tous les joueurs
+	@Query("select j from Joueur j where j.salmin = ?1")
+	public List<Joueur> selectJoueursBySalmin(Double salmin);
 	
 	
 }
