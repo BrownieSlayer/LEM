@@ -100,6 +100,12 @@ public class Joueur extends Compte{
 		this.typeCompte = "joueur";
 	}
 	
+	//Constructeur simplifié sans description
+	public Joueur(Compte compte, Manager manager, String role, double salmin, double elimination, double mort, double assist) {
+		
+		this(compte.getLogin(), compte.getPassword(), compte.getNom(), compte.getPrenom(), compte.getPseudo(), compte.getEquipe(), manager, role, salmin, elimination, mort, assist);
+	}
+	
 	//Constructeur vide
 	public Joueur() {}
 

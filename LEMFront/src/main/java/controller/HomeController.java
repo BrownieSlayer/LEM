@@ -7,6 +7,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import dao.IDAOCandidature;
@@ -28,7 +30,6 @@ public class HomeController {
 	
 	@GetMapping({ "/", "/connect" })
 	public String connect(Model model) {
-		System.out.println("coucou");
 		return "connect";
 	}
 	
@@ -66,9 +67,5 @@ public class HomeController {
 			return "redirect:/connect";
 		}
 	}
-	
-	
-	
-	
 	
 }

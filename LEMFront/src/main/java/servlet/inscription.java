@@ -87,7 +87,7 @@ public class inscription extends springServlet {
 					String nom=request.getParameter("nom");
 					String prenom=request.getParameter("prenom");
 					String equipe=request.getParameter("equipe");
-					Manager manager = daoCompte.linkManagerTeam(equipe);
+					Manager manager = daoCompte.linkManagerTeam(equipe); //Ajoute le manager qui gere l'equipe avec lequel il s'inscrit
 					String role=request.getParameter("role");
 					Double salmin=Double.parseDouble(request.getParameter("salmin"));
 					Double elimination=Double.parseDouble(request.getParameter("elimination"));

@@ -1,12 +1,9 @@
 <!DOCTYPE html>
-<html>
-<style>
+<html th:replace="~{ layout.html :: layout(  ~{ ::title }, ~{ ::body }) }">
 
-
-</style>
 <head>
 <meta charset="UTF-8">
-
+<title>Inscription</title>
 </head>
 
 <body id = "background">
@@ -15,7 +12,7 @@
 
 <div id="ligne"></div>
 
-<img id="logoLoL" src="./img/LogoLoLGrey.png"/>
+<img id="logoLoL" src="./assets/img/LogoLoLGrey.png"/>
 
 
 
@@ -124,7 +121,7 @@
 	  			<div class="input-group-prepend">
 	    			<span class="input-group-text">Vérification de mot de passe</span>
 	  			</div>
-	  			<input placeholder="Vérification de MDP" class="form-control" id="checkPassword" type="password" required name="login" />
+	  			<input placeholder="Vérification de MDP" class="form-control" id="checkPassword" type="password" />
 			</div>
 			<div class="col-4"></div>
 		</div>
@@ -194,7 +191,7 @@
 					<div class="input-group-prepend">
 	  					<span class="input-group-text">Eliminations moyennes</span>
 	  				</div>
-	  					<input type="text" class="form-control" class="formJ" name="elimination">
+	  					<input type="text" class="form-control formJ" name="elimination">
 	  				<div class="input-group-prepend">
 	
 	    				<span class="input-group-text">0.00</span>
@@ -203,7 +200,7 @@
 	    			<div class="input-group-prepend">
 	  					<span class="input-group-text">Morts moyennes</span>
 	  				</div>
-	  					<input type="text" class="form-control" class="formJ" name="mort">
+	  					<input type="text" class="form-control formJ" name="mort">
 	  				<div class="input-group-prepend">
 	    				<span class="input-group-text">0.00</span>
 	    			</div>
@@ -211,7 +208,7 @@
 	    			<div class="input-group-prepend">
 	  					<span class="input-group-text">Assistances moyennes</span>
 	  				</div>
-	  					<input type="text" class="form-control" class="formJ" name="assist">
+	  					<input type="text" class="form-control formJ" name="assist">
 	  				<div class="input-group-prepend">
 	    				<span class="input-group-text">0.00</span>
 	    			</div>	
@@ -282,10 +279,9 @@ $("#pseudo").focusout(function()
 		var pseudo = $("#pseudo").val();
 		if(pseudo!="")
 		{
-			$.ajax("inscription", { 
+			$.ajax("inscription/checkPseudo", { 
 				type: "POST", 
 				data: { 
-					action:'checkPseudo', 
 					pseudo:pseudo 
 				},
 				success: function (resp) 
@@ -315,10 +311,9 @@ $("#loginForm").focusout(function()
 		var login = $("#loginForm").val();
 		if(login!="")
 		{
-			$.ajax("inscription", { 
+			$.ajax("inscription/checkLogin", { 
 				type: "POST", 
 				data: { 
-					action:'checkLogin', 
 					login:login 
 				},
 				success: function (resp) 

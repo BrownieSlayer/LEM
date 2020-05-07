@@ -35,6 +35,13 @@ public class Manager extends Compte {
 		super(login, password, nom, prenom, pseudo, equipe);
 		this.typeCompte = "manager";
 	}
+	
+	//Constructeur simplifié sans description
+	public Manager(Compte compte) {
+		
+		this(compte.getLogin(), compte.getPassword(), compte.getNom(), compte.getPrenom(), compte.getPseudo(), compte.getEquipe());
+	}
+	
 
 	//Constructeur vide
 	public Manager() {}
