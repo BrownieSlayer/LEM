@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html>
-
+<html th:replace="~{ layout.html :: layout(  ~{ ::title }, ~{ ::body }) }">
 <head>
 <meta charset="UTF-8">
 <title>Joueur</title>
@@ -84,7 +83,7 @@
 							<div class="input-group-prepend">
 								<span class="input-group-text">Eliminations moyennes</span>
 							</div>
-							<input type="text" class="form-control" class="formJ"
+							<input type="text" class="form-control formJ"
 								name="elimination">
 
 						</div>
@@ -96,7 +95,7 @@
 							<div class="input-group-prepend">
 								<span class="input-group-text">Morts moyennes</span>
 							</div>
-							<input type="text" class="form-control" class="formJ" name="mort">
+							<input type="text" class="form-control formJ" name="mort">
 
 						</div>
 						<br>
@@ -107,7 +106,7 @@
 							<div class="input-group-prepend">
 								<span class="input-group-text">Assistances moyennes</span>
 							</div>
-							<input type="text" class="form-control" class="formJ"
+							<input type="text" class="form-control formJ"
 								name="assist">
 
 						</div>
