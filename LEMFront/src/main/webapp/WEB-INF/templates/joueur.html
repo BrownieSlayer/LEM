@@ -71,7 +71,7 @@
 					<!-- Modifier ses stats -->
 					<br>
 					<br>
-					<form action="joueur" method="POST">
+					<form action="joueur/updateStats" method="POST">
 						<button id="btnModifStats" type="button"
 							class="btn btn-warning btn-block boutonJauneJoueur"
 							onClick="hideForm3()">Modifier statistiques</button>
@@ -127,7 +127,7 @@
 				<div id="equipe" class="col-3">
 					Equipe actuelle : [[${compte.equipe}]]<br> <br> <br> Rôle
 					actuel : [[${compte.role}]]<br> <br>
-					<form action="joueur" method="POST">
+					<form action="joueur/updateRole" method="POST">
 						<button id="btnModifRole" type="button"
 							class="btn btn-warning btn-block boutonJauneJoueur"
 							onClick="hideForm1()">Modifier rôle</button>
@@ -160,7 +160,7 @@
 						<br>
 					</form>
 					Salaire minimum exigé actuel : [[${compte.salmin}]]<br> <br>
-					<form action="joueur" method="POST">
+					<form action="joueur/updateSalmin" method="POST">
 						<button id="btnModifSal" type="button"
 							class="btn btn-warning btn-block boutonJauneJoueur"
 							onClick="hideForm2()">Modifier salaire</button>
@@ -205,7 +205,7 @@
 						<td>[[${ offre.salairePropose }]]</td>
 						<td>[[${ offre.rolePropose }]]</td>
 						<td>
-							<form action="joueur" method="POST">
+							<form action="joueur/accepter" method="POST">
 								<input type="hidden" name="id_page" th:value="${ id }" /> <input
 									type="hidden" name="option" th:value="accepter" /> <input
 									type="hidden" name="id_offre" th:value="${ offre.id }" /> <input
@@ -218,7 +218,7 @@
 							</form>
 						</td>
 						<td>
-							<form action="offre" method="POST">
+							<form action="offre/delete" method="POST">
 								<input type="hidden" name="option" th:value="delete" /> <input
 									type="hidden" name="id_offre" th:value="${ offre.id }" /> <input
 									type="submit" th:value="Refuser" />
@@ -228,7 +228,7 @@
 			</table>
 
 			<h1>Candidater</h1>
-			<form action="joueur" method="POST">
+			<form action="joueur/candidater" method="POST">
 				<input type="hidden" name="id_page" th:value="${ id }" /> <input
 					type="hidden" name="option" th:value="candidater" /> Manager <input
 					type="text" name="pseudo_manager" /> Role souhaité <input
