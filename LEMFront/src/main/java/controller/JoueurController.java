@@ -13,6 +13,7 @@ import dao.IDAOCandidature;
 import dao.IDAOCompte;
 import dao.IDAOOffre;
 import model.Compte;
+import model.Joueur;
 
 
 
@@ -27,10 +28,11 @@ public class JoueurController {
 	
 	@GetMapping("/joueur")
 	public String findAll(Model model, HttpSession session) {
-		Compte compte=((Compte)session.getAttribute("compte"));
+		Joueur compte=((Joueur)session.getAttribute("compte"));
+		model.addAttribute("compte", compte);
 		model.addAttribute("offres", this.daoOffre.selectOffresById(compte.getId()));
 		model.addAttribute("candidatures", this.daoCandidature.selectCandidaturesById(compte.getId()));
-		System.out.println("coucou2");
+		
 		return "joueur";
 	}
 	
