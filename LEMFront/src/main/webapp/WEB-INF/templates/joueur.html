@@ -41,10 +41,10 @@
 			<div class="btn-group btn-group-toggle col-3" data-toggle="buttons">
 				<label class="btn btn-outline active boutonSilver "> <input
 					required checked onChange="changeType('Profil')" name="typeCompte"
-					type="radio" value="Profil"> Profil
+					type="radio" th:value="Profil"> Profil
 				</label> <label class="btn btn-outline boutonSilver"> <input
 					required onChange="changeType('Offre')" name="typeCompte"
-					type="radio" value="Offre"> Offre
+					type="radio" th:value="Offre"> Offre
 				</label>
 			</div>
 
@@ -52,8 +52,8 @@
 		</div>
 		<br>
 
-		<div id="bonjour" class="col-12">Bonjour ${prenom} "${pseudo}"
-			${nom} !</div>
+		<div id="bonjour" class="col-12">Bonjour [[${compte.prenom}]] "[[${compte.pseudo}]]"
+			[[${compte.nom}]] !</div>
 		<br> <br> <br>
 
 
@@ -63,8 +63,8 @@
 				<div class="col-2">
 					<div id="statistiques">
 						Vos statistiques :<br> <br> <br> <span id="stat">Eliminations
-							: ${elimination}<br> <br>Morts : ${mort}<br> <br>Assistances
-							: ${assist}<br> <br>KDA : ${kda}
+							: [[${compte.elimination}]]<br> <br>Morts : [[${compte.mort}]]<br> <br>Assistances
+							: [[${compte.assist}]]<br> <br>KDA : [[${compte.kda}]]
 						</span>
 					</div>
 
@@ -78,8 +78,8 @@
 						<br>
 						<div class="btn-group btn-group-toggle champModifStats"
 							data-toggle="buttons">
-							<input type="hidden" name="id_page" value="${id}" /> <input
-								type="hidden" name="option" value="updateStats" />
+							<input type="hidden" name="id_page" th:value="${id}" /> <input
+								type="hidden" name="option" th:value="updateStats" />
 							<div class="input-group-prepend">
 								<span class="input-group-text">Eliminations moyennes</span>
 							</div>
@@ -90,8 +90,8 @@
 						<br>
 						<div class="btn-group btn-group-toggle champModifStats"
 							data-toggle="buttons">
-							<input type="hidden" name="id_page" value="${id}" /> <input
-								type="hidden" name="option" value="updateStats" />
+							<input type="hidden" name="id_page" th:value="${id}" /> <input
+								type="hidden" name="option" th:value="updateStats" />
 							<div class="input-group-prepend">
 								<span class="input-group-text">Morts moyennes</span>
 							</div>
@@ -101,8 +101,8 @@
 						<br>
 						<div class="btn-group btn-group-toggle champModifStats"
 							data-toggle="buttons">
-							<input type="hidden" name="id_page" value="${id}" /> <input
-								type="hidden" name="option" value="updateStats" />
+							<input type="hidden" name="id_page" th:value="${id}" /> <input
+								type="hidden" name="option" th:value="updateStats" />
 							<div class="input-group-prepend">
 								<span class="input-group-text">Assistances moyennes</span>
 							</div>
@@ -115,7 +115,7 @@
 							data-toggle="buttons">
 							<input type="submit"
 								class="btn btn-warning col 2 espacementForm boutonJauneJoueur"
-								value="Valider">
+								th:value="Valider">
 						</div>
 
 
@@ -125,8 +125,8 @@
 				</div>
 				<div class="col-3"></div>
 				<div id="equipe" class="col-3">
-					Equipe actuelle : ${equipe}<br> <br> <br> Rôle
-					actuel : ${role}<br> <br>
+					Equipe actuelle : [[${compte.equipe}]]<br> <br> <br> Rôle
+					actuel : [[${compte.role}]]<br> <br>
 					<form action="joueur" method="POST">
 						<button id="btnModifRole" type="button"
 							class="btn btn-warning btn-block boutonJauneJoueur"
@@ -136,18 +136,18 @@
 
 						<div class="btn-group btn-group-toggle champModifRole"
 							data-toggle="buttons">
-							<input type="hidden" name="id_page" value="${id}" /> <input
-								type="hidden" name="option" value="updateRole" /> <label
+							<input type="hidden" name="id_page" th:value="${id}" /> <input
+								type="hidden" name="option" th:value="updateRole" /> <label
 								class="btn btn-light active"> <input required checked
-								name="role" type="radio" value="Top" /> Top
+								name="role" type="radio" th:value="Top" /> Top
 							</label> <label class="btn btn-light"> <input required
-								name="role" type="radio" value="Jungler" /> Jungler
+								name="role" type="radio" th:value="Jungler" /> Jungler
 							</label> <label class="btn btn-light"> <input required
-								name="role" type="radio" value="Mid" /> Mid
+								name="role" type="radio" th:value="Mid" /> Mid
 							</label> <label class="btn btn-light"> <input required
-								name="role" type="radio" value="ADC" /> ADC
+								name="role" type="radio" th:value="ADC" /> ADC
 							</label> <label class="btn btn-light"> <input required
-								name="role" type="radio" value="Support" /> Support
+								name="role" type="radio" th:value="Support" /> Support
 							</label>
 						</div>
 						<br>
@@ -155,19 +155,19 @@
 							data-toggle="buttons">
 							<input type="submit"
 								class="btn btn-warning col 2 espacementForm btn-block boutonJauneJoueur"
-								value="Valider">
+								th:value="Valider">
 						</div>
 						<br>
 					</form>
-					Salaire minimum exigé actuel : ${salmin}<br> <br>
+					Salaire minimum exigé actuel : [[${compte.salmin}]]<br> <br>
 					<form action="joueur" method="POST">
 						<button id="btnModifSal" type="button"
 							class="btn btn-warning btn-block boutonJauneJoueur"
 							onClick="hideForm2()">Modifier salaire</button>
 						<br>
 						<div class="input-group-prepend champModifSal">
-							<input type="hidden" name="id_page" value="${ id }" /> <input
-								type="hidden" name="option" value="updateSalmin" /> <span
+							<input type="hidden" name="id_page" th:value="${ id }" /> <input
+								type="hidden" name="option" th:value="updateSalmin" /> <span
 								class="input-group-text">Salaire minimal souhaité</span> <input
 								type="text" class="form-control" name="salmin"> <span
 								class="input-group-prepend"></span><span
@@ -177,7 +177,7 @@
 							data-toggle="buttons">
 							<input type="submit"
 								class="btn btn-warning col 2 espacementForm btn-block boutonJauneJoueur"
-								value="Valider">
+								th:value="Valider">
 						</div>
 					</form>
 				</div>
@@ -193,46 +193,44 @@
 					<th>ID</th>
 					<th>Contact</th>
 					<th>Equipe</th>
-					<th>Salaire</thd>
+					<th>Salaire</th>
 					<th>Role</th>
 					<th></th>
 					<th></th>
 				</tr>
-				<c:forEach items="${ offres }" var="offre">
-					<tr>
-						<th>${ offre.id }</th>
-						<td>${ offre.manager.pseudo }</td>
-						<td>${ offre.equipePropose }</td>
-						<td>${ offre.salairePropose }</td>
-						<td>${ offre.rolePropose }</td>
+				<tr th:each="offre : ${ offres }" >
+						<th>[[${ offre.id }]]</th>
+						<td>[[${ offre.manager.pseudo }]]</td>
+						<td>[[${ offre.equipePropose }]]</td>
+						<td>[[${ offre.salairePropose }]]</td>
+						<td>[[${ offre.rolePropose }]]</td>
 						<td>
 							<form action="joueur" method="POST">
-								<input type="hidden" name="id_page" value="${ id }" /> <input
-									type="hidden" name="option" value="accepter" /> <input
-									type="hidden" name="id_offre" value="${ offre.id }" /> <input
-									type="hidden" name="equipe" value="${ offre.equipePropose }" />
+								<input type="hidden" name="id_page" th:value="${ id }" /> <input
+									type="hidden" name="option" th:value="accepter" /> <input
+									type="hidden" name="id_offre" th:value="${ offre.id }" /> <input
+									type="hidden" name="equipe" th:value="${ offre.equipePropose }" />
 								<input type="hidden" name="id_joueur"
 									value="${ offre.joueur.id }" /> <input type="hidden"
-									name="id_manager" value="${ offre.manager.id }" /> <input
+									name="id_manager" th:value="${ offre.manager.id }" /> <input
 									type="hidden" name="role" value="${ offre.rolePropose }" /> <input
-									type="submit" value="Accepter" />
+									type="submit" th:value="Accepter" />
 							</form>
 						</td>
 						<td>
 							<form action="offre" method="POST">
-								<input type="hidden" name="option" value="delete" /> <input
-									type="hidden" name="id_offre" value="${ offre.id }" /> <input
-									type="submit" value="Refuser" />
+								<input type="hidden" name="option" th:value="delete" /> <input
+									type="hidden" name="id_offre" th:value="${ offre.id }" /> <input
+									type="submit" th:value="Refuser" />
 							</form>
 						</td>
 					</tr>
-				</c:forEach>
 			</table>
 
 			<h1>Candidater</h1>
 			<form action="joueur" method="POST">
-				<input type="hidden" name="id_page" value="${ id }" /> <input
-					type="hidden" name="option" value="candidater" /> Manager <input
+				<input type="hidden" name="id_page" th:value="${ id }" /> <input
+					type="hidden" name="option" th:value="candidater" /> Manager <input
 					type="text" name="pseudo_manager" /> Role souhaité <input
 					type="text" name="role_demande" /> Salaire souhaité <input
 					type="text" name="salaire_demande" /> <input type="submit"
