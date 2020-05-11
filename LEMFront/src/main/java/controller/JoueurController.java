@@ -42,110 +42,87 @@ public class JoueurController {
 
 		return "joueur";
 	}
-
-
+	
+	
 	@PostMapping("/joueur/updateSalmin")
-	public String updateSalmin(HttpSession session,
-			@RequestParam double salmin
-			) {
-
-		Joueur compte=((Joueur)session.getAttribute("compte"));
-		Joueur j = (Joueur) daoCompte.findById(compte.getId()).get();
+	public String updateSalmin(
+			@RequestParam double salmin,
+			@RequestParam ("id_page") int idPage) {
+		
+		Joueur j = (Joueur) daoCompte.findById(idPage).get();
 		j.setSalmin(salmin);
 		daoCompte.save(j);
-
-		session.setAttribute("compte", j);
-
+		
 		return "redirect:/joueur";
 	}
-
+	
 	@PostMapping("/joueur/updateRole")
-	public String updateRole(HttpSession session,
-			@RequestParam String role
-			) {
-
-		Joueur compte=((Joueur)session.getAttribute("compte"));
-		Joueur j = (Joueur) daoCompte.findById(compte.getId()).get();
+	public String updateRole(
+			@RequestParam String role,
+			@RequestParam ("id_page") int idPage) {
+		
+		Joueur j = (Joueur) daoCompte.findById(idPage).get();
 		j.setRole(role);
 		daoCompte.save(j);
-
-		session.setAttribute("compte", j);
-
+		
 		return "redirect:/joueur";
 	}
-
-
+	
+	
 	@PostMapping("/joueur/updateStats")
-	public String updateStats(HttpSession session,
+	public String updateStats(
+			@RequestParam ("id_page") int idPage,
 			@RequestParam double elimination,
 			@RequestParam double mort,
 			@RequestParam double assist, 
 			@RequestParam double kda) {
-
-		Joueur compte=((Joueur)session.getAttribute("compte"));	
-		Joueur j = (Joueur) daoCompte.findById(compte.getId()).get();
-		j.setElimination(elimination);
-		j.setMort(mort);
-		j.setAssist(assist);
-		j.setKda(kda);
-		daoCompte.save(j);
-		
-		session.setAttribute("compte", j);
-
-		return "redirect:/joueur";
+	Joueur j = (Joueur) daoCompte.findById(idPage).get();
+	j.setElimination(elimination);
+	j.setMort(mort);
+	j.setAssist(assist);
+	j.setKda(kda);
+	daoCompte.save(j);
+	
+	return "redirect:/joueur";
 	}
-
-
-
+	
+	
+	
 	@PostMapping("/joueur/delete")
 	public String delete(
 			@RequestParam ("id_offre") int idOffre) {
-
+		
 		daoOffre.deleteById(idOffre);
-
+		
 		return "redirect:/joueur";
 	}
-
 	
+	@PostMapping("/joueur/accepter")
+	public String accepter(
+			@RequestParam("id_page") int idPage,
+			@RequestParam("id_offre") int idOffre,
+			@RequestParam("id_joueur") int idJoueur,
+			@RequestParam("id_manager") int idManager,
+			@RequestParam String equipe,
+			@RequestParam String role) {
+		
+		Manager manager = (Manager) daoCompte.selectById(idManager);
+		
+		System.out.println(idJoueur);
+		System.out.println(idManager);
+		System.out.println(equipe);
+		System.out.println(role);
+		
+		Joueur j = (Joueur) daoCompte.findById(idPage).get();
+		j.setEquipe(equipe);
+		j.setRole(role);
+		j.setManager(manager);
+		daoCompte.save(j);
+		daoOffre.deleteById(idOffre);
+		
+		return "redirect:/joueur";
+	}
 	
-	 @GetMapping("/joueur/{id}/accepter")
-     public String accepterOffre(@PathVariable int id, HttpSession session) {
-
-		  try {
-              Offre o = this.daoOffre.findById(id).get();
-              Joueur j = (Joueur)this.daoCompte.findById(o.getJoueur().getId()).get();
-              Manager m = (Manager)this.daoCompte.findById(o.getManager().getId()).get();
-              j.setEquipe(o.getEquipePropose());
-              j.setRole(o.getRolePropose());
-              j.setManager(m);
-              this.daoCompte.save(j);
-              this.daoOffre.deleteById(id);
-              session.setAttribute("compte", j);
-          }
-          catch (Exception e) {
-              e.printStackTrace();
-          }
-		
-		
-		  
-		return "redirect:/joueur";
-	}
-	 
-	 @GetMapping("/joueur/{id}/refuser")
-     public String refuserOffre(@PathVariable int id) {
-
-		  try {
-              this.daoOffre.deleteById(id);
-           
-          }
-          catch (Exception e) {
-              e.printStackTrace();
-          }
-		
-		  
-		return "redirect:/joueur";
-	}
-
 	@PostMapping("/joueur/candidater")
 	public String candidater(
 			@RequestParam ("id_joueur") int idJoueur,
@@ -153,7 +130,7 @@ public class JoueurController {
 			@RequestParam ("role_demande") String roleDemande,
 			@RequestParam("salaire_demande") double salaireDemande,
 			HttpSession session) {
-
+		
 		System.out.println("candidature");
 
 		Manager manager = (Manager) daoCompte.selectByPseudo(pseudoManager);
@@ -177,39 +154,39 @@ public class JoueurController {
 			session.setAttribute("candReussi", 1);
 		}
 		session.setAttribute("candReussi", 0);
-
+		
 		return "redirect:/joueur";
 	}
-
-	//	
-	//	
-	//	
-	//	@GetMapping("/patient/{secu}")
-	//	public String findById(@PathVariable int secu, Model model) {
-	//		model.addAttribute("patient", this.daoPatient.findById(secu).orElse(new Patient()));
-	//		
-	//		return "form-patient";
-	//	}
-	//	
-	//	@PostMapping("/patient")
-	//	public String add( patient) {
-	//		this.daoCompte.save(patient);
-	//		
-	//		return "redirect:/patient";
-	//	}
-	//	
-	//
-	//	
-	//	@GetMapping("/patient/{secu}/supprimer")
-	//	public String deleteById(@PathVariable int secu) {
-	//		try {
-	//			this.daoPatient.deleteById(secu);
-	//		}
-	//		
-	//		catch (Exception e) {
-	//			e.printStackTrace();
-	//		}
-	//		
-	//		return "redirect:/patient";
-	//	}
+	
+//	
+//	
+//	
+//	@GetMapping("/patient/{secu}")
+//	public String findById(@PathVariable int secu, Model model) {
+//		model.addAttribute("patient", this.daoPatient.findById(secu).orElse(new Patient()));
+//		
+//		return "form-patient";
+//	}
+//	
+//	@PostMapping("/patient")
+//	public String add( patient) {
+//		this.daoCompte.save(patient);
+//		
+//		return "redirect:/patient";
+//	}
+//	
+//
+//	
+//	@GetMapping("/patient/{secu}/supprimer")
+//	public String deleteById(@PathVariable int secu) {
+//		try {
+//			this.daoPatient.deleteById(secu);
+//		}
+//		
+//		catch (Exception e) {
+//			e.printStackTrace();
+//		}
+//		
+//		return "redirect:/patient";
+//	}
 }

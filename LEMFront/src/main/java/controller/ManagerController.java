@@ -15,7 +15,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import dao.IDAOCandidature;
 import dao.IDAOCompte;
 import dao.IDAOOffre;
+import model.Candidature;
 import model.Compte;
+import model.Joueur;
+import model.Manager;
 import model.Offre;
 
 @Controller
@@ -51,10 +54,44 @@ public class ManagerController {
 		return "redirect:/manager";
 	}
 	
-	//Proposer/Editer une offre
-	@PostMapping("/manager")
-	public String add(Offre offre) {	
-		this.daoOffre.save(offre);	
-		return "redirect:/manager";
-	}
+	//Refuser une candidature
+		@GetMapping("/manager/{id}/refuserCandidature")
+		public String deleteCandidature(@PathVariable int id) {
+			try {
+				this.daoCandidature.deleteById(id);
+			}	
+			catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+			return "redirect:/manager";
+		}
+		
+		//Accepter une candidature
+		@GetMapping("/manager/{id}/accepterCandidature")
+		public String saveCandidature(@PathVariable int id) {
+		
+		try {
+				Candidature c = this.daoCandidature.findById(id).get();
+				Joueur j = (Joueur)this.daoCompte.findById(c.getJoueur().getId()).get();
+				Manager m = (Manager)this.daoCompte.findById(c.getManager().getId()).get();
+				j.setEquipe(c.getEquipeDemande());
+				j.setRole(c.getRoleDemande());
+				j.setManager(m);
+				this.daoCompte.save(j);
+				this.daoCandidature.deleteById(id);
+			}	
+			catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+			return "redirect:/manager";
+		}
+	
+		//Proposer/Editer une offre
+		@PostMapping("/manager")
+		public String add(Offre offre) {	
+			this.daoOffre.save(offre);	
+			return "redirect:/manager";
+		}
 }
