@@ -88,37 +88,25 @@ public class JoueurController {
 	
 	
 	
-	@PostMapping("/joueur/delete")
-	public String delete(
-			@RequestParam ("id_offre") int idOffre) {
+	@GetMapping("/joueur/{id}/refuser")
+	public String delete(@PathVariable int id) {
 		
-		daoOffre.deleteById(idOffre);
+		daoOffre.deleteById(id);
 		
 		return "redirect:/joueur";
 	}
 	
-	@PostMapping("/joueur/accepter")
-	public String accepter(
-			@RequestParam("id_page") int idPage,
-			@RequestParam("id_offre") int idOffre,
-			@RequestParam("id_joueur") int idJoueur,
-			@RequestParam("id_manager") int idManager,
-			@RequestParam String equipe,
-			@RequestParam String role) {
+	@GetMapping("/joueur/{id}/accepter")
+	public String accepter(@PathVariable int id) {
 		
-		Manager manager = (Manager) daoCompte.selectById(idManager);
-		
-		System.out.println(idJoueur);
-		System.out.println(idManager);
-		System.out.println(equipe);
-		System.out.println(role);
-		
-		Joueur j = (Joueur) daoCompte.findById(idPage).get();
-		j.setEquipe(equipe);
-		j.setRole(role);
-		j.setManager(manager);
-		daoCompte.save(j);
-		daoOffre.deleteById(idOffre);
+		Offre o = this.daoOffre.findById(id).get();
+		Joueur j = (Joueur)this.daoCompte.findById(o.getJoueur().getId()).get();
+		Manager m = (Manager)this.daoCompte.findById(o.getManager().getId()).get();
+		j.setEquipe(o.getEquipePropose());
+		j.setRole(o.getRolePropose());
+		j.setManager(m);
+		this.daoCompte.save(j);
+		this.daoOffre.deleteById(id);
 		
 		return "redirect:/joueur";
 	}
@@ -157,6 +145,26 @@ public class JoueurController {
 		
 		return "redirect:/joueur";
 	}
+	
+	//Supprimer une candidature
+		@GetMapping("/joueur/{id}/supprimerCandidature")
+		public String deleteCandidature(@PathVariable int id) {
+			try {
+				this.daoCandidature.deleteById(id);
+			}	
+			catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+			return "redirect:/joueur";
+		}
+		
+		//Proposer/Editer une candidature
+		@PostMapping("/joueur")
+			public String add(Candidature c) {	
+			this.daoCandidature.save(c);	
+			return "redirect:/joueur";
+		}
 	
 //	
 //	
