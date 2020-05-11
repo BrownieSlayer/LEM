@@ -205,24 +205,8 @@
 						<td>[[${ offre.salairePropose }]]</td>
 						<td>[[${ offre.rolePropose }]]</td>
 						<td>
-							<form action="joueur/accepter" method="POST">
-								<input type="hidden" name="id_page" th:value="${ id }" /> <input
-									type="hidden" name="option" th:value="accepter" /> <input
-									type="hidden" name="id_offre" th:value="${ offre.id }" /> <input
-									type="hidden" name="equipe" th:value="${ offre.equipePropose }" />
-								<input type="hidden" name="id_joueur"
-									value="${ offre.joueur.id }" /> <input type="hidden"
-									name="id_manager" th:value="${ offre.manager.id }" /> <input
-									type="hidden" name="role" value="${ offre.rolePropose }" /> <input
-									type="submit" th:value="Accepter" />
-							</form>
-						</td>
-						<td>
-							<form action="offre/delete" method="POST">
-								<input type="hidden" name="option" th:value="delete" /> <input
-									type="hidden" name="id_offre" th:value="${ offre.id }" /> <input
-									type="submit" th:value="Refuser" />
-							</form>
+							<a class="btn btn-primary" th:href="@{ joueur/{id}/accepter(id=${ offre.id }) }">Accepter</a>
+                                    <a class="btn btn-danger" th:href="@{ joueur/{id}/refuser(id=${ offre.id }) }">Refuser</a>
 						</td>
 					</tr>
 			</table>

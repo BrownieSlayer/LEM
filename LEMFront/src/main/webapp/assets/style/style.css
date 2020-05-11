@@ -161,11 +161,8 @@ body
 
 #botBandeau
 {
-<<<<<<< Updated upstream
+
 	position : relative; top : 100px;
-=======
-	position : relative; top : 500px;
->>>>>>> Stashed changes
 	background-color:#111238;
 	height : 10%;
 	background-size:: 100% 10%;
@@ -390,17 +387,17 @@ body
 }
 #logo
 {
-	height : 75%;
-	width : 75%;
+	position : relative;
+	height:190px;
+	width:190px;
 }
 
 #gem
 {
 	height : 10%;
 	width : 8%;
-	items-align: middle;
 	position : relative;
-	left:45%;
+	left:46%;
 }
 
 .profilePictureArea
