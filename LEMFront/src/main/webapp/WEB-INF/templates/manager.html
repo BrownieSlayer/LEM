@@ -177,18 +177,18 @@
 			<div class = "proposition">
 				<h3>Proposer une offre</h3>		
 				<form action = "manager" method="POST" id="formProposition">
+				 <input type="hidden" name="joueur.id" />
+				<input type="hidden" name="manager.id" th:value = "${ compte.id }" />
 				  <div class="form-row">
 				  	<div class="input-group col">
 				  		<div class="input-group-prepend">
 		    				<button class="btn btn-outline-light">Joueur</button>
 		 				 </div>
-						<select name="joueur.id" disabled>
+						<select class = "form-control" name="joueur.id" disabled>
 							<option th:each="j : ${ joueurs }"
 							th:value="${ j.id }">[[ ${ j.pseudo } ]]</option>
 						</select>
 				  	</div>
-						<input type="hidden" name="joueur.id" />
-						<input type="hidden" name="manager.id" th:value = "${ compte.id }" />
 					<div class="input-group col">
 						<div class="input-group-prepend">
 		    				<button class="btn btn-outline-light">Role</button>

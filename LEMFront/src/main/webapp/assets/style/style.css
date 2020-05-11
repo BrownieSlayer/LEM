@@ -161,13 +161,7 @@ body
 
 #botBandeau
 {
-<<<<<<< Updated upstream
-
 	position : relative; top : 100px;
-=======
-	position : relative; top : 100px;
-	position : relative; top : 500px;
->>>>>>> Stashed changes
 	background-color:#111238;
 	height : 10%;
 	background-size:: 100% 10%;
@@ -425,15 +419,13 @@ body
 	font-weight : 500;
 }
 
-<<<<<<< Updated upstream
 #boutonretour
 {
 	display: block;  margin : auto;
 	
 }
-=======
+
 .whiteTitle
 {
   color : #ffffff;
 }
->>>>>>> Stashed changes
