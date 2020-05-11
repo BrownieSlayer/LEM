@@ -68,4 +68,9 @@ public class HomeController {
 		}
 	}
 	
+	@GetMapping("/retourconnect")
+	public String retourConnect() {
+		return "connect";
+	}
+	
 }

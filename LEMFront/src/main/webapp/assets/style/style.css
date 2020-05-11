@@ -385,7 +385,7 @@ body
 	margin: 0;
 
 }
-#logo
+#logoconnect
 {
 	position : relative;
 	height:190px;
@@ -418,4 +418,10 @@ body
 	color : gold;
 	font-size : 35px;
 	font-weight : 500;
+}
+
+#boutonretour
+{
+	display: block;  margin : auto;
+	
 }
