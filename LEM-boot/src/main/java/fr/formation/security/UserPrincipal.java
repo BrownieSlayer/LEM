@@ -39,8 +39,13 @@ public class UserPrincipal implements UserDetails{
 		if (this.compte.getLogin().contentEquals("Kodo")) {
 		roles.add(new SimpleGrantedAuthority("ROLE_ADMIN"));
 		}
-		else {
-			roles.add(new SimpleGrantedAuthority("ROLE_USER"));
+		else if  (this.compte.getTypeCompte().contentEquals("Joueur"))
+		{
+			roles.add(new SimpleGrantedAuthority("ROLE_JOUEUR"));
+		}
+		else if (this.compte.getTypeCompte().contentEquals("Manager"))
+		{
+			roles.add(new SimpleGrantedAuthority("ROLE_MANAGER"));
 		}
 		return roles;
 	}

@@ -26,7 +26,7 @@ public class Compte {
 	@Column(name="login", length=50, nullable=false)
 	protected String login;
 	
-	@Column(name="password", length=50, nullable=false)
+	@Column(name="password", length=250, nullable=false)
 	protected String password;
 	
 	@Column(name="typecompte", length=50, insertable = false, updatable = false)
