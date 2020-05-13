@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html th:replace="~{ layout.html :: layout(  ~{ ::title }, ~{ ::body }) }">
+<head>
+<meta charset="UTF-8">
+<title>Joueur</title>
+</head>
+
+<header> </header>
+
+<body id="background">
+
+	<div class="container-fluid">
+
+		<div id="ligne"></div>
+
+		<img id="logoLoL" src="./assets/img/LogoLoLGrey.png" />
+
+		<div id="topBandeau" class="row">
+
+			<div class="col-2"></div>
+			<div id="titre1" class="col-2">LoL Esport</div>
+			<div class="col-2"></div>
+			<div class="col-1"></div>
+			<div id="joueur" class="col-3">Joueur</div>
+			<div class="col-2"></div>
+
+		</div>
+
+
+
+		<div id="topBandeau2" class="row">
+
+			<div class="col-2"></div>
+			<div id="titre2" class="col-2">MANAGER</div>
+			<div class="col-2"></div>
+			<div class="col-1"></div>
+
+
+
+
+			<div class="btn-group btn-group-toggle col-3" data-toggle="buttons">
+				<label class="btn btn-outline active boutonSilver "> <input
+					required checked onChange="changeType('Profil')" name="typeCompte"
+					type="radio" th:value="Profil"> Profil
+				</label> <label class="btn btn-outline boutonSilver"> <input
+					required onChange="changeType('Offre')" name="typeCompte"
+					type="radio" th:value="Offre"> Offre
+				</label>
+			</div>
+
+			<div class="col-2"></div>
+		</div>
+		<br>
+
+		<div id="bonjour" class="col-12">Bonjour [[${compte.prenom}]] "[[${compte.pseudo}]]"
+			[[${compte.nom}]] !</div>
+		<br> <br> <br>
+
+
+		<div class="container-fluid champProfil">
+			<div class="row">
+				<div class="col-2"></div>
+				<div class="col-2">
+					<div id="statistiques">
+						Vos statistiques :<br> <br> <br> <span id="stat">Eliminations
+							: [[${compte.elimination}]]<br> <br>Morts : [[${compte.mort}]]<br> <br>Assistances
+							: [[${compte.assist}]]<br> <br>KDA : [[${compte.kda}]]
+						</span>
+					</div>
+
+					<!-- Modifier ses stats -->
+					<br>
+					<br>
+					<form action="joueur/updateStats" method="POST">
+						<button id="btnModifStats" type="button"
+							class="btn btn-warning btn-block boutonJauneJoueur"
+							onClick="hideForm3()">Modifier statistiques</button>
+						<br>
+						<div class="btn-group btn-group-toggle champModifStats"
+							data-toggle="buttons">
+							<input type="hidden" name="id_page" th:value="${id}" /> <input
+								type="hidden" name="option" th:value="updateStats" />
+							<div class="input-group-prepend">
+								<span class="input-group-text">Eliminations moyennes</span>
+							</div>
+							<input type="text" class="form-control formJ"
+								name="elimination">
+
+						</div>
+						<br>
+						<div class="btn-group btn-group-toggle champModifStats"
+							data-toggle="buttons">
+							<input type="hidden" name="id_page" th:value="${id}" /> <input
+								type="hidden" name="option" th:value="updateStats" />
+							<div class="input-group-prepend">
+								<span class="input-group-text">Morts moyennes</span>
+							</div>
+							<input type="text" class="form-control formJ" name="mort">
+
+						</div>
+						<br>
+						<div class="btn-group btn-group-toggle champModifStats"
+							data-toggle="buttons">
+							<input type="hidden" name="id_page" th:value="${id}" /> <input
+								type="hidden" name="option" th:value="updateStats" />
+							<div class="input-group-prepend">
+								<span class="input-group-text">Assistances moyennes</span>
+							</div>
+							<input type="text" class="form-control formJ"
+								name="assist">
+
+						</div>
+						<br>
+						<div class="btn-group btn-group-toggle champModifStats"
+							data-toggle="buttons">
+							<input type="submit"
+								class="btn btn-warning col 2 espacementForm boutonJauneJoueur"
+								th:value="Valider">
+						</div>
+
+
+
+					</form>
+
+				</div>
+				<div class="col-3"></div>
+				<div id="equipe" class="col-3">
+					Equipe actuelle : [[${compte.equipe}]]<br> <br> <br> Rôle
+					actuel : [[${compte.role}]]<br> <br>
+					<form action="joueur/updateRole" method="POST">
+						<button id="btnModifRole" type="button"
+							class="btn btn-warning btn-block boutonJauneJoueur"
+							onClick="hideForm1()">Modifier rôle</button>
+						<br>
+						<!-- Boutons Rôles -->
+
+						<div class="btn-group btn-group-toggle champModifRole"
+							data-toggle="buttons">
+							<input type="hidden" name="id_page" th:value="${id}" /> <input
+								type="hidden" name="option" th:value="updateRole" /> <label
+								class="btn btn-light active"> <input required checked
+								name="role" type="radio" th:value="Top" /> Top
+							</label> <label class="btn btn-light"> <input required
+								name="role" type="radio" th:value="Jungler" /> Jungler
+							</label> <label class="btn btn-light"> <input required
+								name="role" type="radio" th:value="Mid" /> Mid
+							</label> <label class="btn btn-light"> <input required
+								name="role" type="radio" th:value="ADC" /> ADC
+							</label> <label class="btn btn-light"> <input required
+								name="role" type="radio" th:value="Support" /> Support
+							</label>
+						</div>
+						<br>
+						<div class="btn-group btn-group-toggle champModifRole"
+							data-toggle="buttons">
+							<input type="submit"
+								class="btn btn-warning col 2 espacementForm btn-block boutonJauneJoueur"
+								th:value="Valider">
+						</div>
+						<br>
+					</form>
+					Salaire minimum exigé actuel : [[${compte.salmin}]]<br> <br>
+					<form action="joueur/updateSalmin" method="POST">
+						<button id="btnModifSal" type="button"
+							class="btn btn-warning btn-block boutonJauneJoueur"
+							onClick="hideForm2()">Modifier salaire</button>
+						<br>
+						<div class="input-group-prepend champModifSal">
+							<input type="hidden" name="id_page" th:value="${ id }" /> <input
+								type="hidden" name="option" th:value="updateSalmin" /> <span
+								class="input-group-text">Salaire minimal souhaité</span> <input
+								type="text" class="form-control" name="salmin"> <span
+								class="input-group-prepend"></span><span
+								class="input-group-text">€</span>
+						</div>
+						<div class="btn-group btn-group-toggle champModifSal"
+							data-toggle="buttons">
+							<input type="submit"
+								class="btn btn-warning col 2 espacementForm btn-block boutonJauneJoueur"
+								th:value="Valider">
+						</div>
+					</form>
+				</div>
+				<div class="col-2"></div>
+			</div>
+
+		</div>
+
+		<div class="container-fluid champOffre">
+			<h1 class = "whiteTitle">Liste offres</h1>
+			<table class="table table-dark">
+				<tr>
+					<th>ID</th>
+					<th>Contact</th>
+					<th>Equipe</th>
+					<th>Salaire</th>
+					<th>Role</th>
+					<th></th>
+					<th></th>
+				</tr>
+				<tr th:each="offre : ${ offres }" >
+						<th>[[${ offre.id }]]</th>
+						<td>[[${ offre.manager.pseudo }]]</td>
+						<td>[[${ offre.equipePropose }]]</td>
+						<td>[[${ offre.salairePropose }]]</td>
+						<td>[[${ offre.rolePropose }]]</td>
+						<td>
+							<a class="btn btn-primary" th:href="@{ joueur/{id}/accepter(id=${ offre.id }) }">Accepter</a>
+                            <a class="btn btn-danger" th:href="@{ joueur/{id}/refuser(id=${ offre.id }) }">Refuser</a>
+						</td>
+					</tr>
+			</table>
+
+			<h1 class = "whiteTitle">Mes candidatures</h1>			
+				<table class= "table table-dark table-striped table-hover" >
+						<thead>
+								<th>ID</th>
+								<th>Contact</th>
+								<th>Equipe</th>
+								<th>Salaire demande</thd>
+								<th>Role demande</th>
+								<th></th>
+								<th></th>
+						</thead>
+							<tr th:each="c : ${ candidatures }">
+								<th>[[ ${ c.id } ]]</th>
+								<td>[[ ${ c.manager.pseudo } ]]</td>
+								<td>[[ ${ c.manager.equipe } ]]</td>
+								<td>[[ ${ c.salaireDemande } ]]</td>
+								<td>[[ ${ c.roleDemande } ]]</td>
+								<td>
+									<a class="btn btn-primary" th:href="@{ joueur/{id}/editerCandidature(id=${ c.id }) }">Editer</a>
+									<a class="btn btn-danger" th:href="@{ joueur/{id}/supprimerCandidature(id=${ c.id }) }">Supprimer</a>
+								</td>	
+							</tr>
+			</table>
+			</br>
+			<h1 class = "whiteTitle">Candidater</h1>
+			<form action="joueur/candidater" method="POST">
+			 <div class="form-row">
+				<div class="input-group col">
+					<div class="input-group-prepend">
+		    				<button class="btn btn-outline-light">Contact</button>
+		 		    </div>
+					<input class = "form-control" type="text" name="pseudo_manager" /> 
+				</div>
+				<div class="input-group col">
+					<div class="input-group-prepend">
+		    				<button class="btn btn-outline-light">Role demande</button>
+		 		    </div>
+					<input class = "form-control" type="text" name="roleDemande" /> 
+				</div>
+				<div class="input-group col">
+					<div class="input-group-prepend">
+		    				<button class="btn btn-outline-light">Salaire demande</button>
+		 		    </div>
+					<input class = "form-control" type="text" name="salaireDemande" /> 
+				</div>
+				<div class="input-group col">
+					<input class = "btn btn-light" type="submit" value="Envoyer" />
+				</div>
+			</div>
+			</form>
+			
+			
+			
+		</div>
+		<div id="botBandeau" class="row">
+			<div class="col-2"></div>
+			<div id="termsOfUse" class="col-3">Terms of use</div>
+			<div class="col-2"></div>
+			<div id="contact" class="col-3">Contacts</div>
+			<div class="col-2"></div>
+			<br>
+			<div id="copyright" class="col-12">Copyright© 2020
+				Thibault,Kodo,Florian</div>
+
+		</div>
+
+	</div>
+
+<script>
+	var btnModifRole = document.getElementById("btnModifRole");
+	var champModifRole = document.getElementsByClassName("champModifRole");
+	var btnModifSal = document.getElementById("btnModifSal")
+	var champModifSal = document.getElementsByClassName("champModifSal");
+	var btnModifStats = document.getElementById("btnModifStats")
+	var champModifStats = document.getElementsByClassName("champModifStats");
+
+	for (var i = 0; i < champModifRole.length; i++) {
+		champModifRole[i].style.visibility = "hidden";
+	}
+
+	function hideForm1() {
+		for (var i = 0; i < champModifRole.length; i++) {
+			champModifRole[i].style.visibility = "visible";
+		}
+
+	}
+
+	for (var i = 0; i < champModifSal.length; i++) {
+		champModifSal[i].style.visibility = "hidden";
+	}
+
+	function hideForm2() {
+
+		for (var i = 0; i < champModifSal.length; i++) {
+			champModifSal[i].style.visibility = "visible";
+		}
+
+	}
+
+	for (var i = 0; i < champModifStats.length; i++) {
+		champModifStats[i].style.visibility = "hidden";
+	}
+
+	function hideForm3() {
+		for (var i = 0; i < champModifStats.length; i++) {
+			champModifStats[i].style.visibility = "visible";
+		}
+
+	}
+
+	var cp = document.getElementsByClassName("champProfil");
+	var co = document.getElementsByClassName("champOffre");
+
+	for (var i = 0; i < co.length; i++) {
+		co[i].style.display = "none";
+	}
+
+	function changeType(type) {
+		if (type == "Profil") {
+			for (var i = 0; i < co.length; i++) {
+				co[i].style.display = "none";
+
+			}
+
+			for (var i = 0; i < cp.length; i++) {
+				cp[i].style.display = "block";
+
+			}
+
+		} else {
+			for (var i = 0; i < cp.length; i++) {
+				cp[i].style.display = "none";
+
+			}
+
+			for (var i = 0; i < co.length; i++) {
+				co[i].style.display = "block";
+
+			}
+		}
+	}
+</script>
+</body>
+
+</html>

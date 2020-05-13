@@ -1,4 +1,4 @@
-package controller;
+package fr.formation.controller;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
@@ -12,14 +12,14 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import dao.IDAOCandidature;
-import dao.IDAOCompte;
-import dao.IDAOOffre;
-import model.Candidature;
-import model.Compte;
-import model.Joueur;
-import model.Manager;
-import model.Offre;
+import fr.formation.dao.IDAOCandidature;
+import fr.formation.dao.IDAOCompte;
+import fr.formation.dao.IDAOOffre;
+import fr.formation.model.Candidature;
+import fr.formation.model.Compte;
+import fr.formation.model.Joueur;
+import fr.formation.model.Manager;
+import fr.formation.model.Offre;
 
 @Controller
 public class ManagerController {

@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html th:replace="~{ layout.html :: layout(  ~{ ::title }, ~{ ::body }) }">
+
+<head>
+<meta charset="UTF-8">
+<title>Manager</title>
+</head>
+<style>
+.boutonsHidden
+{
+	display : none;
+}
+
+</style>
+
+<body id="background">
+
+	<div class="container-fluid">
+		
+		<div id="ligne"></div>
+		
+		<img id="logoLoL" src="assets/img/LogoLoLGrey.png" />
+
+		<div id="topBandeau" class="row">
+
+			<div class="col-2"></div>
+			<div id="titre1" class="col-2">LoL Esport</div>
+			<div class="col-2"></div>
+			<div class="col-1"></div>
+			<div id="joueur" class="col-3">Manager</div>
+			<div class="col-2"></div>
+
+		</div>
+		
+		
+		
+		<div id="topBandeau2" class="row">
+
+			<div class="col-2"></div>
+			<div id="titre2" class="col-2">MANAGER</div>
+			<div class="col-2"></div>
+			<div class="col-1"></div>	
+	   				
+		
+			<div class="btn-group btn-group-toggle col-3" data-toggle="buttons">
+	  			<label class="btn btn-outline active boutonSilver ">
+	    			<input required checked onChange="changeType('Profil')" name="typeCompte" type="radio" value="Profil"> Profil
+	  			</label>
+	  			<label class="btn btn-outline boutonSilver">
+	  				 <input required onChange="changeType('Offre')" name="typeCompte" type="radio" value="Offre"> Offre
+	  			</label>
+			</div>
+			
+			<div class="col-2"></div>
+		</div>
+		
+		<div class="container-fluid champProfil">
+			<div class = "profilePictureArea col-3">
+				<div class = "accountPseudo">[[ ${ compte.pseudo } ]]</div>
+				<img th:if="${compte.pseudo == 'Grabbz'}" class = "profilePicture" src="assets/img/G2_GrabbZ.png" style = "width:100%" />	
+				<img th:if="${compte.equipe == 'G2'}" class = "profilePicture" src="assets/img/G2_2.png" style = "width:100%" />		
+			</div>
+		</div>
+		
+		<!-- Offre -->
+		<div class="container-fluid champOffre">
+			
+			
+			<h1 class = "whiteTitle" >Mes Offres</h1>			
+				<table class= "table table-dark table-striped table-hover" >
+						<thead>
+								<th>ID</th>
+								<th>Contact</th>
+								<th>Salaire propose</thd>
+								<th>Role propose</th>
+								<th></th>
+								<th></th>
+						</thead>
+							<tr th:each="offre : ${ offres }">
+								<th>[[ ${ offre.id } ]]</th>
+								<td>[[ ${ offre.joueur.pseudo } ]]</td>
+								<td>[[ ${ offre.salairePropose } ]]</td>
+								<td>[[ ${ offre.rolePropose } ]]</td>
+								<td>
+									<a class="btn btn-primary"
+										th:data-offre-id="${ offre.id }"
+										th:data-offre-joueur-id="${ offre.joueur.id }"
+										th:data-offre-joueur-pseudo="${ offre.joueur.pseudo }"
+										th:data-offre-joueur-role="${ offre.rolePropose }"
+										th:data-offre-joueur-salmin="${ offre.salairePropose }">Editer</a>
+									<a class="btn btn-danger" th:href="@{ manager/{id}/supprimerOffre(id=${ offre.id }) }">Supprimer</a>
+								</td>	
+							</tr>
+				</table>
+			
+			
+			<div class = "edition">
+				<h3 class = "whiteTitle" >Editer l'offre</h3>		
+				<form action = "manager" method="POST" id="formEdition">
+				  <div class="form-row">
+				  	<div class="input-group col">
+						 <div class="input-group-prepend">
+		    				<button class="btn btn-outline-light">Contact</button>
+		 				 </div>
+				  		<input class = "form-control" type="text" name="joueurPseudo" readonly />
+					</div>
+					<div>
+						<input type="hidden" name="id" />
+						<input type="hidden" name="joueur.id" />
+						<input type="hidden" name="manager.id" th:value = "${ compte.id }" />
+					</div>
+					<div class="input-group col">
+						<div class="input-group-prepend">
+		    				<button class="btn btn-outline-light">Role</button>
+		 				 </div>
+						<input class="form-control" type="text" name="rolePropose" />
+					</div>
+					<div class="input-group col">
+						<div class="input-group-prepend">
+		    				<button class="btn btn-outline-light">Salaire</button>
+		 				 </div>
+						<input class="form-control" type="text" name="salairePropose" />
+						<div class="input-group-prepend">
+		    				<button class="btn btn-outline-light">€</button>
+		 				 </div>
+					</div>
+					<div class="input-group col">
+						<div class="input-group-prepend">
+		    				<button class="btn btn-outline-light">Equipe</button>
+		 				 </div>
+						<input class="form-control" type="text" name="equipePropose" th:value = "${ compte.equipe }" readonly/>
+					</div>	
+					<div class="input-group col">			
+						 <input class = "btn btn-light" type="submit" value="Envoyer" />
+					</div>	
+				  </div>
+				</form>
+			</div>
+			
+			<div id = "champEditionOffre">
+			</div>
+			
+			<h1 class = "whiteTitle">Liste des joueurs</h1>	
+				 <div class = "input-group" >
+					<a class="btn btn-outline-light active">Tous</a>
+	    			<a class="btn btn-outline-light">Sans equipe</a>
+	    			<a class="btn btn-outline-light">Role</a>
+					<a class="btn btn-outline-light">Salaire</a>
+				</div>
+			<table class= "table table-dark table-striped table-hover" >
+					<thead>
+							<th>Pseudo</th>
+							<th>Nom</th>
+							<th>Prenom</th>
+							<th>Equipe</th>
+							<th>Role</thd>
+							<th>Salmin</th>
+							<th>KDA</th>
+							<th>Offre</th>
+					</thead>
+						<tr th:each="j : ${ joueurs }">
+							<td>[[ ${ j.pseudo } ]]</th>
+							<td>[[ ${ j.nom } ]]</th>
+							<td>[[ ${ j.prenom } ]]</th>
+							<td>[[ ${ j.equipe } ]]</td>
+							<td>[[ ${ j.role } ]]</td>
+							<td>[[ ${ j.salmin } ]]</td>
+							<td>[[ ${ j.kda } ]]</td>
+							<td>
+								<a class="btn btn-warning"
+									th:data-joueur-id="${ j.id }"
+									th:data-joueur-role="${ j.role }"
+									th:data-joueur-salmin="${ j.salmin }">Proposer une offre</a>
+							</td>	
+						</tr>
+			</table>
+			
+			<div class = "proposition">
+				<h3>Proposer une offre</h3>		
+				<form action = "manager" method="POST" id="formProposition">
+				 <input type="hidden" name="joueur.id" />
+				<input type="hidden" name="manager.id" th:value = "${ compte.id }" />
+				  <div class="form-row">
+				  	<div class="input-group col">
+				  		<div class="input-group-prepend">
+		    				<button class="btn btn-outline-light">Joueur</button>
+		 				 </div>
+						<select class = "form-control" name="joueur.id" disabled>
+							<option th:each="j : ${ joueurs }"
+							th:value="${ j.id }">[[ ${ j.pseudo } ]]</option>
+						</select>
+				  	</div>
+					<div class="input-group col">
+						<div class="input-group-prepend">
+		    				<button class="btn btn-outline-light">Role</button>
+		 				 </div>
+						<input class="form-control" type="text" name="rolePropose" />
+					</div>
+					<div class="input-group col">
+						<div class="input-group-prepend">
+		    				<button class="btn btn-outline-light">Salaire</button>
+		 				 </div>
+						<input class="form-control" type="text" name="salairePropose" />
+						<div class="input-group-prepend">
+		    				<button class="btn btn-outline-light">€</button>
+		 				 </div>
+					</div>
+					<div class="input-group col">
+						<div class="input-group-prepend">
+		    				<button class="btn btn-outline-light">Equipe</button>
+		 				 </div>
+						<input class="form-control" type="text" name="equipePropose" th:value = "${ compte.equipe }" readonly/>
+					</div>
+					<div>
+						<input class = "btn btn-light" type="submit" value="Envoyer" />	
+					</div>
+				  </div>
+				</form>
+			</div>
+			
+			<h1 class = "whiteTitle">Candidatures</h1>			
+				<table class= "table table-dark table-striped table-hover" >
+						<thead>
+								<th>ID</th>
+								<th>Contact</th>
+								<th>Salaire demande</thd>
+								<th>Role demande</th>
+								<th></th>
+								<th></th>
+						</thead>
+							<tr th:each="c : ${ candidatures }">
+								<th>[[ ${ c.id } ]]</th>
+								<td>[[ ${ c.joueur.pseudo } ]]</td>
+								<td>[[ ${ c.salaireDemande } ]]</td>
+								<td>[[ ${ c.roleDemande } ]]</td>
+								<td>
+									<a class="btn btn-primary" th:href="@{ manager/{id}/accepterCandidature(id=${ c.id }) }">Accepter</a>
+									<a class="btn btn-danger" th:href="@{ manager/{id}/refuserCandidature(id=${ c.id }) }">Refuser</a>
+								</td>	
+							</tr>
+				</table>
+		</div>		
+		
+		<div id="botBandeau" class="row">
+			<div class="col-2"></div>
+			<div id="termsOfUse" class="col-3">Terms of use</div>
+			<div class="col-2"></div>
+			<div id="contact" class="col-3">Contacts</div>
+			<div class="col-2"></div>
+			<br>
+			<div id="copyright" class="col-12">Copyright© 2020
+				Thibault,Kodo,Florian
+			</div>
+		</div>
+	
+	</div>
+	
+	
+	
+	
+	
+
+<script>
+$('.edition').hide();
+$('.proposition').hide();
+
+$('a[data-joueur-id]').on('click', function() {
+	$('.proposition').show();
+	let joueurId = $(this).attr('data-joueur-id');
+	let joueurRole = $(this).data('joueur-role');
+	let joueurSalmin = $(this).data('joueur-salmin');	
+
+	$('#formProposition [name="joueur.id"]').val(joueurId);
+	$('#formProposition [name="rolePropose"]').val(joueurRole);
+	$('#formProposition [name="salairePropose"]').val(joueurSalmin);
+	
+});
+
+$('a[data-offre-joueur-id]').on('click', function() {
+	$('.edition').show();
+	let offreId = $(this).data('offre-id');
+	let joueurId = $(this).attr('data-offre-joueur-id');
+	let joueurRole = $(this).data('offre-joueur-role');
+	let joueurSalmin = $(this).data('offre-joueur-salmin');
+	let joueurPseudo = $(this).data('offre-joueur-pseudo');
+	
+	$('#formEdition [name="id"]').val(offreId);
+	$('#formEdition [name="joueur.id"]').val(joueurId);
+	$('#formEdition [name="rolePropose"]').val(joueurRole);
+	$('#formEdition [name="salairePropose"]').val(joueurSalmin);
+	$('#formEdition [name="joueurPseudo"]').val(joueurPseudo);
+	
+});
+
+
+/*$('.btnModifRole').css("visibility", "hidden")
+$('.btnModifRole').css("disabled", "disabled")
+$('.btnModifRole').addClass('autreclass')
+$('.btnModifRole').removeClass('autreclass') */
+
+
+var cp=document.getElementsByClassName("champProfil");
+var co=document.getElementsByClassName("champOffre");
+
+for(var i=0;i<co.length;i++)
+{
+co[i].style.display="none";
+}
+
+function changeType(type)
+{ 
+		if(type=="Profil")
+	    {
+	        for(var i=0;i<co.length;i++)
+	        {
+	            co[i].style.display="none";
+	           
+	        }
+	
+	        for(var i=0;i<cp.length;i++)
+	        {
+	            cp[i].style.display="block";
+	        
+	        }
+	 
+	    }
+	    else
+	    {
+	         for(var i=0;i<cp.length;i++)
+	         {
+	             cp[i].style.display="none";
+	            
+	         }
+	
+	         for(var i=0;i<co.length;i++)
+	         {
+	             co[i].style.display="block";
+	          
+	         }
+	    }
+}
+
+</script>
+</body>
+</html>

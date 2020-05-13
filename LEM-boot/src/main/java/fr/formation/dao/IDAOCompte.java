@@ -1,13 +1,13 @@
-package dao;
+package fr.formation.dao;
 
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
-import model.Compte;
-import model.Joueur;
-import model.Manager;
+import fr.formation.model.Compte;
+import fr.formation.model.Joueur;
+import fr.formation.model.Manager;
 
 public interface IDAOCompte extends JpaRepository<Compte, Integer>{
 	

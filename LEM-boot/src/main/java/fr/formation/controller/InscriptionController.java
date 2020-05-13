@@ -1,4 +1,4 @@
-package controller;
+package fr.formation.controller;
 
 import java.util.List;
 
@@ -13,12 +13,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import dao.IDAOCandidature;
-import dao.IDAOCompte;
-import dao.IDAOOffre;
-import model.Compte;
-import model.Joueur;
-import model.Manager;
+import fr.formation.dao.IDAOCandidature;
+import fr.formation.dao.IDAOCompte;
+import fr.formation.dao.IDAOOffre;
+import fr.formation.model.Compte;
+import fr.formation.model.Joueur;
+import fr.formation.model.Manager;
 
 @Controller
 //@RequestMapping("/home") // PREFIXER TOUS LES MAPPINGS DE CETTE CLASSE

@@ -1,3 +1,4 @@
+package fr.formation.model;
 //package model;
 //
 //import java.sql.Connection;

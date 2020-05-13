@@ -1,0 +1,431 @@
+
+/*Joueur*/
+#background
+{
+	background-image:url("../img/LCS3.png");
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	width:100%;
+	height:100%;
+	background-size: 100% 100%;
+	padding: 0;
+}
+
+body
+{
+	margin: 0;
+	height: 100vh;
+}
+
+#logoLoL
+{
+	position : absolute; top : 8px; left : 210px;
+	height:140px;
+	width:140px;
+	background: -webkit-linear-gradient(right, #fcfcfc, #999999, #fcfcfc);
+  	-webkit-background-clip: text;
+  
+}
+
+
+
+#titre1 
+{
+	position : relative;
+	background: -webkit-linear-gradient(right, #fcfcfc, #999999, #fcfcfc);
+  	-webkit-background-clip: text;
+  	-webkit-text-fill-color: transparent;
+	font-size : 45px;
+	font-weight : 1000;
+	text-align : center;
+}
+
+#titre2
+{
+	position : relative;
+	background: -webkit-linear-gradient(right, #fcfcfc, #999999, #fcfcfc);
+  	-webkit-background-clip: text;
+  	-webkit-text-fill-color: transparent;
+	font-size : 45px;
+	font-weight : 1000;
+	text-align : center;
+}
+
+#joueur
+{
+	position : relative;
+	background: -webkit-linear-gradient(right, #ffffff, #999999, #ffffff);
+  	-webkit-background-clip: text;
+  	-webkit-text-fill-color: transparent;
+	font-size : 40px;
+	font-weight : 700;
+	text-align : center;
+}
+
+#topBandeau
+{
+	background-color : #00053b;
+	padding-bottom:5px;
+	padding-top:5px;
+	
+	
+	}
+	
+#ligne
+{
+	position : relative; top : 80px;
+	background: linear-gradient(to right, #00a9b5, #00053b 10%, #00053b 15%, #00a9b5);
+	height : 2px;
+	
+}	
+
+
+#topBandeau2
+{
+	background-color : #00053b;
+	padding-bottom:5px;
+	padding-top:5px;
+	}	
+	
+.boutonSilver
+{
+	
+ 	position : relative;
+ 	border-left: solid 1px #00a9b5;
+ 	border-right: solid 1px #00a9b5;
+ 	background-color : #00053b;
+	background: -webkit-linear-gradient(right, #ffffff, #999999, #ffffff);
+  	-webkit-background-clip: text;
+  	-webkit-text-fill-color: transparent;
+	font-size : 28px;
+	font-weight : 500;
+	text-align : center;	
+}
+
+.boutonSilver:hover
+{
+	position : relative;
+ 	border-left: solid 1.3px #00a9b5;
+ 	border-right: solid 1.3px #00a9b5;
+ 	background: -webkit-linear-gradient(right, #ffffff, #d1d1d1, #ffffff);
+  	-webkit-background-clip: text;
+  	-webkit-text-fill-color: transparent;
+	font-size : 28px;
+	font-weight : 500;
+	text-align : center;
+	color:#fcfcfc;
+	
+}
+
+.boutonJauneJoueur
+{
+	position : relative;
+	background: -webkit-linear-gradient(right, #c79f00, #fdd017 50%, #ffe373);
+	font-size : 17px;
+	font-weight : 600;
+	text-align : center;
+}
+
+.boutonJauneJoueur:hover
+{
+	position : relative;
+ 	background : -webkit-linear-gradient(right, #ffe373, #fdd017 50%, #c79f00);
+	font-size : 17px;
+	font-weight : 600;
+	text-align : center;
+	
+}
+
+.champModifRole
+{
+	
+}
+
+#stats
+{
+ 	position : relative; top:20px;
+	color:#C0C0C0;
+	font-size : 28px;
+	font-weight : 500;
+	text-align : center;	
+}
+
+#profil
+{
+ 	position : relative; top:20px;
+	color:#C0C0C0;
+	font-size : 28px;
+	font-weight : 500;
+	text-align : center;	
+}
+
+#botBandeau
+{
+	position : relative; top : 700px;
+	background-color:#111238;
+	height : 10%;
+	background-size:: 100% 10%;
+}
+
+#termsOfUse
+{
+	position : relative; top : 20px;
+	text-align : center;
+	color: white;
+	
+}
+
+#contact
+{
+	position : relative; top : 20px;
+	text-align : center;
+	color: white;
+	
+}
+
+#copyright
+{
+	
+	font-size : 13px;
+	text-align : center;
+	color: white;
+	
+}
+
+#bonjour 
+{
+	text-align : center;
+	color : white;
+	font-size : 35px;
+	font-weight : 500;
+}
+
+#statistiques
+{
+	text-align : center;
+	color : #ffffff;
+	font-size : 30px;
+	font-weight : 350;
+}
+
+#stat
+{
+	text-align : center;
+	color : #ffffff;
+	font-size : 25px;
+	font-weight : 300;
+}
+
+#equipe
+{
+	text-align : center;
+	color : #ffffff;
+	font-size : 27px;
+	font-weight : 330;
+	padding:0;
+}
+
+#role
+{
+	text-align : center;
+	color : #ffffff;
+	font-size : 27px;
+	font-weight : 330;
+}
+
+#salmin
+{
+	text-align : center;
+	color : #ffffff;
+	font-size : 27px;
+	font-weight : 330;
+}
+
+
+
+#modifSalmin,#modifRole
+{
+	background-color :#ffc107;
+	border-color : #ffc107;
+	color : #212529;
+	width:100%;
+	font-size:18px;
+}
+
+.modif
+{
+	width:100%;
+}
+
+/*Inscription*/
+
+#inscriptionForm
+{
+	position : relative;
+	top : 30px;
+}
+
+.espacementForm
+{
+	margin-top:10px;
+}
+
+#inscriptionTitre
+{
+	position : relative; bottom : 5px;
+    background: -webkit-linear-gradient(right, #ffdb47, #d9ae00, #ffdb47);
+  	-webkit-background-clip: text;
+  	-webkit-text-fill-color: transparent;
+    font-size : 30px;
+    font-weight : 900;
+    text-align : center;
+}
+
+.boutonJaune2
+{
+	position : relative;
+	border: solid 2px; 
+	border: -webkit-linear-gradient(right, #c79f00, #fdd017 50%, #ffe373);
+	font-size : 20px;
+	font-weight : 650;
+	text-align : center;
+}
+
+.boutonValider
+{
+	position : relative;
+	background: -webkit-linear-gradient(right, #c79f00, #fdd017 50%, #ffe373);
+	font-size : 20px;
+	font-weight : 650;
+	text-align : center;
+}
+
+#botBandeauInscription
+{
+    position : relative; top : 100px;
+    background-color:#111238;
+    height : 10%;
+    background-size:: 100% 10%;
+
+}
+
+/*Connect*/
+#bienvenue
+{
+	position : relative;
+	background: -webkit-linear-gradient(right, #fcfcfc, #999999, #fcfcfc);
+  	-webkit-background-clip: text;
+  	-webkit-text-fill-color: transparent;
+	font-size : 45px;
+	font-weight : 1000;
+	text-align : center;
+	
+}
+
+.boutonJaune
+{
+	position : relative;
+	background: -webkit-linear-gradient(right, #c79f00, #fdd017 50%, #ffe373);
+	font-size : 23px;
+	font-weight : 700;
+	text-align : center;
+}
+
+.boutonJaune:hover
+{
+	position : relative;
+ 	background : -webkit-linear-gradient(right, #ffe373, #fdd017 50%, #c79f00);
+	font-size : 23px;
+	font-weight : 700;
+	text-align : center;
+	
+}
+
+
+#formConnect{
+	display:none; /*Le formConnect sera cach� au lancement de la page*/
+}
+
+#topconnect {
+	background-color: #00053b;
+	color: white;
+	text-align : center;
+	align-middle;
+	width:100%;
+	height:25%;
+	padding: 0;
+	margin: 0;	
+	align-items: center;
+}
+
+#midconnect {
+
+	width:100%;
+	height:60%;
+	padding: 0;
+	margin: 0;
+	align-items: center;
+
+}
+#donnees {
+	position: absolute;
+	top: 50%
+
+}
+
+
+#botconnect
+{
+
+    background-color:#111238;
+    height : 15%;
+    width:100%;
+    padding: 0;
+	margin: 0;
+
+}
+#logoconnect
+{
+	position : relative;
+	height:190px;
+	width:190px;
+}
+
+#gem
+{
+	height : 10%;
+	width : 8%;
+	position : relative;
+	left:46%;
+}
+
+.profilePictureArea
+{
+  background-color : gold, opacity 0.5;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.profilePicture
+{
+	width:500px;
+	height: 375 px;
+}
+
+.accountPseudo
+{
+	text-align : center;
+	color : gold;
+	font-size : 35px;
+	font-weight : 500;
+}
+
+#boutonretour
+{
+	display: block;  margin : auto;
+	
+}
+
+.whiteTitle
+{
+  color : #ffffff;
+}
