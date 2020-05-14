@@ -289,7 +289,8 @@ $("#pseudo").focusout(function()
 			$.ajax("inscription/checkPseudo", { 
 				type: "POST", 
 				data: { 
-					pseudo:pseudo 
+					pseudo:pseudo ,
+					_csrf: "[[ ${_csrf.token} ]]"
 				},
 				success: function (resp) 
 				{ 
@@ -321,7 +322,8 @@ $("#loginForm").focusout(function()
 			$.ajax("inscription/checkLogin", { 
 				type: "POST", 
 				data: { 
-					login:login 
+					login:login,
+					_csrf: "[[ ${_csrf.token} ]]"
 				},
 				success: function (resp) 
 				{ 

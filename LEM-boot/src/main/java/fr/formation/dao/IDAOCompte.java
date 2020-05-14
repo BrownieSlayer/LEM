@@ -4,12 +4,20 @@ import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.rest.core.annotation.RepositoryRestResource;
+import org.springframework.data.rest.core.annotation.RestResource;
 
 import fr.formation.model.Compte;
 import fr.formation.model.Joueur;
 import fr.formation.model.Manager;
+import fr.formation.projection.CompteProjection;
 
+
+@RepositoryRestResource(excerptProjection = CompteProjection.class)
 public interface IDAOCompte extends JpaRepository<Compte, Integer>{
+	
+	@RestResource(path = "by-TypeCompte")
+	public List<Compte> findByTypeCompte(String typeCompte);
 	
 	@Query("select c from Compte c where c.login = ?1 and c.password = ?2")
 	public Compte checkConnect(String login, String password);
@@ -61,5 +69,5 @@ public interface IDAOCompte extends JpaRepository<Compte, Integer>{
 	@Query("select j from Joueur j where j.salmin = ?1")
 	public List<Joueur> selectJoueursBySalmin(Double salmin);
 	
-	
+
 }

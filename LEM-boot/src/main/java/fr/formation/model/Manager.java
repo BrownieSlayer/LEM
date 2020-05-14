@@ -61,10 +61,6 @@ public class Manager extends Compte {
 		this.joueurManage = joueurManage;
 	}
 
-	public List<Offre> getoffreJoueur() {
-		return offreJoueur;
-	}
-
 	public void setOffreJoueur(List<Offre> propositionJoueur) {
 		this.offreJoueur = propositionJoueur;
 	}

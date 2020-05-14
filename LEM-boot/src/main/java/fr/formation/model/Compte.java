@@ -10,6 +10,10 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
+import fr.formation.projection.Views;
+
 @Entity
 @Table(name="compte")
 @Inheritance(strategy=InheritanceType.SINGLE_TABLE)
@@ -21,9 +25,11 @@ public class Compte {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="id")
+	@JsonView(Views.Common.class)
 	protected int id;
 	
 	@Column(name="login", length=50, nullable=false)
+	@JsonView(Views.Compte.class)
 	protected String login;
 	
 	@Column(name="password", length=250, nullable=false)

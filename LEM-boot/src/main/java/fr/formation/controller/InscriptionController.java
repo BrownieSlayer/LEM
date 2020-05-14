@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -29,11 +30,11 @@ public class InscriptionController {
 	private IDAOOffre daoOffre;
 	@Autowired
 	private IDAOCandidature daoCandidature;
-
+	@Autowired 
+	private PasswordEncoder passwordEncoder;
 
 	@GetMapping({ "/inscription" })
 	public String inscription(Model model) {
-		System.out.println("coucounfdijze");
 		return "inscription";
 	}
 
@@ -47,11 +48,12 @@ public class InscriptionController {
 			@RequestParam(required = false) Double mort,
 			@RequestParam(required = false) Double assist,
 			Model model) {
-
-
+			
+			compte.setPassword(passwordEncoder.encode(compte.getPassword()));
+		
 		if (compte.getTypeCompte().equals("Manager"))
 		{
-			compte=new Manager(compte);
+			compte = new Manager(compte);
 			daoCompte.save(compte);
 
 			//Ajoute le manager sur tous les joueur de son equipe deja inscrit dans la base
