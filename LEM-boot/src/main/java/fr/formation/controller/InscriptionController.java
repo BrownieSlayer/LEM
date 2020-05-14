@@ -33,12 +33,14 @@ public class InscriptionController {
 
 	@GetMapping({ "/inscription" })
 	public String inscription(Model model) {
+		System.out.println("coucounfdijze");
 		return "inscription";
 	}
 
 	@PostMapping("/inscription")
 	public String inscriptionJoueur(
 			Compte compte,
+			
 			@RequestParam String role, //Attributs qui ne sont pas dans compte
 			@RequestParam(required = false) Double salmin,
 			@RequestParam(required = false) Double elimination,
