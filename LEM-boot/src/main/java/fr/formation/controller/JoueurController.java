@@ -21,8 +21,6 @@ import fr.formation.model.Joueur;
 import fr.formation.model.Manager;
 import fr.formation.model.Offre;
 
-
-
 @Controller
 public class JoueurController {
 	@Autowired
@@ -76,6 +74,7 @@ public class JoueurController {
 			@RequestParam double mort,
 			@RequestParam double assist, 
 			@RequestParam double kda) {
+		
 	Joueur j = (Joueur) daoCompte.findById(idPage).get();
 	j.setElimination(elimination);
 	j.setMort(mort);
