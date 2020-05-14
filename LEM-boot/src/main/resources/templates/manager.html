@@ -134,6 +134,10 @@
 						 <input class = "btn btn-light" type="submit" value="Envoyer" />
 					</div>	
 				  </div>
+				  
+				  		<input type="hidden"
+								th:name="${_csrf.parameterName}"
+								th:value="${_csrf.token}" />
 				</form>
 			</div>
 			
@@ -215,6 +219,9 @@
 						<input class = "btn btn-light" type="submit" value="Envoyer" />	
 					</div>
 				  </div>
+				  		<input type="hidden"
+							th:name="${_csrf.parameterName}"
+							th:value="${_csrf.token}" />
 				</form>
 			</div>
 			

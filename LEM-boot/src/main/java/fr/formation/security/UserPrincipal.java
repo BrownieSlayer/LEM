@@ -23,11 +23,12 @@ public class UserPrincipal implements UserDetails{
 		if (compte == null) {
 			throw new UsernameNotFoundException("Le compte n'existe pas");
 		}
+		
 		this.compte = compte;
 	}
 	
-	public String spec() {
-		return "Spécificités";
+	public Compte getCompte() {
+		return this.compte;
 	}
 	
 	
@@ -37,7 +38,7 @@ public class UserPrincipal implements UserDetails{
 		List<GrantedAuthority> roles = new ArrayList<>();
 		
 		if (this.compte.getLogin().contentEquals("Kodo")) {
-		roles.add(new SimpleGrantedAuthority("ROLE_ADMIN"));
+			roles.add(new SimpleGrantedAuthority("ROLE_ADMIN"));
 		}
 		else if  (this.compte.getTypeCompte().contentEquals("Joueur"))
 		{

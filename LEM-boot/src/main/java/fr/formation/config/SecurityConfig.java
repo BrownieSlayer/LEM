@@ -10,6 +10,8 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+import fr.formation.security.UserConnected;
+
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity (prePostEnabled=true)
@@ -26,8 +28,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 	protected void configure(HttpSecurity http) throws Exception {
 	http.authorizeRequests()
 	.antMatchers("/assets/**").permitAll()
-	.antMatchers("/joueur/**").hasAnyRole("JOUEUR")
-	.antMatchers("/manager/**").hasAnyRole("MANAGER")
+	.antMatchers("/joueur/**").hasAnyRole("JOUEUR", "ADMIN")
+	.antMatchers("/manager/**").hasAnyRole("MANAGER", "ADMIN")
 	.antMatchers("/**").hasAnyRole("ADMIN")
 //	.antMatchers("/**").authenticated()
 	.and()
@@ -36,6 +38,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 		.loginPage("/connect") //lien ver le getMapping
 		.loginProcessingUrl("/connect") //lien du post du form html
 //		.defaultSuccessUrl("/") //Page par default apres connection
+		.successHandler(new UserConnected())
 		.failureUrl("/connect?error=true") //Page d'erreur
 		.permitAll()
 		;

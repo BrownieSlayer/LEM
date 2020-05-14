@@ -45,10 +45,14 @@
 
 				<form id="formConnect" method="POST" action="connect"> <!-- le formulaire de connection -->
 
-					<input type="text" name="login" placeholder="Identifiant" class="form-control" /><br />
+					<input type="text" name="username" placeholder="Identifiant" class="form-control" /><br />
 					<input type="password" name="password" placeholder="Mot de Passe" class="form-control"><br />
 					<input	type="submit" placeholder="Valider"	class="btn btn-warning btn-lg btn-block boutonJaune" value="Connexion">	
 					<!-- Apparait lorsque l'on clique (methode dans le script) -->
+
+					<input type="hidden"
+						th:name="${_csrf.parameterName}"
+						th:value="${_csrf.token}" />
 
 				</form>
 				
@@ -60,6 +64,9 @@
 					<!-- Envoie sur la page d'inscription -->
 					<button type="submit" class="btn btn-warning btn-lg btn-block boutonJaune" value="Inscription">Inscription</button>
 					<br />
+					<input type="hidden"
+						th:name="${_csrf.parameterName}"
+						th:value="${_csrf.token}" />
 				</form>
 				<div id = "error" class="text-danger"  >[[${erreur}]]</div>
 

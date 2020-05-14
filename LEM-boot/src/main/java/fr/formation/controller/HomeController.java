@@ -34,7 +34,7 @@ public class HomeController {
 	}
 	
 	
-	@PostMapping("/connect")
+	//@PostMapping("/connect")
 	public String connect(
 			@RequestParam(value = "login") String username,
 			@RequestParam String password,
@@ -42,6 +42,7 @@ public class HomeController {
 		
 		if (username.isEmpty()) {
 			model.addAttribute("error", "Username must not be empty");
+			System.out.println("càucoucreegarg");
 			return "connect";
 		}
 		
