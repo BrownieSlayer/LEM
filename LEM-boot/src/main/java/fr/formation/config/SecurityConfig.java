@@ -27,8 +27,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 	http.authorizeRequests()
+	.antMatchers("/").permitAll()
 	.antMatchers("/assets/**").permitAll()
 	.antMatchers("/inscription/**").permitAll()
+	.antMatchers("/connect/**").permitAll()
+	.antMatchers("/logout/**").permitAll()
 	.antMatchers("/joueur/**").hasAnyRole("JOUEUR", "ADMIN")
 	.antMatchers("/manager/**").hasAnyRole("MANAGER", "ADMIN")
 	.antMatchers("/rest/**").permitAll()
@@ -40,10 +43,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 	.formLogin()
 		.loginPage("/connect") //lien ver le getMapping
 		.loginProcessingUrl("/connect") //lien du post du form html
-//		.defaultSuccessUrl("/") //Page par default apres connection
+		//.defaultSuccessUrl("/connect") //Page par default apres connection
 		.successHandler(new UserConnected())
 		.failureUrl("/connect?error=true") //Page d'erreur
 		.permitAll()
+	.and()
+	.logout()
+		//.logoutUrl("/connect")
+		.logoutSuccessUrl("/connect")
+		.permitAll();
 		;
 	}
 	

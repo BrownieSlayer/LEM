@@ -23,8 +23,6 @@ import fr.formation.model.Joueur;
 import fr.formation.model.Manager;
 import fr.formation.model.Offre;
 
-
-
 @Controller
 public class JoueurController {
 	@Autowired
