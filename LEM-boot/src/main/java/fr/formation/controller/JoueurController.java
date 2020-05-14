@@ -5,6 +5,7 @@ import java.util.List;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,6 +18,7 @@ import fr.formation.dao.IDAOCandidature;
 import fr.formation.dao.IDAOCompte;
 import fr.formation.dao.IDAOOffre;
 import fr.formation.model.Candidature;
+import fr.formation.model.Compte;
 import fr.formation.model.Joueur;
 import fr.formation.model.Manager;
 import fr.formation.model.Offre;
@@ -39,7 +41,8 @@ public class JoueurController {
 		model.addAttribute("compte", compte);
 		model.addAttribute("offres", this.daoOffre.selectOffresById(compte.getId()));
 		model.addAttribute("candidatures", this.daoCandidature.selectCandidaturesById(compte.getId()));
-
+		model.addAttribute("managers", this.daoCompte.selectAllManagers());
+		
 		return "joueur";
 	}
 	
@@ -47,11 +50,14 @@ public class JoueurController {
 	@PostMapping("/joueur/updateSalmin")
 	public String updateSalmin(
 			@RequestParam double salmin,
-			@RequestParam ("id_page") int idPage) {
+			HttpSession session)  {
 		
-		Joueur j = (Joueur) daoCompte.findById(idPage).get();
+		Compte compte=((Compte)session.getAttribute("compte"));
+		
+		Joueur j = (Joueur) daoCompte.findById(compte.getId()).get();
 		j.setSalmin(salmin);
 		daoCompte.save(j);
+		session.setAttribute("compte", j);
 		
 		return "redirect:/joueur";
 	}
@@ -59,11 +65,14 @@ public class JoueurController {
 	@PostMapping("/joueur/updateRole")
 	public String updateRole(
 			@RequestParam String role,
-			@RequestParam ("id_page") int idPage) {
+			HttpSession session) {
 		
-		Joueur j = (Joueur) daoCompte.findById(idPage).get();
+		Compte compte=((Compte)session.getAttribute("compte"));
+		
+		Joueur j = (Joueur) daoCompte.findById(compte.getId()).get();
 		j.setRole(role);
 		daoCompte.save(j);
+		session.setAttribute("compte", j);
 		
 		return "redirect:/joueur";
 	}
@@ -71,17 +80,22 @@ public class JoueurController {
 	
 	@PostMapping("/joueur/updateStats")
 	public String updateStats(
-			@RequestParam ("id_page") int idPage,
+			HttpSession session,
 			@RequestParam double elimination,
 			@RequestParam double mort,
-			@RequestParam double assist, 
-			@RequestParam double kda) {
-	Joueur j = (Joueur) daoCompte.findById(idPage).get();
+			@RequestParam double assist 
+			) {
+		
+		double kda = (elimination + assist)/mort;
+		
+		Compte compte=((Compte)session.getAttribute("compte"));
+	Joueur j = (Joueur) daoCompte.findById(compte.getId()).get();
 	j.setElimination(elimination);
 	j.setMort(mort);
 	j.setAssist(assist);
 	j.setKda(kda);
 	daoCompte.save(j);
+	session.setAttribute("compte", j);
 	
 	return "redirect:/joueur";
 	}
@@ -112,37 +126,10 @@ public class JoueurController {
 	}
 	
 	@PostMapping("/joueur/candidater")
-	public String candidater(
-			@RequestParam ("id_joueur") int idJoueur,
-			@RequestParam ("pseudo_manager") String pseudoManager,
-			@RequestParam ("role_demande") String roleDemande,
-			@RequestParam("salaire_demande") double salaireDemande,
-			HttpSession session) {
-		
-		System.out.println("candidature");
-
-		Manager manager = (Manager) daoCompte.selectByPseudo(pseudoManager);
-		System.out.println(manager.getPseudo());
-		if (manager != null)
-		{
-			Joueur joueur = (Joueur) daoCompte.selectById(idJoueur);
-			System.out.println(joueur);
-			System.out.println(roleDemande);
-			String equipeDemande = manager.getEquipe();
-			System.out.println(equipeDemande);
-			System.out.println(salaireDemande);
-			Candidature candidature = new Candidature();
-			System.out.println(candidature);
-			candidature.setJoueur(joueur);
-			candidature.setManager(manager);
-			candidature.setSalaireDemande(salaireDemande);
-			candidature.setEquipeDemande(equipeDemande);
-			candidature.setRoleDemande(roleDemande);
+	public String candidater(Candidature candidature, HttpSession session) {
+			
 			daoCandidature.save(candidature);
-			session.setAttribute("candReussi", 1);
-		}
-		session.setAttribute("candReussi", 0);
-		
+			
 		return "redirect:/joueur";
 	}
 	
